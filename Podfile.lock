@@ -1,14 +1,39 @@
 
 PODS:
+- AFNetworking (1.0.1)
 - Kiwi (1.1.1)
 - MagicalRecord (2.0.8)
+- RestKit (0.20.0pre5):
+  - RestKit/Core (= 0.20.0pre5)
+- RestKit/Core (0.20.0pre5):
+  - RestKit/CoreData
+  - RestKit/Network
+  - RestKit/ObjectMapping
+- RestKit/CoreData (0.20.0pre5)
+- RestKit/Network (0.20.0pre5):
+  - AFNetworking (= 1.0.1)
+  - RestKit/ObjectMapping
+  - RestKit/Support
+  - SOCKit
+- RestKit/ObjectMapping (0.20.0pre5)
+- RestKit/Support (0.20.0pre5)
+- SOCKit (1.1)
 
 DEPENDENCIES:
 - Kiwi
 - MagicalRecord (= 2.0.8)
+- RestKit
 
 SPEC CHECKSUMS:
+  AFNetworking: 0bce3ae41023e080e96b8a2e0d07c94709f72a81
   MagicalRecord: daa15d6c83bd7d30e074c8923e53c64248ae6930
+  RestKit: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  RestKit/Core: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  RestKit/CoreData: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  RestKit/Network: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  RestKit/ObjectMapping: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  RestKit/Support: 6e3fc6d777aacb0fa3a8faf07015e18a1471872f
+  SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
   Kiwi: 06407ae4d33a33310aed1202113d002eda1d56eb
 
 COCOAPODS: 0.16.0
