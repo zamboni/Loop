@@ -10,6 +10,30 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>06726D916DE843349ABF927C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>1</string>
+		</dict>
 		<key>24476B84AFB542219CE9C622</key>
 		<dict>
 			<key>explicitFileType</key>
@@ -34,6 +58,7 @@
 				<string>32A92DEF169238B600D5EB7F</string>
 				<string>32A92DED169238B600D5EB7F</string>
 				<string>7E8516DB95B649829AFB64D4</string>
+				<string>B3C7A032275B44EF9FB449AC</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -120,6 +145,7 @@
 				<string>32A92DF3169238B600D5EB7F</string>
 				<string>32A92DF5169238B600D5EB7F</string>
 				<string>32A92DF7169238B600D5EB7F</string>
+				<string>88B95F8B43F441D694389B3E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -153,6 +179,7 @@
 				<string>32A92DE8169238B600D5EB7F</string>
 				<string>32A92DE9169238B600D5EB7F</string>
 				<string>32A92DEA169238B600D5EB7F</string>
+				<string>06726D916DE843349ABF927C</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -206,6 +233,7 @@
 				<string>32A92DF6169238B600D5EB7F</string>
 				<string>32A92E1F169238B600D5EB7F</string>
 				<string>24476B84AFB542219CE9C622</string>
+				<string>9AF0222CEE6E42DF90E58AA9</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1032,6 +1060,8 @@
 		</dict>
 		<key>32A92E32169238B600D5EB7F</key>
 		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B3C7A032275B44EF9FB449AC</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
@@ -1052,6 +1082,8 @@
 		</dict>
 		<key>32A92E33169238B600D5EB7F</key>
 		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B3C7A032275B44EF9FB449AC</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
@@ -1156,6 +1188,45 @@
 			<string>Pods-LoopTests.xcconfig</string>
 			<key>path</key>
 			<string>Pods/Pods-LoopTests.xcconfig</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>88B95F8B43F441D694389B3E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AF0222CEE6E42DF90E58AA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict/>
+		</dict>
+		<key>9AF0222CEE6E42DF90E58AA9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libPods.a</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>B3C7A032275B44EF9FB449AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Pods.xcconfig</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>

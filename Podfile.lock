@@ -1,11 +1,14 @@
 
 PODS:
 - Kiwi (1.1.1)
+- MagicalRecord (2.0.8)
 
 DEPENDENCIES:
 - Kiwi
+- MagicalRecord (= 2.0.8)
 
 SPEC CHECKSUMS:
+  MagicalRecord: daa15d6c83bd7d30e074c8923e53c64248ae6930
   Kiwi: 06407ae4d33a33310aed1202113d002eda1d56eb
 
 COCOAPODS: 0.16.0
