@@ -1,4 +1,6 @@
 #import "Kiwi.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/Testing.h>
 
 SPEC_BEGIN(SpecName)
 
