@@ -28,6 +28,10 @@
 		32A92E23169238B600D5EB7F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF6169238B600D5EB7F /* CoreData.framework */; };
 		32A92E2B169238B600D5EB7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E29169238B600D5EB7F /* InfoPlist.strings */; };
 		32A92E2E169238B600D5EB7F /* LoopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A92E2D169238B600D5EB7F /* LoopTests.m */; };
+		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
+		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
+		32C809CE1696568300FF1B97 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809CD1696568300FF1B97 /* User.m */; };
+		32C809D11696570800FF1B97 /* User+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809D01696570800FF1B97 /* User+Implementation.m */; };
 		88B95F8B43F441D694389B3E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF0222CEE6E42DF90E58AA9 /* libPods.a */; };
 		D4BDF06F62B0464EA48C686F /* libPods-LoopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24476B84AFB542219CE9C622 /* libPods-LoopTests.a */; };
 /* End PBXBuildFile section */
@@ -70,6 +74,12 @@
 		32A92E28169238B600D5EB7F /* LoopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoopTests-Info.plist"; sourceTree = "<group>"; };
 		32A92E2A169238B600D5EB7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32A92E2D169238B600D5EB7F /* LoopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoopTests.m; sourceTree = "<group>"; };
+		32C809C3169637B700FF1B97 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		32C809C716963E2300FF1B97 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		32C809CC1696568300FF1B97 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		32C809CD1696568300FF1B97 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32C809CF1696570800FF1B97 /* User+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Implementation.h"; sourceTree = "<group>"; };
+		32C809D01696570800FF1B97 /* User+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+Implementation.m"; sourceTree = "<group>"; };
 		7E8516DB95B649829AFB64D4 /* Pods-LoopTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopTests.xcconfig"; path = "Pods/Pods-LoopTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		9AF0222CEE6E42DF90E58AA9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C7A032275B44EF9FB449AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -141,6 +151,7 @@
 		32A92DF8169238B600D5EB7F /* Loop */ = {
 			isa = PBXGroup;
 			children = (
+				32C809CA1696564B00FF1B97 /* Model */,
 				32A92E01169238B600D5EB7F /* AppDelegate.h */,
 				32A92E02169238B600D5EB7F /* AppDelegate.m */,
 				32A92E0A169238B600D5EB7F /* MainStoryboard_iPhone.storyboard */,
@@ -172,8 +183,10 @@
 		32A92E26169238B600D5EB7F /* LoopTests */ = {
 			isa = PBXGroup;
 			children = (
+				32C809C616963DF200FF1B97 /* Fixtures */,
 				32A92E2D169238B600D5EB7F /* LoopTests.m */,
 				32A92E27169238B600D5EB7F /* Supporting Files */,
+				32C809C3169637B700FF1B97 /* UserTests.m */,
 			);
 			path = LoopTests;
 			sourceTree = "<group>";
@@ -185,6 +198,33 @@
 				32A92E29169238B600D5EB7F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32C809C616963DF200FF1B97 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				32C809C716963E2300FF1B97 /* user.json */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		32C809CA1696564B00FF1B97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				32C809CB1696565700FF1B97 /* ManagedObjects */,
+				32C809CF1696570800FF1B97 /* User+Implementation.h */,
+				32C809D01696570800FF1B97 /* User+Implementation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				32C809CC1696568300FF1B97 /* User.h */,
+				32C809CD1696568300FF1B97 /* User.m */,
+			);
+			name = ManagedObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A92E2B169238B600D5EB7F /* InfoPlist.strings in Resources */,
+				32C809C816963E2300FF1B97 /* user.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +374,8 @@
 				32A92E12169238B600D5EB7F /* Loop.xcdatamodeld in Sources */,
 				32A92E15169238B600D5EB7F /* MasterViewController.m in Sources */,
 				32A92E18169238B600D5EB7F /* DetailViewController.m in Sources */,
+				32C809CE1696568300FF1B97 /* User.m in Sources */,
+				32C809D11696570800FF1B97 /* User+Implementation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A92E2E169238B600D5EB7F /* LoopTests.m in Sources */,
+				32C809C4169637B700FF1B97 /* UserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
