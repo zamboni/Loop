@@ -1,7 +1,10 @@
 #import "Kiwi.h"
+#import <RestKit/CoreData.h>
 #import <RestKit/RestKit.h>
 #import <RestKit/Testing.h>
 #import "User.h"
+#import <CoreData.h>
+#import <CoreData+MagicalRecord.h>
 
 SPEC_BEGIN(UserTests)
 
@@ -11,23 +14,27 @@ describe(@"User", ^{
         [RKTestFixture setFixtureBundle:testTargetBundle];
     });
     
-    it(@"maps _id to rid", ^{
-        id parsedJSON = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
-        RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
-        [userMapping addAttributeMappingsFromDictionary:@{@"user.id" : @"rid"}];
-
+    it(@"creates a new user", ^{
         
-        RKMappingTest *test = [RKMappingTest testForMapping:userMapping sourceObject:parsedJSON destinationObject:nil];
-        RKPropertyMappingTestExpectation *expectation = [RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"user._id" destinationKeyPath:@"rid"];
-        [test addExpectation:expectation];
-        [[theBlock(^{
-            [test evaluate];
-        }) shouldNot] raise];
     });
     
-    it(@"creates a user", ^{
-        NSString *string = @"yada";
-        [string shouldNotBeNil];
+    it(@"maps _id to rid", ^{
+        RKManagedObjectStore *managedObjectStore = [RKTestFactory managedObjectStore];
+        RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+        [entityMapping addAttributeMappingsFromDictionary:@{
+             @"user._id":		@"rid",
+         }];
+        id parsedJSON = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
+        RKMappingTest *mappingTest = [RKMappingTest testForMapping:entityMapping sourceObject:parsedJSON destinationObject:nil];
+        [mappingTest addExpectation:[RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"user._id" destinationKeyPath:@"rid" value:@"50e65e35fe68115180000001"]];
+        
+        // Configure Core Data
+        mappingTest.managedObjectContext = managedObjectStore.persistentStoreManagedObjectContext;
+                
+        // Let the test perform the mapping
+        [mappingTest performMapping];
+        
+        [[theValue([mappingTest evaluate]) should] beTrue];
     });
 });
 
