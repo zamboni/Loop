@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		324C41CD1698F43700F94927 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C41CC1698F43700F94927 /* User.m */; };
 		324C41CE1698F43700F94927 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C41CC1698F43700F94927 /* User.m */; };
+		32834FCC169A27E700051521 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 32834FCB169A27E700051521 /* Server.m */; };
 		329A1CD716977B58008F0496 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 329A1CD616977B58008F0496 /* Event.m */; };
 		32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
@@ -52,6 +53,8 @@
 		24476B84AFB542219CE9C622 /* libPods-LoopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		324C41CB1698F43700F94927 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		324C41CC1698F43700F94927 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32834FCA169A27E700051521 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		32834FCB169A27E700051521 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		329A1CD516977B58008F0496 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		329A1CD616977B58008F0496 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		32A92DEC169238B600D5EB7F /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +120,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32834FD7169A313A00051521 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		32834FD8169A40A100051521 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		32A92DE1169238B600D5EB7F = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +172,8 @@
 		32A92DF8169238B600D5EB7F /* Loop */ = {
 			isa = PBXGroup;
 			children = (
+				32834FD8169A40A100051521 /* Controller */,
+				32834FD7169A313A00051521 /* View */,
 				32C809CA1696564B00FF1B97 /* Model */,
 				32A92E01169238B600D5EB7F /* AppDelegate.h */,
 				32A92E02169238B600D5EB7F /* AppDelegate.m */,
@@ -218,6 +237,8 @@
 				32C809CB1696565700FF1B97 /* ManagedObjects */,
 				32C809CF1696570800FF1B97 /* User+Implementation.h */,
 				32C809D01696570800FF1B97 /* User+Implementation.m */,
+				32834FCA169A27E700051521 /* Server.h */,
+				32834FCB169A27E700051521 /* Server.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -383,6 +404,7 @@
 				32C809D11696570800FF1B97 /* User+Implementation.m in Sources */,
 				329A1CD716977B58008F0496 /* Event.m in Sources */,
 				324C41CD1698F43700F94927 /* User.m in Sources */,
+				32834FCC169A27E700051521 /* Server.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
