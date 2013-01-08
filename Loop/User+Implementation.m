@@ -7,8 +7,7 @@
 //
 
 #import "User+Implementation.h"
-#import "RKObjectMapping.h"
-#import "RKObjectManager.h"
+#import <RestKit/RestKit.h>
 
 @implementation User (Implementation)
 
@@ -19,9 +18,22 @@
     return objectMapping;
 }
 
-+ (id)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password
++ (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Loop" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    objectManager.managedObjectStore = managedObjectStore;
+    
+    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:@"/users/" method:RKRequestMethodPOST]];
+    [objectManager postObject:[User class] path:nil parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    }
+    failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
+    
 }
 
 @end

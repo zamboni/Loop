@@ -10,6 +10,6 @@
 
 @interface User (Implementation)
 
-+ (id)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
++ (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
 
 @end
