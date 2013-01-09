@@ -7,13 +7,12 @@
 //
 
 #import "User+Implementation.h"
-#import <RestKit/RestKit.h>
 
 @implementation User (Implementation)
 
-+ (RKObjectMapping *)objectMapping
++ (RKEntityMapping *)objectMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 {
-    RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
+    RKEntityMapping *objectMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [objectMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
     return objectMapping;
 }

@@ -7,9 +7,11 @@
 //
 
 #import "User.h"
+#import <RestKit/RestKit.h>
 
 @interface User (Implementation)
 
++ (RKEntityMapping *)objectMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
 
 @end

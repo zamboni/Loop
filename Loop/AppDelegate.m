@@ -10,6 +10,7 @@
 
 #import "MasterViewController.h"
 #import <RestKit/RestKit.h>
+#import "User+Implementation.h"
 
 @implementation AppDelegate
 
@@ -19,9 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
-    [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -36,9 +34,37 @@
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
+
+    
+    // Setup MagicalRecord
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
+    
+    /**
+     Configure RestKit to share a Persistent Store Coordinator with MagicalRecord. This ensures that object request operations will persist back to the same Persistent Store managed by MagicalRecord, making managed objects available across the libraries.
+     */
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
+    [managedObjectStore createManagedObjectContexts];
+    
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+    objectManager.managedObjectStore = managedObjectStore;
+    
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    userMapping.identificationAttributes = @[@"rid"];
+    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    [objectManager getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    }
+    failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

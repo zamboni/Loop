@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LoopTests/UserTests.m"
-         timestampString = "379308773.241618"
+         timestampString = "379400136.88555"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43">
+         startingLineNumber = "71"
+         endingLineNumber = "71">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
