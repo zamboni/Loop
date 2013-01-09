@@ -11,4 +11,6 @@
 
 + (Server *)sharedClient;
 
+- (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
+
 @end

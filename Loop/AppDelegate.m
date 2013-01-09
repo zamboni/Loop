@@ -56,12 +56,19 @@
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    [objectManager getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    
+    [objectManager postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : @"test@example.com", @"password" : @"password"}} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
-    }
-    failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
     }];
+    
+//    [objectManager getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//        NSLog(@"success");
+//    }
+//    failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//        NSLog(@"failure");
+//    }];
     return YES;
 }
 
