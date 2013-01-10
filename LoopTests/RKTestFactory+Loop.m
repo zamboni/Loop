@@ -19,5 +19,17 @@ static NSString * const kServerBaseURLString = @"http://localhost:3000/";
     [self setSetupBlock:^{
         [self setBaseURL:[NSURL URLWithString:kServerBaseURLString]];
     }];
+    
+    [RKTestFactory defineFactory:RKTestFactoryDefaultNamesManagedObjectStore withBlock:^id{
+        NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
+        RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
+        return managedObjectStore;
+    }];
+//    
+//    [RKTestFactory defineFactory:RKTestFactoryDefaultNamesObjectManager withBlock:^id{
+//        RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[self baseURL]];
+//        return objectManager;
+//    }];
 }
+
 @end

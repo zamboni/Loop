@@ -37,7 +37,9 @@
 
     
     // Setup MagicalRecord
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
+//    [MagicalRecord setupCoreDataStackWithInMemoryStore];
+//    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
     
     /**
      Configure RestKit to share a Persistent Store Coordinator with MagicalRecord. This ensures that object request operations will persist back to the same Persistent Store managed by MagicalRecord, making managed objects available across the libraries.
@@ -49,15 +51,14 @@
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
     objectManager.managedObjectStore = managedObjectStore;
     
-    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-    userMapping.identificationAttributes = @[@"rid"];
-    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
+    RKEntityMapping *userMapping = [User objectMappingInManagedObjectStore:managedObjectStore];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     
     [objectManager postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : @"test@example.com", @"password" : @"password"}} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog([[User MR_findFirst] rid]);
         NSLog(@"success");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");

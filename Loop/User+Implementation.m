@@ -12,21 +12,16 @@
 
 + (RKEntityMapping *)objectMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 {
-    RKEntityMapping *objectMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-    [objectMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
-    return objectMapping;
+    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    entityMapping.identificationAttributes = @[@"rid"];
+    [entityMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
+    return entityMapping;
 }
 
 + (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password
 {
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Loop" ofType:@"momd"]];
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    objectManager.managedObjectStore = managedObjectStore;
     
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:@"/users/" method:RKRequestMethodPOST]];
-    [objectManager postObject:[User class] path:nil parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:[User class] path:nil parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
     }
     failure:^(RKObjectRequestOperation *operation, NSError *error) {
