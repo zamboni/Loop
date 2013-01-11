@@ -21,33 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-//        splitViewController.delegate = (id)navigationController.topViewController;
-//        
-//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-//        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-//    } else {
-//        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-//    }
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    RegistrationController *registrationController = (RegistrationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RegistrationController"];
+    RegistrationController *registrationController = (RegistrationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
     self.window.rootViewController = registrationController;
-    // Setup MagicalRecord
-//    [MagicalRecord setupCoreDataStackWithInMemoryStore];
-//    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
-    
-    /**
-     Configure RestKit to share a Persistent Store Coordinator with MagicalRecord. This ensures that object request operations will persist back to the same Persistent Store managed by MagicalRecord, making managed objects available across the libraries.
-     */
 
-    //    Comment out to run tests
-    
     if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
 
