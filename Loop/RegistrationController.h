@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 
-@interface RegistrationController : UIViewController
+@interface RegistrationController : UIViewController <UITextFieldDelegate>
 
 @property IBOutlet UITextField *emailField;
 @property IBOutlet UITextField *passwordField;
 @property IBOutlet UITextField *passwordConfirmationField;
 
-- (IBAction)sendRegistration;
 
 @end

@@ -35,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)sendRegistration
+- (void)sendRegistration
 {
     NSString *email                 = self.emailField.text;
     NSString *password              = self.passwordField.text;
@@ -53,6 +53,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Passwords do not match" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     };
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self sendRegistration];
+    return true;
 }
 
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
