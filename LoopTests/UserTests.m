@@ -36,37 +36,37 @@ describe(@"User", ^{
         RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
 
-        RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"/users" statusCodes:[NSIndexSet indexSetWithIndex:200]];
-
         [objectManager postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : @"test@example.com", @"password" : @"password"}} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSLog([[User MR_findFirst] rid]);
             NSLog(@"success");
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             NSLog(@"failure");
         }];
         
-        [[theValue([[User MR_findAll] count]) should] beGreaterThan:theValue(0)];
+        RKObjectRequestOperation *operation = [[objectManager.operationQueue operations] objectAtIndex:0];
+        [operation waitUntilFinished];
+        [[theValue([operation.mappingResult count]) should] equal:theValue(1)];
         
+        [U]
     });
     
-//    it(@"maps _id to rid", ^{
-//        RKManagedObjectStore *managedObjectStore = [RKTestFactory managedObjectStore];
-//        RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-//        [entityMapping addAttributeMappingsFromDictionary:@{
-//             @"user._id":		@"rid",
-//         }];
-//        id parsedJSON = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
-//        RKMappingTest *mappingTest = [RKMappingTest testForMapping:entityMapping sourceObject:parsedJSON destinationObject:nil];
-//        [mappingTest addExpectation:[RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"user._id" destinationKeyPath:@"rid" value:@"50e65e35fe68115180000001"]];
-//        
-//        // Configure Core Data
-//        mappingTest.managedObjectContext = managedObjectStore.persistentStoreManagedObjectContext;
-//                
-//        // Let the test perform the mapping
-//        [mappingTest performMapping];
-//        
-//        [[theValue([mappingTest evaluate]) should] beTrue];
-//    });
+    it(@"maps _id to rid", ^{
+        RKManagedObjectStore *managedObjectStore = [RKTestFactory managedObjectStore];
+        RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+        [entityMapping addAttributeMappingsFromDictionary:@{
+             @"user._id":		@"rid",
+         }];
+        id parsedJSON = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
+        RKMappingTest *mappingTest = [RKMappingTest testForMapping:entityMapping sourceObject:parsedJSON destinationObject:nil];
+        [mappingTest addExpectation:[RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"user._id" destinationKeyPath:@"rid" value:@"50e65e35fe68115180000001"]];
+        
+        // Configure Core Data
+        mappingTest.managedObjectContext = managedObjectStore.persistentStoreManagedObjectContext;
+                
+        // Let the test perform the mapping
+        [mappingTest performMapping];
+        
+        [[theValue([mappingTest evaluate]) should] beTrue];
+    });
 });
 
 SPEC_END
