@@ -25,7 +25,7 @@ static NSString * const kServerBaseURLString = @"http://localhost:3000/";
         RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
         return managedObjectStore;
     }];
-//    
+    
 //    [RKTestFactory defineFactory:RKTestFactoryDefaultNamesObjectManager withBlock:^id{
 //        RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[self baseURL]];
 //        return objectManager;

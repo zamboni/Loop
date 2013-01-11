@@ -39,37 +39,28 @@
     // Setup MagicalRecord
 //    [MagicalRecord setupCoreDataStackWithInMemoryStore];
 //    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
     
     /**
      Configure RestKit to share a Persistent Store Coordinator with MagicalRecord. This ensures that object request operations will persist back to the same Persistent Store managed by MagicalRecord, making managed objects available across the libraries.
      */
-    NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
-    [managedObjectStore createManagedObjectContexts];
+
+    //    Comment out to run tests
     
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-    objectManager.managedObjectStore = managedObjectStore;
-    
-    RKEntityMapping *userMapping = [User objectMappingInManagedObjectStore:managedObjectStore];
-    
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    
-    
-    [objectManager postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : @"test@example.com", @"password" : @"password"}} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog([[User MR_findFirst] rid]);
-        NSLog(@"success");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
-    
-//    [objectManager getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        NSLog(@"success");
-//    }
-//    failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//        NSLog(@"failure");
-//    }];
+    if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
+        [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
+
+        NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
+        RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
+        [managedObjectStore createManagedObjectContexts];
+        
+        RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+        objectManager.managedObjectStore = managedObjectStore;
+        
+        RKEntityMapping *userMapping = [User entityMappingInManagedObjectStore:managedObjectStore];
+        
+        RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     return YES;
 }
 

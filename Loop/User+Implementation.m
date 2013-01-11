@@ -10,7 +10,7 @@
 
 @implementation User (Implementation)
 
-+ (RKEntityMapping *)objectMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
++ (RKEntityMapping *)entityMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 {
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     entityMapping.identificationAttributes = @[@"rid"];

@@ -24,14 +24,13 @@
 		32A92E0C169238B600D5EB7F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E0A169238B600D5EB7F /* MainStoryboard_iPhone.storyboard */; };
 		32A92E0F169238B600D5EB7F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E0D169238B600D5EB7F /* MainStoryboard_iPad.storyboard */; };
 		32A92E12169238B600D5EB7F /* Loop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */; };
-		32A92E15169238B600D5EB7F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A92E14169238B600D5EB7F /* MasterViewController.m */; };
 		32A92E18169238B600D5EB7F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A92E17169238B600D5EB7F /* DetailViewController.m */; };
 		32A92E20169238B600D5EB7F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92E1F169238B600D5EB7F /* SenTestingKit.framework */; };
 		32A92E21169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92E22169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
 		32A92E23169238B600D5EB7F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF6169238B600D5EB7F /* CoreData.framework */; };
 		32A92E2B169238B600D5EB7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E29169238B600D5EB7F /* InfoPlist.strings */; };
-		32A92E2E169238B600D5EB7F /* LoopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A92E2D169238B600D5EB7F /* LoopTests.m */; };
+		32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */; };
 		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
 		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
 		32C809D11696570800FF1B97 /* User+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809D01696570800FF1B97 /* User+Implementation.m */; };
@@ -76,15 +75,14 @@
 		32A92E0B169238B600D5EB7F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		32A92E0E169238B600D5EB7F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		32A92E11169238B600D5EB7F /* Loop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Loop.xcdatamodel; sourceTree = "<group>"; };
-		32A92E13169238B600D5EB7F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		32A92E14169238B600D5EB7F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		32A92E16169238B600D5EB7F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		32A92E17169238B600D5EB7F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		32A92E1E169238B600D5EB7F /* LoopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A92E1F169238B600D5EB7F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		32A92E28169238B600D5EB7F /* LoopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoopTests-Info.plist"; sourceTree = "<group>"; };
 		32A92E2A169238B600D5EB7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		32A92E2D169238B600D5EB7F /* LoopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoopTests.m; sourceTree = "<group>"; };
+		32BBF2A5169FD9FE00A7B102 /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
+		32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		32C809C3169637B700FF1B97 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		32C809C716963E2300FF1B97 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		32C809CF1696570800FF1B97 /* User+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Implementation.h"; sourceTree = "<group>"; };
@@ -125,6 +123,8 @@
 		32834FD7169A313A00051521 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				32BBF2B3169FDBB800A7B102 /* iPad */,
+				32A92E0A169238B600D5EB7F /* MainStoryboard_iPhone.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -132,6 +132,10 @@
 		32834FD8169A40A100051521 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32A92E16169238B600D5EB7F /* DetailViewController.h */,
+				32A92E17169238B600D5EB7F /* DetailViewController.m */,
+				32BBF2A5169FD9FE00A7B102 /* RegistrationController.h */,
+				32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -179,12 +183,6 @@
 				32C809CA1696564B00FF1B97 /* Model */,
 				32A92E01169238B600D5EB7F /* AppDelegate.h */,
 				32A92E02169238B600D5EB7F /* AppDelegate.m */,
-				32A92E0A169238B600D5EB7F /* MainStoryboard_iPhone.storyboard */,
-				32A92E0D169238B600D5EB7F /* MainStoryboard_iPad.storyboard */,
-				32A92E13169238B600D5EB7F /* MasterViewController.h */,
-				32A92E14169238B600D5EB7F /* MasterViewController.m */,
-				32A92E16169238B600D5EB7F /* DetailViewController.h */,
-				32A92E17169238B600D5EB7F /* DetailViewController.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
 				32A92DF9169238B600D5EB7F /* Supporting Files */,
 			);
@@ -209,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				32C809C616963DF200FF1B97 /* Fixtures */,
-				32A92E2D169238B600D5EB7F /* LoopTests.m */,
 				32A92E27169238B600D5EB7F /* Supporting Files */,
 				32C809C3169637B700FF1B97 /* UserTests.m */,
 				324C4202169BBEE900F94927 /* RKTestFactory+Loop.h */,
@@ -225,6 +222,14 @@
 				32A92E29169238B600D5EB7F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32BBF2B3169FDBB800A7B102 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				32A92E0D169238B600D5EB7F /* MainStoryboard_iPad.storyboard */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		32C809C616963DF200FF1B97 /* Fixtures */ = {
@@ -403,12 +408,12 @@
 				32A92DFF169238B600D5EB7F /* main.m in Sources */,
 				32A92E03169238B600D5EB7F /* AppDelegate.m in Sources */,
 				32A92E12169238B600D5EB7F /* Loop.xcdatamodeld in Sources */,
-				32A92E15169238B600D5EB7F /* MasterViewController.m in Sources */,
 				32A92E18169238B600D5EB7F /* DetailViewController.m in Sources */,
 				32C809D11696570800FF1B97 /* User+Implementation.m in Sources */,
 				329A1CD716977B58008F0496 /* Event.m in Sources */,
 				324C41CD1698F43700F94927 /* User.m in Sources */,
 				32834FCC169A27E700051521 /* Server.m in Sources */,
+				32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +421,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32A92E2E169238B600D5EB7F /* LoopTests.m in Sources */,
 				32C809C4169637B700FF1B97 /* UserTests.m in Sources */,
 				324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */,
 			);

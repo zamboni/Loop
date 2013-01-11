@@ -11,7 +11,7 @@
 
 @interface User (Implementation)
 
-+ (RKEntityMapping *)objectMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
++ (RKEntityMapping *)entityMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
 
 @end
