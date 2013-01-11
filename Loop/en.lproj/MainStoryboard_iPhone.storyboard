@@ -89,7 +89,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4x-5I-EIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="753"/>
+            <point key="canvasLocation" x="913" y="753"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YGF-fh-gBg">
+            <objects>
+                <viewController id="LJV-Qe-qUQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8IN-PT-45W">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydi-Zh-Fvo">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-pU-9NA">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-X3-rLo">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="784-zt-bJG">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ls5-X3-rLo" firstAttribute="leading" secondItem="8IN-PT-45W" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0Rj-y8-psa"/>
+                            <constraint firstItem="ydi-Zh-Fvo" firstAttribute="top" secondItem="8IN-PT-45W" secondAttribute="top" constant="20" symbolic="YES" type="default" id="1TB-UC-jay"/>
+                            <constraint firstItem="Ls5-X3-rLo" firstAttribute="top" secondItem="2Lg-pU-9NA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="AD5-6a-rSW"/>
+                            <constraint firstItem="2Lg-pU-9NA" firstAttribute="leading" secondItem="8IN-PT-45W" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Cn0-XO-SqM"/>
+                            <constraint firstAttribute="trailing" secondItem="2Lg-pU-9NA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MAw-vk-dbI"/>
+                            <constraint firstItem="2Lg-pU-9NA" firstAttribute="top" secondItem="ydi-Zh-Fvo" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mes-f4-Tbl"/>
+                            <constraint firstItem="784-zt-bJG" firstAttribute="leading" secondItem="8IN-PT-45W" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eMy-gz-XNm"/>
+                            <constraint firstItem="784-zt-bJG" firstAttribute="top" secondItem="Ls5-X3-rLo" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hko-NI-53u"/>
+                            <constraint firstAttribute="trailing" secondItem="784-zt-bJG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="m7g-qn-Jov"/>
+                            <constraint firstItem="ydi-Zh-Fvo" firstAttribute="leading" secondItem="8IN-PT-45W" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="zsp-yj-i0w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Il-SR-qEK">
+                        <barButtonItem key="rightBarButtonItem" title="Register" id="QUW-qI-i93">
+                            <connections>
+                                <segue destination="Oa9-o4-whi" kind="push" id="vfC-ZJ-4u1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRc-v0-4hY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472" y="753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VVX-cU-Qz3">
@@ -102,7 +155,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Oa9-o4-whi" kind="relationship" relationship="rootViewController" id="XBz-2U-F7p"/>
+                        <segue destination="LJV-Qe-qUQ" kind="relationship" relationship="rootViewController" id="f5g-it-Lu4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qe3-Kv-0fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
