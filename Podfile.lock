@@ -1,5 +1,6 @@
 
 PODS:
+- ACSimpleKeychain (0.0.1)
 - AFNetworking (1.1.0)
 - Kiwi (1.1.1)
 - MagicalRecord (2.0.8)
@@ -21,12 +22,14 @@ PODS:
 - SOCKit (1.1)
 
 DEPENDENCIES:
+- ACSimpleKeychain
 - Kiwi
 - MagicalRecord (= 2.0.8)
 - RestKit (~> 0.20.0pre)
 - RestKit/Testing (~> 0.20.0pre)
 
 SPEC CHECKSUMS:
+  ACSimpleKeychain: bd3dc5db0df1da0b44c15e6e997d8b802682ac18
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   MagicalRecord: daa15d6c83bd7d30e074c8923e53c64248ae6930
   RestKit: ccca19640fcc3031f82ad4250c44061e2e2ddce7
