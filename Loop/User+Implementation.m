@@ -21,7 +21,7 @@
 + (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password
 {
     
-    [[RKObjectManager sharedManager] postObject:[User class] path:nil parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
     }
     failure:^(RKObjectRequestOperation *operation, NSError *error) {
