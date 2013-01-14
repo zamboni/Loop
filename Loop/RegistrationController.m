@@ -42,8 +42,7 @@
     NSString *password_confirmation = self.passwordConfirmationField.text;
     if([password isEqualToString:password_confirmation]){
         [[RKObjectManager sharedManager] postObject:nil path:@"users" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Successfully registered" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+            [self performSegueWithIdentifier:@"registrationSegue" sender:self];
 
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             NSLog(@"failure");

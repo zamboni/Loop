@@ -35,4 +35,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loginUser
+{
+    NSString *email                 = self.emailField.text;
+    NSString *password              = self.passwordField.text;
+    [[RKObjectManager sharedManager] postObject:nil path:@"session" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self loginUser];
+    return true;
+}
+
 @end

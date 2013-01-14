@@ -34,6 +34,9 @@
 		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
 		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
 		32C809D11696570800FF1B97 /* User+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809D01696570800FF1B97 /* User+Implementation.m */; };
+		32F375A216A3983700107C4B /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375A116A3983700107C4B /* ProfileController.m */; };
+		32F375A616A398C000107C4B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F375A416A398C000107C4B /* AddressBook.framework */; };
+		32F375A716A398C000107C4B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F375A516A398C000107C4B /* AddressBookUI.framework */; };
 		88B95F8B43F441D694389B3E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF0222CEE6E42DF90E58AA9 /* libPods.a */; };
 		D4BDF06F62B0464EA48C686F /* libPods-LoopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24476B84AFB542219CE9C622 /* libPods-LoopTests.a */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,10 @@
 		32C809C716963E2300FF1B97 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		32C809CF1696570800FF1B97 /* User+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Implementation.h"; sourceTree = "<group>"; };
 		32C809D01696570800FF1B97 /* User+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+Implementation.m"; sourceTree = "<group>"; };
+		32F375A016A3983700107C4B /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
+		32F375A116A3983700107C4B /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
+		32F375A416A398C000107C4B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		32F375A516A398C000107C4B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7E8516DB95B649829AFB64D4 /* Pods-LoopTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopTests.xcconfig"; path = "Pods/Pods-LoopTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		9AF0222CEE6E42DF90E58AA9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C7A032275B44EF9FB449AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -97,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F375A616A398C000107C4B /* AddressBook.framework in Frameworks */,
+				32F375A716A398C000107C4B /* AddressBookUI.framework in Frameworks */,
 				32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */,
 				32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */,
 				32A92DF5169238B600D5EB7F /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +141,8 @@
 		32834FD8169A40A100051521 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32F375A016A3983700107C4B /* ProfileController.h */,
+				32F375A116A3983700107C4B /* ProfileController.m */,
 				32BBF2A5169FD9FE00A7B102 /* RegistrationController.h */,
 				32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */,
 				32AB0C3216A0C92A00EFE421 /* LoginController.h */,
@@ -143,6 +154,8 @@
 		32A92DE1169238B600D5EB7F = {
 			isa = PBXGroup;
 			children = (
+				32F375A416A398C000107C4B /* AddressBook.framework */,
+				32F375A516A398C000107C4B /* AddressBookUI.framework */,
 				32A92DF8169238B600D5EB7F /* Loop */,
 				32A92E26169238B600D5EB7F /* LoopTests */,
 				32A92DEF169238B600D5EB7F /* Frameworks */,
@@ -414,6 +427,7 @@
 				32834FCC169A27E700051521 /* Server.m in Sources */,
 				32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */,
 				32AB0C3416A0C92A00EFE421 /* LoginController.m in Sources */,
+				32F375A216A3983700107C4B /* ProfileController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

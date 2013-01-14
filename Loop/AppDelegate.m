@@ -11,7 +11,7 @@
 #import "MasterViewController.h"
 #import <RestKit/RestKit.h>
 #import "User+Implementation.h"
-#import "RegistrationController.h"
+#import "LoginController.h"
 
 @implementation AppDelegate
 
@@ -22,8 +22,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    RegistrationController *registrationController = (RegistrationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-    self.window.rootViewController = registrationController;
+    LoginController *loginController = (LoginController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+    self.window.rootViewController = loginController;
 
     if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];

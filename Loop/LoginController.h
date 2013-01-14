@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
-@interface LoginController : UINavigationController <UITextFieldDelegate>
+@interface LoginController : UIViewController <UITextFieldDelegate>
+
+@property IBOutlet UITextField *emailField;
+@property IBOutlet UITextField *passwordField;
 
 @end
