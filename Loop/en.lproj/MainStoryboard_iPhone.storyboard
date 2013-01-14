@@ -83,7 +83,6 @@
         <!--Profile Controller-->
         <scene sceneID="Ftz-HE-S9j">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fQB-rH-1Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3L9-a8-JZc" customClass="ProfileController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dzg-fd-OVg">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
@@ -137,6 +136,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jYf-Ou-X5c"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQB-rH-1Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2125" y="1173"/>
         </scene>
@@ -156,6 +156,9 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-pU-9NA">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LJV-Qe-qUQ" id="dlR-Fg-8XU"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-X3-rLo">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -165,6 +168,9 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="784-zt-bJG">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LJV-Qe-qUQ" id="bgc-3P-fdw"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -201,7 +207,6 @@
         <!--Navigation Controller-->
         <scene sceneID="VVX-cU-Qz3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qe3-Kv-0fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="LoginNavigationController" id="dYR-PI-iBC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dmf-Hd-8Jf">
@@ -213,13 +218,13 @@
                         <segue destination="LJV-Qe-qUQ" kind="relationship" relationship="rootViewController" id="f5g-it-Lu4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qe3-Kv-0fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1" y="753"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="QyV-v9-RsM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-Iq-APc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="uM7-Jk-py7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="0oY-fd-mSM"/>
                     <toolbarItems/>
@@ -232,13 +237,13 @@
                         <segue destination="3L9-a8-JZc" kind="relationship" relationship="rootViewController" id="Z7q-uM-1ef"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-Iq-APc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1599" y="1173"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4k8-Rq-eRo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-SH-QdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="98o-9N-HSM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -250,16 +255,45 @@
                         <segue destination="uM7-Jk-py7" kind="relationship" relationship="viewControllers" id="oSt-IF-iOL"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-SH-QdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1059" y="1173"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="LoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ProfileController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileController.h"/>
+            <relationships>
+                <relationship kind="action" name="newContactForProfile:"/>
+                <relationship kind="action" name="selectContactForProfile:"/>
+                <relationship kind="action" name="showContactForProfile:"/>
+            </relationships>
+        </class>
+        <class className="RegistrationController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="96t-hH-PHY"/>
+        <segue reference="ugb-tX-izB"/>
     </inferredMetricsTieBreakers>
 </document>

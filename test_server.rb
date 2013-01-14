@@ -15,7 +15,7 @@ end
 
 post '/users' do
   content_type :json
-  {_id: '1234'}.to_json
+  {user: {_id: '1234'}}.to_json
 end
 
 get '/' do
