@@ -18,18 +18,6 @@
     return entityMapping;
 }
 
-+ (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password
-{
-    
-    [[RKObjectManager sharedManager] postObject:[User class] path:@"/users" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-    }
-    failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
-    
-}
-
 + (void)setAccessTokenWithDictionary:(NSDictionary *)userDictionary
 {
     [[ACSimpleKeychain defaultKeychain] storeUsername:[userDictionary objectForKey:@"_id"] password:[userDictionary objectForKey:@"access_token"] identifier:@"accessToken" forService:@"loop"];

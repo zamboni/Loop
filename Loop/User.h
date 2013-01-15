@@ -2,7 +2,7 @@
 //  User.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 1/5/13.
+//  Created by Fletcher Fowler on 1/15/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -12,6 +12,8 @@
 
 @interface User : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * contactId;
+@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * rid;
 
 @end

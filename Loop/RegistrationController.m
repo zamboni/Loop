@@ -43,7 +43,7 @@
     if([password isEqualToString:password_confirmation]){
         [[RKObjectManager sharedManager] postObject:nil path:@"users" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.HTTPRequestOperation.responseData options:0 error:nil];
-            [User setAccessTokenWithDictionary:response];
+            [User setAccessTokenWithDictionary:[response objectForKey:@"user"]];
 
             [self performSegueWithIdentifier:@"registrationSegue" sender:self];
             

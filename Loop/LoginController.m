@@ -41,7 +41,7 @@
     NSString *password              = self.passwordField.text;
     [[RKObjectManager sharedManager] postObject:nil path:@"session" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.HTTPRequestOperation.responseData options:0 error:nil];
-        [User setAccessTokenWithDictionary:response];
+        [User setAccessTokenWithDictionary:[response objectForKey:@"user"]];
 
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
         

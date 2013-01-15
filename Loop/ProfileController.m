@@ -72,7 +72,7 @@
     NSNumber *contact_id = [NSNumber numberWithInt:ABRecordGetRecordID(person)];
     User *currentUser = [User MR_findFirstInContext:context];
 
-    [currentUser setValue:contact_id forKey:@"contact_id"];
+    [currentUser setValue:contact_id forKey:@"contactId"];
     [context MR_save];
 }
 
@@ -89,20 +89,20 @@
 -(void)showPersonViewController
 {
     User *currentUser = [User MR_findFirst];
-//    ABRecordID *currentUserId = (ABRecordID *)[currentUser.contact_id integerValue];
-//    NSLog(@"CONTACT_ID: %d", currentUserId);
+    ABRecordID *currentUserId = (ABRecordID *)[currentUser.contactId integerValue];
+    NSLog(@"CONTACT_ID: %d", currentUserId);
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-//    ABRecordRef *person = (ABRecordRef *)ABAddressBookGetPersonWithRecordID(addressBook, [currentUser.contact_id integerValue]);
-//    if (person != nil)
-//    {
-//        ABPersonViewController *picker = [[ABPersonViewController alloc] init];
-//		picker.personViewDelegate = self;
-//		picker.displayedPerson = person;
-//		// Allow users to edit the person’s information
-//		picker.allowsEditing = YES;
-//		[self.navigationController pushViewController:picker animated:YES];
-//    }
+    ABRecordRef *person = (ABRecordRef *)ABAddressBookGetPersonWithRecordID(addressBook, [currentUser.contactId integerValue]);
+    if (person != nil)
+    {
+        ABPersonViewController *picker = [[ABPersonViewController alloc] init];
+		picker.personViewDelegate = self;
+		picker.displayedPerson = person;
+		// Allow users to edit the person’s information
+		picker.allowsEditing = YES;
+		[self.navigationController pushViewController:picker animated:YES];
+    }
 }
 
 -(void)showNewPersonViewController
