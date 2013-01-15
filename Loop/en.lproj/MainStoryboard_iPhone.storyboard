@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C2037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -97,11 +97,11 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectContactForProfile:" destination="3L9-a8-JZc" eventType="touchUpInside" id="QKa-FL-buS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="myContactBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F71-gW-atW">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="285" id="5G7-cr-hhe"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="View My Contact">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,6 +110,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showContactForProfile:" destination="3L9-a8-JZc" eventType="touchUpInside" id="ro8-iu-mvH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-Gc-lNk">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -120,18 +123,39 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="newContactForProfile:" destination="3L9-a8-JZc" eventType="touchUpInside" id="RWP-WE-R3Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eY-cT-CpK">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="3L9-a8-JZc" eventType="touchUpInside" id="19t-4l-m8V"/>
+                                    <segue destination="dYR-PI-iBC" kind="modal" identifier="logoutSegue" animates="NO" id="sHN-Je-TRT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wj3-Gc-lNk" firstAttribute="centerX" secondItem="F71-gW-atW" secondAttribute="centerX" type="default" id="10f-Dn-o8G"/>
+                            <constraint firstItem="3eY-cT-CpK" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5ky-AV-LYo"/>
+                            <constraint firstItem="wj3-Gc-lNk" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BYJ-AD-mGD"/>
+                            <constraint firstItem="3eY-cT-CpK" firstAttribute="top" secondItem="YTq-4p-2wJ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Bey-I0-0Hc"/>
+                            <constraint firstAttribute="trailing" secondItem="YTq-4p-2wJ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GOW-iL-KYR"/>
+                            <constraint firstAttribute="trailing" secondItem="wj3-Gc-lNk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OZh-i5-eTp"/>
                             <constraint firstItem="YTq-4p-2wJ" firstAttribute="top" secondItem="F71-gW-atW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RcO-2W-R2R"/>
-                            <constraint firstAttribute="trailing" secondItem="wj3-Gc-lNk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TpO-Ay-ZaC"/>
-                            <constraint firstItem="F71-gW-atW" firstAttribute="centerX" secondItem="YTq-4p-2wJ" secondAttribute="centerX" type="default" id="ZtI-fq-2k0"/>
+                            <constraint firstAttribute="trailing" secondItem="F71-gW-atW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="T44-oU-jAF"/>
+                            <constraint firstAttribute="trailing" secondItem="3eY-cT-CpK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Yzj-EV-elM"/>
+                            <constraint firstAttribute="bottom" secondItem="3eY-cT-CpK" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="aek-jM-WX5"/>
                             <constraint firstItem="F71-gW-atW" firstAttribute="top" secondItem="wj3-Gc-lNk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="cwS-CG-6ik"/>
-                            <constraint firstItem="wj3-Gc-lNk" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eMZ-JL-RE4"/>
-                            <constraint firstItem="YTq-4p-2wJ" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="udX-9Q-9ag"/>
-                            <constraint firstAttribute="bottom" secondItem="YTq-4p-2wJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="xFt-N0-Wuv"/>
+                            <constraint firstItem="YTq-4p-2wJ" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hJm-Ja-LEW"/>
+                            <constraint firstItem="F71-gW-atW" firstAttribute="leading" secondItem="dzg-fd-OVg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hNi-wG-VGg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jYf-Ou-X5c"/>
@@ -244,7 +268,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="4k8-Rq-eRo">
             <objects>
-                <tabBarController id="98o-9N-HSM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UserTabBarController" id="98o-9N-HSM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cr7-fW-ZxM">
@@ -274,6 +298,7 @@
         <class className="ProfileController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileController.h"/>
             <relationships>
+                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="newContactForProfile:"/>
                 <relationship kind="action" name="selectContactForProfile:"/>
                 <relationship kind="action" name="showContactForProfile:"/>

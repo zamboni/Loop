@@ -54,6 +54,18 @@
     [self showNewPersonViewController];
 }
 
+- (IBAction)logout:(id)sender
+{
+    [User logout];
+//    [self.navigationController.tabBarController dismissViewControllerAnimated:NO completion:^{
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+//        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+//        [self presentViewController:viewController animated:NO completion:nil];
+//
+//    }];
+    [self performSegueWithIdentifier:@"logoutSegue" sender:self];
+}
+
 - (void)savePerson:(ABRecordRef)person
 {
     NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];

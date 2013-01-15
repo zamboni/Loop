@@ -42,8 +42,11 @@
     NSString *password_confirmation = self.passwordConfirmationField.text;
     if([password isEqualToString:password_confirmation]){
         [[RKObjectManager sharedManager] postObject:nil path:@"users" parameters:@{@"user" : @{@"email" : email, @"password" : password } } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [self performSegueWithIdentifier:@"registrationSegue" sender:self];
+            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.HTTPRequestOperation.responseData options:0 error:nil];
+            [User setAccessTokenWithDictionary:response];
 
+            [self performSegueWithIdentifier:@"registrationSegue" sender:self];
+            
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             NSLog(@"failure");
         }];

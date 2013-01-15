@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Loop/LoginController.m"
-         timestampString = "379846051.226892"
+         filePath = "Loop/RegistrationController.m"
+         timestampString = "379907993.941145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
-         landmarkName = "-loginUser"
+         startingLineNumber = "62"
+         endingLineNumber = "62"
+         landmarkName = "-textFieldShouldReturn:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -8,10 +8,13 @@
 
 #import "User.h"
 #import <RestKit/RestKit.h>
+#import "ACSimpleKeychain.h"
 
 @interface User (Implementation)
 
 + (RKEntityMapping *)entityMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password;
++ (void)setAccessTokenWithDictionary:(NSDictionary *)userDictionary;
++ (void)logout;
 
 @end

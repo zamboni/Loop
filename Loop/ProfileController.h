@@ -20,5 +20,5 @@
 - (IBAction)selectContactForProfile:(id)sender;
 - (IBAction)showContactForProfile:(id)sender;
 - (IBAction)newContactForProfile:(id)sender;
-
+- (IBAction)logout:(id)sender;
 @end

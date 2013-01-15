@@ -12,6 +12,8 @@
 #import <RestKit/RestKit.h>
 #import "User+Implementation.h"
 #import "LoginController.h"
+#import "ACSimpleKeychain.h"
+#import "ProfileController.h"
 
 @implementation AppDelegate
 
@@ -22,8 +24,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    LoginController *loginController = (LoginController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-    self.window.rootViewController = loginController;
+    UIViewController *viewController;
+    if ([[[ACSimpleKeychain defaultKeychain] credentialsForIdentifier:@"accessToken" service:@"loop"] valueForKey:ACKeychainPassword] != nil) {
+        viewController = (ProfileController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
+    }
+    else{
+        viewController = (LoginController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+    }
+    self.window.rootViewController = viewController;
 
     if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
