@@ -8,9 +8,7 @@
 
 SPEC_BEGIN(UserTests)
 
-describe(@"User", ^{
-    __block id objectManager = nil;
-    
+describe(@"User", ^{    
     beforeAll(^{
         NSBundle *testTargetBundle = [NSBundle bundleWithIdentifier:@"zamb.LoopTests"];
         [RKTestFixture setFixtureBundle:testTargetBundle];
@@ -27,30 +25,30 @@ describe(@"User", ^{
     });
 
     
-    it(@"creates a new user", ^{
-        NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
-
-        RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
-        [managedObjectStore createManagedObjectContexts];
-        
-        RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-        entityMapping.identificationAttributes = @[@"rid"];
-        [entityMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid"}];
-        
-        NSDictionary *articleRepresentation = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
-        RKMappingTest *mappingTest = [RKMappingTest testForMapping:entityMapping sourceObject:articleRepresentation destinationObject:nil];
-        
-        // Configure Core Data
-        mappingTest.managedObjectContext = managedObjectStore.persistentStoreManagedObjectContext;
-        
-        // Create an object to match our criteria
-        User *user = [User MR_createInContext:managedObjectStore.persistentStoreManagedObjectContext];
-        [user setValue:@"1234" forKey:@"rid"];
-        
-        // Let the test perform the mapping
-        [mappingTest performMapping];
-        [[user should] equal:mappingTest.destinationObject];
-    });
+//    it(@"creates a new user", ^{
+//        NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
+//
+//        RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
+//        [managedObjectStore createManagedObjectContexts];
+//        
+//        RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+//        entityMapping.identificationAttributes = @[@"rid"];
+//        [entityMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid"}];
+//        
+//        NSDictionary *articleRepresentation = [RKTestFixture parsedObjectWithContentsOfFixture:@"user.json"];
+//        RKMappingTest *mappingTest = [RKMappingTest testForMapping:entityMapping sourceObject:articleRepresentation destinationObject:nil];
+//        
+//        // Configure Core Data
+//        mappingTest.managedObjectContext = managedObjectStore.persistentStoreManagedObjectContext;
+//        
+//        // Create an object to match our criteria
+//        User *user = [User MR_createInContext:managedObjectStore.persistentStoreManagedObjectContext];
+//        [user setValue:@"1234" forKey:@"rid"];
+//        
+//        // Let the test perform the mapping
+//        [mappingTest performMapping];
+//        [[user should] equal:mappingTest.destinationObject];
+//    });
 
 //    it(@"creates a new user", ^{
 //        [[theValue([[User MR_findAll] count]) should] equal:theValue(0)];

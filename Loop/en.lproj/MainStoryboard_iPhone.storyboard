@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C2037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -246,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="-1" y="753"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Events Controller-->
         <scene sceneID="Y4F-Vy-ebh">
             <objects>
-                <tableViewController id="K5b-JY-1Ea" sceneMemberID="viewController">
+                <tableViewController id="K5b-JY-1Ea" customClass="EventsController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="l12-PR-C74">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +270,13 @@
                             <outlet property="delegate" destination="K5b-JY-1Ea" id="uvb-Ll-lt2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Xt0-gL-71w"/>
+                    <navigationItem key="navigationItem" id="Xt0-gL-71w">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="yuE-Ta-Bog">
+                            <connections>
+                                <action selector="refresh:" destination="K5b-JY-1Ea" id="bFW-Rh-w4Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erG-ss-Th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,35 +340,6 @@
             <point key="canvasLocation" x="1599" y="473"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="LoginController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ProfileController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="action" name="newContactForProfile:"/>
-                <relationship kind="action" name="selectContactForProfile:"/>
-                <relationship kind="action" name="showContactForProfile:"/>
-            </relationships>
-        </class>
-        <class className="RegistrationController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -44,6 +44,7 @@
 		32F375A716A398C000107C4B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F375A516A398C000107C4B /* AddressBookUI.framework */; };
 		32F375EE16A5423800107C4B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375ED16A5423800107C4B /* User.m */; };
 		32F375F216A5534E00107C4B /* EventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375F116A5534D00107C4B /* EventsController.m */; };
+		32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375FC16A6B0AD00107C4B /* Event+Implementation.m */; };
 		88B95F8B43F441D694389B3E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF0222CEE6E42DF90E58AA9 /* libPods.a */; };
 		D4BDF06F62B0464EA48C686F /* libPods-LoopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24476B84AFB542219CE9C622 /* libPods-LoopTests.a */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,8 @@
 		32F375ED16A5423800107C4B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		32F375F016A5534D00107C4B /* EventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsController.h; sourceTree = "<group>"; };
 		32F375F116A5534D00107C4B /* EventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsController.m; sourceTree = "<group>"; };
+		32F375FB16A6B0AD00107C4B /* Event+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+Implementation.h"; sourceTree = "<group>"; };
+		32F375FC16A6B0AD00107C4B /* Event+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+Implementation.m"; sourceTree = "<group>"; };
 		7E8516DB95B649829AFB64D4 /* Pods-LoopTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopTests.xcconfig"; path = "Pods/Pods-LoopTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		9AF0222CEE6E42DF90E58AA9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C7A032275B44EF9FB449AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -290,6 +293,8 @@
 				32AD3F1E16A63292002F21FB /* EventManager.h */,
 				32AD3F1F16A63292002F21FB /* EventManager.m */,
 				32AD3F2016A63292002F21FB /* EventSingletonDelegate.h */,
+				32F375FB16A6B0AD00107C4B /* Event+Implementation.h */,
+				32F375FC16A6B0AD00107C4B /* Event+Implementation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				32AD3F2116A63292002F21FB /* EventManager.m in Sources */,
 				32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */,
 				32AD3F4E16A66909002F21FB /* Event.m in Sources */,
+				32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

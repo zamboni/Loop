@@ -16,4 +16,6 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
+- (IBAction)refresh:(id)sender;
+
 @end

@@ -46,6 +46,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (IBAction)refresh:(id)sender
+{
+    [self updateEvents];
+}
+
 - (void)updateEvents
 {
     [[LocationManager sharedInstance] setDelegate:self];
@@ -54,16 +59,22 @@
 
 - (void)locationDidUpdate:(NSArray *)locations
 {
+    NSLog(@"%@", [[Event MR_findAll] description]);
     [[LocationManager sharedInstance] stopUpdatingLocation];
 
     CLLocation *location = [locations lastObject];
     NSNumber *lat = [NSNumber numberWithFloat:location.coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithFloat:location.coordinate.longitude];
     
-    NSDictionary *searchDictionary = @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]};
+    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]} };
     
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/events/search" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
     
-    [[self fetchedResultsController] performFetch:nil];
+//    [[self fetchedResultsController] performFetch:nil];
     [self.tableView reloadData];
 }
 

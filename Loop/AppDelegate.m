@@ -11,6 +11,7 @@
 #import "MasterViewController.h"
 #import <RestKit/RestKit.h>
 #import "User+Implementation.h"
+#import "Event+Implementation.h"
 #import "LoginController.h"
 #import "ACSimpleKeychain.h"
 #import "ProfileController.h"
@@ -45,8 +46,15 @@
         
         RKEntityMapping *userMapping = [User entityMappingInManagedObjectStore:managedObjectStore];
         
-        RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
+        RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:userResponseDescriptor];
+        
+        RKEntityMapping *eventMapping = [Event entityMappingInManagedObjectStore:managedObjectStore];
+        
+        RKResponseDescriptor *eventResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:@"events/search" keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:eventResponseDescriptor];
+        
+        
     }
     return YES;
 }
