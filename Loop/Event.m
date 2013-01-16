@@ -2,7 +2,7 @@
 //  Event.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 1/4/13.
+//  Created by Fletcher Fowler on 1/15/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @implementation Event
 
+@dynamic rid;
 @dynamic timeStamp;
 
 @end

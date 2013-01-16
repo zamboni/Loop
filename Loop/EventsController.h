@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import "Event.h"
 #import "LocationManager.h"
+#import "LocationManagerDelegate.h"
 
 @interface EventsController : UITableViewController <LocationManagerDelegate>
 

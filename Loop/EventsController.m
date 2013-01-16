@@ -7,7 +7,6 @@
 //
 
 #import "EventsController.h"
-#import "Event.h"
 
 @interface EventsController ()
 
@@ -46,6 +45,28 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)updateEvents
+{
+    [[LocationManager sharedInstance] setDelegate:self];
+    [[LocationManager sharedInstance] getLocation];
+}
+
+- (void)locationDidUpdate:(NSArray *)locations
+{
+    [[LocationManager sharedInstance] stopUpdatingLocation];
+
+    CLLocation *location = [locations lastObject];
+    NSNumber *lat = [NSNumber numberWithFloat:location.coordinate.latitude];
+    NSNumber *lng = [NSNumber numberWithFloat:location.coordinate.longitude];
+    
+    NSDictionary *searchDictionary = @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]};
+    
+    
+    [[self fetchedResultsController] performFetch:nil];
+    [self.tableView reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
