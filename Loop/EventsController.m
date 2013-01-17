@@ -23,7 +23,7 @@
     }
     
     NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"title" ascending:TRUE inContext:context];
+    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"rid" ascending:TRUE inContext:context];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -70,12 +70,13 @@
     
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/events/search" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
+        [[self fetchedResultsController] performFetch:nil];
+        [self.tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
     }];
     
 //    [[self fetchedResultsController] performFetch:nil];
-    [self.tableView reloadData];
 }
 
 
@@ -89,25 +90,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"EventCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
-    // Configure the cell...
     
+    cell.textLabel.text = [managedObject valueForKey:@"rid"];
     return cell;
 }
 

@@ -27,8 +27,6 @@
 
 - (void)viewDidLoad
 {
-    User *currentUser = [User MR_findFirst];
-    NSLog(@"%@", currentUser.rid);
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }

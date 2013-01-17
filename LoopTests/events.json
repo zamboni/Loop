@@ -1,20 +1,10 @@
 {"events" : 
     [
-     {"_id" : "50f62753fe68113c8d000012",
-     "rid" : 4640854922,
-     "title" : "Free Wax Offer at European Wax Center Tempe ",
-     "coordinates" : [-111.90234, 33.432283],
-     "_type" : "Event::Eventbrite",
-     "address" : "2040 E Rio Salado Pkwy, Tempe, AZ 85281, USA",
-     "contacts" : []
-     },
-     {"_id" : "50f62753fe68113c8d000011",
-     "rid" : 2,
-     "title" : "Fake Event",
-     "coordinates" : [-111.90234, 33.432283],
-     "address" : "2040 E Rio Salado Pkwy, Tempe, AZ 85281, USA",
-     "contacts" :
-     []
-     }
+        {
+            "_id" : "50f62753fe68113c8d000012"
+        },
+        {
+            "_id" : "50f62753fe68113c8d000011"
+        }
      ]
 }
