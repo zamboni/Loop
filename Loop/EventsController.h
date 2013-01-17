@@ -11,6 +11,7 @@
 #import "Event.h"
 #import "LocationManager.h"
 #import "LocationManagerDelegate.h"
+#import "EventController.h"
 
 @interface EventsController : UITableViewController <LocationManagerDelegate>
 

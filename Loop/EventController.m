@@ -1,34 +1,25 @@
 //
-//  EventsController.m
+//  EventController.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 1/15/13.
+//  Created by Fletcher Fowler on 1/17/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
-#import "EventsController.h"
+#import "EventController.h"
 
-@interface EventsController ()
+@interface EventController ()
 
 @end
 
-@implementation EventsController
+@implementation EventController
 
-@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize event = _event;
+@synthesize checkinButton = _checkinButton;
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil)
-    {
-        return _fetchedResultsController;
-    }
-    
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"rid" ascending:TRUE inContext:context];
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -46,77 +37,44 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (IBAction)refresh:(id)sender
-{
-    [self updateEvents];
-}
-
-- (void)updateEvents
-{
-    [[LocationManager sharedInstance] setDelegate:self];
-    [[LocationManager sharedInstance] getLocation];
-}
-
-- (void)locationDidUpdate:(NSArray *)locations
-{
-    NSLog(@"%@", [[Event MR_findAll] description]);
-    [[LocationManager sharedInstance] stopUpdatingLocation];
-
-    CLLocation *location = [locations lastObject];
-    NSNumber *lat = [NSNumber numberWithFloat:location.coordinate.latitude];
-    NSNumber *lng = [NSNumber numberWithFloat:location.coordinate.longitude];
-    
-    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]} };
-    
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/events/search" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-        [[self fetchedResultsController] performFetch:nil];
-        [self.tableView reloadData];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
-    
-//    [[self fetchedResultsController] performFetch:nil];
-}
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)checkIn:(id)sender{
+//    User *user = [User MR_findFirst];
+//    NSDictionary *checkinDictionary = @{
+//    @"user_id" : user.rid,
+//    @"event_id" : [[self event] rid]
+//    };
+//    [[Server sharedInstance] setDelegate:self];
+//    [Server checkinToEvent:checkinDictionary];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // Return the number of sections.
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    // Return the number of rows in the section.
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EventCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    // Configure the cell...
     
-    cell.textLabel.text = [managedObject valueForKey:@"rid"];
     return cell;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [[LocationManager sharedInstance] stopUpdatingLocation];
-    
-    NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-    EventController *eventController = [segue destinationViewController];
-    eventController.event = [[self fetchedResultsController] objectAtIndexPath:selectedRowIndex];
 }
 
 /*

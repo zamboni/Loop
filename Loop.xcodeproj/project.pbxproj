@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */; };
+		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
 		32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
 		32A92DF5169238B600D5EB7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF4169238B600D5EB7F /* CoreGraphics.framework */; };
@@ -27,7 +28,6 @@
 		32A92E23169238B600D5EB7F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF6169238B600D5EB7F /* CoreData.framework */; };
 		32A92E2B169238B600D5EB7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E29169238B600D5EB7F /* InfoPlist.strings */; };
 		32AB0C3416A0C92A00EFE421 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB0C3316A0C92A00EFE421 /* LoginController.m */; };
-		32AD3F2116A63292002F21FB /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F1F16A63292002F21FB /* EventManager.m */; };
 		32AD3F2416A63C89002F21FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AD3F2316A63C89002F21FB /* CoreLocation.framework */; };
 		32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F2616A63D51002F21FB /* LocationManager.m */; };
 		32AD3F2916A63DB2002F21FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AD3F2316A63C89002F21FB /* CoreLocation.framework */; };
@@ -63,6 +63,8 @@
 		24476B84AFB542219CE9C622 /* libPods-LoopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		324C4202169BBEE900F94927 /* RKTestFactory+Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKTestFactory+Loop.h"; sourceTree = "<group>"; };
 		324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKTestFactory+Loop.m"; sourceTree = "<group>"; };
+		3266A46D16A7FB76009D4105 /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
+		3266A46E16A7FB76009D4105 /* EventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventController.m; sourceTree = "<group>"; };
 		32A92DEC169238B600D5EB7F /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A92DF0169238B600D5EB7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32A92DF2169238B600D5EB7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,9 +88,6 @@
 		32A92E2A169238B600D5EB7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32AB0C3216A0C92A00EFE421 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		32AB0C3316A0C92A00EFE421 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		32AD3F1E16A63292002F21FB /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
-		32AD3F1F16A63292002F21FB /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
-		32AD3F2016A63292002F21FB /* EventSingletonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSingletonDelegate.h; sourceTree = "<group>"; };
 		32AD3F2316A63C89002F21FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		32AD3F2516A63D51002F21FB /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		32AD3F2616A63D51002F21FB /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -171,6 +170,8 @@
 				32AB0C3316A0C92A00EFE421 /* LoginController.m */,
 				32F375F016A5534D00107C4B /* EventsController.h */,
 				32F375F116A5534D00107C4B /* EventsController.m */,
+				3266A46D16A7FB76009D4105 /* EventController.h */,
+				3266A46E16A7FB76009D4105 /* EventController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -290,9 +291,6 @@
 				32AD3F2516A63D51002F21FB /* LocationManager.h */,
 				32AD3F2616A63D51002F21FB /* LocationManager.m */,
 				32AD3F2716A63D51002F21FB /* LocationManagerDelegate.h */,
-				32AD3F1E16A63292002F21FB /* EventManager.h */,
-				32AD3F1F16A63292002F21FB /* EventManager.m */,
-				32AD3F2016A63292002F21FB /* EventSingletonDelegate.h */,
 				32F375FB16A6B0AD00107C4B /* Event+Implementation.h */,
 				32F375FC16A6B0AD00107C4B /* Event+Implementation.m */,
 			);
@@ -463,10 +461,10 @@
 				32F375A216A3983700107C4B /* ProfileController.m in Sources */,
 				32F375EE16A5423800107C4B /* User.m in Sources */,
 				32F375F216A5534E00107C4B /* EventsController.m in Sources */,
-				32AD3F2116A63292002F21FB /* EventManager.m in Sources */,
 				32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */,
 				32AD3F4E16A66909002F21FB /* Event.m in Sources */,
 				32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */,
+				3266A46F16A7FB76009D4105 /* EventController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
