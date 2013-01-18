@@ -1,19 +1,21 @@
 //
-//  Event.m
+//  Checkin.m
 //  Loop
 //
 //  Created by Fletcher Fowler on 1/17/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
-#import "Event.h"
 #import "Checkin.h"
+#import "Event.h"
+#import "User.h"
 
 
-@implementation Event
+@implementation Checkin
 
+@dynamic created_at;
 @dynamic rid;
-@dynamic timeStamp;
-@dynamic checkins;
+@dynamic event;
+@dynamic user;
 
 @end

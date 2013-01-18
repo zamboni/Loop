@@ -34,7 +34,10 @@
 		32AD3F2B16A65CBA002F21FB /* EventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F2A16A65CBA002F21FB /* EventTests.m */; };
 		32AD3F2D16A65CE8002F21FB /* event.json in Resources */ = {isa = PBXBuildFile; fileRef = 32AD3F2C16A65CE8002F21FB /* event.json */; };
 		32AD3F2F16A65EF8002F21FB /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 32AD3F2E16A65EF8002F21FB /* events.json */; };
-		32AD3F4E16A66909002F21FB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F4D16A66909002F21FB /* Event.m */; };
+		32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */; };
+		32AD3F6616A9016A002F21FB /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6516A9016A002F21FB /* Checkin.m */; };
+		32AD3F6916A9016B002F21FB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6816A9016B002F21FB /* Event.m */; };
+		32AD3F6C16A9016B002F21FB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6B16A9016B002F21FB /* User.m */; };
 		32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */; };
 		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
 		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
@@ -42,7 +45,6 @@
 		32F375A216A3983700107C4B /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375A116A3983700107C4B /* ProfileController.m */; };
 		32F375A616A398C000107C4B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F375A416A398C000107C4B /* AddressBook.framework */; };
 		32F375A716A398C000107C4B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F375A516A398C000107C4B /* AddressBookUI.framework */; };
-		32F375EE16A5423800107C4B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375ED16A5423800107C4B /* User.m */; };
 		32F375F216A5534E00107C4B /* EventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375F116A5534D00107C4B /* EventsController.m */; };
 		32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F375FC16A6B0AD00107C4B /* Event+Implementation.m */; };
 		88B95F8B43F441D694389B3E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF0222CEE6E42DF90E58AA9 /* libPods.a */; };
@@ -95,8 +97,14 @@
 		32AD3F2A16A65CBA002F21FB /* EventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTests.m; sourceTree = "<group>"; };
 		32AD3F2C16A65CE8002F21FB /* event.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event.json; sourceTree = "<group>"; };
 		32AD3F2E16A65EF8002F21FB /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
-		32AD3F4C16A66909002F21FB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		32AD3F4D16A66909002F21FB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		32AD3F6116A8C845002F21FB /* Checkin+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Checkin+Implementation.h"; sourceTree = "<group>"; };
+		32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Checkin+Implementation.m"; sourceTree = "<group>"; };
+		32AD3F6416A9016A002F21FB /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
+		32AD3F6516A9016A002F21FB /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
+		32AD3F6716A9016B002F21FB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		32AD3F6816A9016B002F21FB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		32AD3F6A16A9016B002F21FB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		32AD3F6B16A9016B002F21FB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		32BBF2A5169FD9FE00A7B102 /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
 		32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		32C809C3169637B700FF1B97 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
@@ -107,8 +115,6 @@
 		32F375A116A3983700107C4B /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
 		32F375A416A398C000107C4B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		32F375A516A398C000107C4B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		32F375EC16A5423800107C4B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		32F375ED16A5423800107C4B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		32F375F016A5534D00107C4B /* EventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsController.h; sourceTree = "<group>"; };
 		32F375F116A5534D00107C4B /* EventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsController.m; sourceTree = "<group>"; };
 		32F375FB16A6B0AD00107C4B /* Event+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+Implementation.h"; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 				32AD3F2716A63D51002F21FB /* LocationManagerDelegate.h */,
 				32F375FB16A6B0AD00107C4B /* Event+Implementation.h */,
 				32F375FC16A6B0AD00107C4B /* Event+Implementation.m */,
+				32AD3F6116A8C845002F21FB /* Checkin+Implementation.h */,
+				32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,10 +308,12 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				32AD3F4C16A66909002F21FB /* Event.h */,
-				32AD3F4D16A66909002F21FB /* Event.m */,
-				32F375EC16A5423800107C4B /* User.h */,
-				32F375ED16A5423800107C4B /* User.m */,
+				32AD3F6A16A9016B002F21FB /* User.h */,
+				32AD3F6B16A9016B002F21FB /* User.m */,
+				32AD3F6716A9016B002F21FB /* Event.h */,
+				32AD3F6816A9016B002F21FB /* Event.m */,
+				32AD3F6416A9016A002F21FB /* Checkin.h */,
+				32AD3F6516A9016A002F21FB /* Checkin.m */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -459,12 +469,14 @@
 				32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */,
 				32AB0C3416A0C92A00EFE421 /* LoginController.m in Sources */,
 				32F375A216A3983700107C4B /* ProfileController.m in Sources */,
-				32F375EE16A5423800107C4B /* User.m in Sources */,
 				32F375F216A5534E00107C4B /* EventsController.m in Sources */,
 				32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */,
-				32AD3F4E16A66909002F21FB /* Event.m in Sources */,
 				32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */,
 				3266A46F16A7FB76009D4105 /* EventController.m in Sources */,
+				32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */,
+				32AD3F6616A9016A002F21FB /* Checkin.m in Sources */,
+				32AD3F6916A9016B002F21FB /* Event.m in Sources */,
+				32AD3F6C16A9016B002F21FB /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

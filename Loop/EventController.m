@@ -44,13 +44,20 @@
 }
 
 - (IBAction)checkIn:(id)sender{
-//    User *user = [User MR_findFirst];
-//    NSDictionary *checkinDictionary = @{
-//    @"user_id" : user.rid,
-//    @"event_id" : [[self event] rid]
-//    };
-//    [[Server sharedInstance] setDelegate:self];
-//    [Server checkinToEvent:checkinDictionary];
+    User *user = [User MR_findFirst];
+    NSLog(@"%@", user.checkins);
+    NSDictionary *checkinDictionary = @{ @"checkin" :
+        @{
+            @"user_id" : user.rid,
+            @"event_id" : [[self event] rid]
+        }
+    };
+    
+    [[RKObjectManager sharedManager] postObject:nil path:@"/checkins.json" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
 }
 
 #pragma mark - Table view data source

@@ -8,13 +8,16 @@
 
 #import "AppDelegate.h"
 
-#import "MasterViewController.h"
 #import <RestKit/RestKit.h>
+#import "ACSimpleKeychain.h"
+
+#import "MasterViewController.h"
+#import "LoginController.h"
+#import "ProfileController.h"
+
 #import "User+Implementation.h"
 #import "Event+Implementation.h"
-#import "LoginController.h"
-#import "ACSimpleKeychain.h"
-#import "ProfileController.h"
+#import "Checkin+Implementation.h"
 
 @implementation AppDelegate
 
@@ -34,28 +37,45 @@
     }
     self.window.rootViewController = viewController;
 
-    if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
-        [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
+//    if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
 
-        NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
-        RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
-        [managedObjectStore createManagedObjectContexts];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
+    [managedObjectStore createManagedObjectContexts];
+    
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+    objectManager.managedObjectStore = managedObjectStore;
+
+    // User
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    userMapping.identificationAttributes = @[@"rid"];
+    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email" }];
+    
+    RKResponseDescriptor *userRegistrationResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *userLoginResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:userRegistrationResponseDescriptor];
+    [objectManager addResponseDescriptor:userLoginResponseDescriptor];
+    
+    // Event
+    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
+    eventMapping.identificationAttributes = @[@"rid"];
+    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid"}];
+    
+    RKResponseDescriptor *eventResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:eventResponseDescriptor];
+    
+    // Checkin
+    RKEntityMapping *checkinMapping = [RKEntityMapping mappingForEntityForName:@"Checkin" inManagedObjectStore:managedObjectStore];
+    checkinMapping.identificationAttributes = @[@"rid"];
+    [checkinMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
+    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user_id" toKeyPath:@"user" withMapping:userMapping]];
+    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event_id" toKeyPath:@"event" withMapping:eventMapping]];
+
+    RKResponseDescriptor *checkinResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:checkinResponseDescriptor];
         
-        RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-        objectManager.managedObjectStore = managedObjectStore;
-        
-        RKEntityMapping *userMapping = [User entityMappingInManagedObjectStore:managedObjectStore];
-        
-        RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:userResponseDescriptor];
-        
-        RKEntityMapping *eventMapping = [Event entityMappingInManagedObjectStore:managedObjectStore];
-        
-        RKResponseDescriptor *eventResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:@"events/search" keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:eventResponseDescriptor];
-        
-        
-    }
+//    }
     return YES;
 }
 

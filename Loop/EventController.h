@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+
 #import "Event.h"
+#import "User.h"
 
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
