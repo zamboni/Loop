@@ -35,9 +35,9 @@
 		32AD3F2D16A65CE8002F21FB /* event.json in Resources */ = {isa = PBXBuildFile; fileRef = 32AD3F2C16A65CE8002F21FB /* event.json */; };
 		32AD3F2F16A65EF8002F21FB /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 32AD3F2E16A65EF8002F21FB /* events.json */; };
 		32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */; };
-		32AD3F6616A9016A002F21FB /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6516A9016A002F21FB /* Checkin.m */; };
-		32AD3F6916A9016B002F21FB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6816A9016B002F21FB /* Event.m */; };
-		32AD3F6C16A9016B002F21FB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6B16A9016B002F21FB /* User.m */; };
+		32AD3F7216AA3E95002F21FB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F7116AA3E95002F21FB /* User.m */; };
+		32AD3F7816AA3E95002F21FB /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F7716AA3E95002F21FB /* Checkin.m */; };
+		32AD3F7E16AA8E96002F21FB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F7D16AA8E96002F21FB /* Event.m */; };
 		32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */; };
 		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
 		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
@@ -99,12 +99,12 @@
 		32AD3F2E16A65EF8002F21FB /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
 		32AD3F6116A8C845002F21FB /* Checkin+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Checkin+Implementation.h"; sourceTree = "<group>"; };
 		32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Checkin+Implementation.m"; sourceTree = "<group>"; };
-		32AD3F6416A9016A002F21FB /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
-		32AD3F6516A9016A002F21FB /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
-		32AD3F6716A9016B002F21FB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		32AD3F6816A9016B002F21FB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		32AD3F6A16A9016B002F21FB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		32AD3F6B16A9016B002F21FB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32AD3F7016AA3E95002F21FB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		32AD3F7116AA3E95002F21FB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32AD3F7616AA3E95002F21FB /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
+		32AD3F7716AA3E95002F21FB /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
+		32AD3F7C16AA8E96002F21FB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		32AD3F7D16AA8E96002F21FB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		32BBF2A5169FD9FE00A7B102 /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
 		32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		32C809C3169637B700FF1B97 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
@@ -308,12 +308,12 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				32AD3F6A16A9016B002F21FB /* User.h */,
-				32AD3F6B16A9016B002F21FB /* User.m */,
-				32AD3F6716A9016B002F21FB /* Event.h */,
-				32AD3F6816A9016B002F21FB /* Event.m */,
-				32AD3F6416A9016A002F21FB /* Checkin.h */,
-				32AD3F6516A9016A002F21FB /* Checkin.m */,
+				32AD3F7C16AA8E96002F21FB /* Event.h */,
+				32AD3F7D16AA8E96002F21FB /* Event.m */,
+				32AD3F7616AA3E95002F21FB /* Checkin.h */,
+				32AD3F7716AA3E95002F21FB /* Checkin.m */,
+				32AD3F7016AA3E95002F21FB /* User.h */,
+				32AD3F7116AA3E95002F21FB /* User.m */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -474,9 +474,9 @@
 				32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */,
 				3266A46F16A7FB76009D4105 /* EventController.m in Sources */,
 				32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */,
-				32AD3F6616A9016A002F21FB /* Checkin.m in Sources */,
-				32AD3F6916A9016B002F21FB /* Event.m in Sources */,
-				32AD3F6C16A9016B002F21FB /* User.m in Sources */,
+				32AD3F7216AA3E95002F21FB /* User.m in Sources */,
+				32AD3F7816AA3E95002F21FB /* Checkin.m in Sources */,
+				32AD3F7E16AA8E96002F21FB /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,19 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    UIViewController *viewController;
-    if ([[[ACSimpleKeychain defaultKeychain] credentialsForIdentifier:@"accessToken" service:@"loop"] valueForKey:ACKeychainPassword] != nil) {
-        viewController = (ProfileController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
-    }
-    else{
-        viewController = (LoginController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-    }
-    self.window.rootViewController = viewController;
 
-//    if ([[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"] == nil) {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Loop.xcdatamodeld"];
-
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
     [managedObjectStore createManagedObjectContexts];
@@ -52,30 +41,41 @@
     userMapping.identificationAttributes = @[@"rid"];
     [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email" }];
     
-    RKResponseDescriptor *userRegistrationResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    RKResponseDescriptor *userLoginResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:userRegistrationResponseDescriptor];
-    [objectManager addResponseDescriptor:userLoginResponseDescriptor];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
     
     // Event
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
     eventMapping.identificationAttributes = @[@"rid"];
     [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid"}];
     
-    RKResponseDescriptor *eventResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:eventResponseDescriptor];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // Checkin
     RKEntityMapping *checkinMapping = [RKEntityMapping mappingForEntityForName:@"Checkin" inManagedObjectStore:managedObjectStore];
     checkinMapping.identificationAttributes = @[@"rid"];
     [checkinMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
-    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user_id" toKeyPath:@"user" withMapping:userMapping]];
-    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event_id" toKeyPath:@"event" withMapping:eventMapping]];
+    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event" toKeyPath:@"event" withMapping:eventMapping]];
+    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
+    
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    UIViewController *viewController;
+    NSString *accessToken = [[[ACSimpleKeychain defaultKeychain] credentialsForIdentifier:@"accessToken" service:@"loop"] valueForKey:ACKeychainPassword];
+    User *currentUser = [User MR_findFirst];
+    if ( accessToken && currentUser ) {
+        viewController = (ProfileController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
+    }
+    else{
+        viewController = (LoginController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+    }
+    self.window.rootViewController = viewController;
 
-    RKResponseDescriptor *checkinResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:checkinResponseDescriptor];
-        
-//    }
     return YES;
 }
 

@@ -22,8 +22,7 @@
         return _fetchedResultsController;
     }
     
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"rid" ascending:TRUE inContext:context];
+    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"rid" ascending:TRUE];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style

@@ -14,6 +14,8 @@
 
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
 @property (nonatomic, retain) Event *event;
 
 @property IBOutlet UIButton *checkinButton;
@@ -21,7 +23,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *contactsTable;
 
-
-- (IBAction) checkIn:(id)sender;
+- (IBAction)checkIn:(id)sender;
 
 @end

@@ -16,6 +16,17 @@
 
 @synthesize event = _event;
 @synthesize checkinButton = _checkinButton;
+@synthesize fetchedResultsController = _fetchedResultsController;
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil)
+    {
+        return _fetchedResultsController;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY checkins.event = %@", self.event];
+    return [User MR_fetchAllGroupedBy:nil withPredicate:predicate sortedBy:nil ascending:TRUE];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +39,8 @@
 
 - (void)viewDidLoad
 {
+    [[self fetchedResultsController] performFetch:nil];
+
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -35,6 +48,15 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/checkins" parameters:@{@"event_id" : self.event.rid } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,20 +92,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"EventCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
-    // Configure the cell...
     
+    cell.textLabel.text = [managedObject valueForKey:@"rid"];
     return cell;
 }
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
