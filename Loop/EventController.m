@@ -103,7 +103,7 @@
     NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
     
-    cell.textLabel.text = [managedObject valueForKey:@"rid"];
+    cell.textLabel.text = [managedObject valueForKey:@"email"];
     return cell;
 }
 /*

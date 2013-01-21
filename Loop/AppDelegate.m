@@ -39,7 +39,7 @@
     // User
     RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     userMapping.identificationAttributes = @[@"rid"];
-    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email" }];
+    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email", @"first_name" : @"firstName", @"last_name" : @"lastName" }];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
@@ -48,7 +48,7 @@
     // Event
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
     eventMapping.identificationAttributes = @[@"rid"];
-    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid"}];
+    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"title" : @"title"}];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
