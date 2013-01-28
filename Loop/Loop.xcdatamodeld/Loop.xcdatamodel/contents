@@ -24,9 +24,24 @@
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="user" inverseEntity="Checkin" syncable="YES"/>
         <userInfo/>
     </entity>
+    <entity name="Venue" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Checkin" positionX="180" positionY="234" width="128" height="103"/>
-        <element name="Event" positionX="-101" positionY="234" width="128" height="134"/>
-        <element name="User" positionX="466" positionY="234" width="128" height="135"/>
+        <element name="Event" positionX="-101" positionY="234" width="128" height="116"/>
+        <element name="User" positionX="466" positionY="234" width="128" height="103"/>
+        <element name="Venue" positionX="160" positionY="192" width="128" height="225"/>
     </elements>
 </model>
