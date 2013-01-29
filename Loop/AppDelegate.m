@@ -45,10 +45,17 @@
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
     
+    // Venue
+    RKEntityMapping *venueMapping = [RKEntityMapping mappingForEntityForName:@"Venue" inManagedObjectStore:managedObjectStore];
+    venueMapping.identificationAttributes = @[@"rid"];
+    [venueMapping addAttributeMappingsFromArray:@[@"address", @"city", @"country", @"latitude", @"longitude", @"name", @"state" ]];
+    [venueMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" , @"country_code" : @"countryCode", @"state_code" : @"stateCode", @"zip_code" : @"zipCode" }];
+
     // Event
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
     eventMapping.identificationAttributes = @[@"rid"];
     [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"title" : @"title"}];
+    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venue" toKeyPath:@"venue" withMapping:venueMapping]];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
@@ -62,7 +69,6 @@
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     UIViewController *viewController;

@@ -11,6 +11,7 @@
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="event" inverseEntity="Checkin" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="events" inverseEntity="Venue" syncable="YES"/>
         <fetchedProperty name="users" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Event" predicateString="ANY checkins.event = $FETCH_SOURCE"/>
         </fetchedProperty>
@@ -24,7 +25,7 @@
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="user" inverseEntity="Checkin" syncable="YES"/>
         <userInfo/>
     </entity>
-    <entity name="Venue" syncable="YES">
+    <entity name="Venue" representedClassName="Venue" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,11 +38,12 @@
         <attribute name="stateCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="venue" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Checkin" positionX="180" positionY="234" width="128" height="103"/>
-        <element name="Event" positionX="-101" positionY="234" width="128" height="116"/>
-        <element name="User" positionX="466" positionY="234" width="128" height="103"/>
-        <element name="Venue" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="Checkin" positionX="72" positionY="216" width="128" height="103"/>
+        <element name="Event" positionX="-146" positionY="216" width="128" height="146"/>
+        <element name="User" positionX="288" positionY="216" width="128" height="103"/>
+        <element name="Venue" positionX="-362" positionY="216" width="128" height="238"/>
     </elements>
 </model>

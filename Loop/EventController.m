@@ -40,7 +40,9 @@
 - (void)viewDidLoad
 {
     [[self fetchedResultsController] performFetch:nil];
-
+    Venue *venue = self.event.venue;
+    NSLog(@"NAME: %@", [venue name]);
+    self.eventTitle.text = venue.name;
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.

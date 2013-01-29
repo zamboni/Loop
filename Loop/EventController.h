@@ -11,6 +11,7 @@
 
 #import "Event.h"
 #import "User.h"
+#import "Venue.h"
 
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
