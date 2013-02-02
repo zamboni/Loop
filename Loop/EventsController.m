@@ -67,7 +67,7 @@
     
     NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]} };
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/events" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"events" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
         NSLog(@"%@", operation.HTTPRequestOperation.responseString);
         [[self fetchedResultsController] performFetch:nil];

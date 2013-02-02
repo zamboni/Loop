@@ -33,7 +33,7 @@
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
     [managedObjectStore createManagedObjectContexts];
     
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/api/v1.0/"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     // User
