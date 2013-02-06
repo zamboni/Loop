@@ -54,8 +54,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/checkins" parameters:@{@"event_id" : self.event.rid } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"checkins" parameters:@{@"event_id" : self.event.rid } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
+        NSLog(@"%@", operation.HTTPRequestOperation.responseString);
+        [[self fetchedResultsController] performFetch:nil];
+        [self.contactsTable reloadData];
+
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
     }];
@@ -77,7 +81,7 @@
         }
     };
     
-    [[RKObjectManager sharedManager] postObject:nil path:@"/checkins.json" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:@"checkins.json" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
