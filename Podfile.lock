@@ -2,24 +2,24 @@
 PODS:
 - ACSimpleKeychain (0.0.1)
 - AFNetworking (1.1.0)
-- Kiwi (1.1.1)
+- Kiwi (2.0.4)
 - MagicalRecord (2.0.8)
 - RHAddressBook (1.0.1)
-- RestKit (0.20.0pre6):
-  - RestKit/Core (= 0.20.0pre6)
-- RestKit/Core (0.20.0pre6):
+- RestKit (0.20.0rc1):
+  - RestKit/Core (= 0.20.0rc1)
+- RestKit/Core (0.20.0rc1):
   - RestKit/CoreData
   - RestKit/Network
   - RestKit/ObjectMapping
-- RestKit/CoreData (0.20.0pre6)
-- RestKit/Network (0.20.0pre6):
+- RestKit/CoreData (0.20.0rc1)
+- RestKit/Network (0.20.0rc1):
   - AFNetworking (= 1.1.0)
   - RestKit/ObjectMapping
   - RestKit/Support
   - SOCKit
-- RestKit/ObjectMapping (0.20.0pre6)
-- RestKit/Support (0.20.0pre6)
-- RestKit/Testing (0.20.0pre6)
+- RestKit/ObjectMapping (0.20.0rc1)
+- RestKit/Support (0.20.0rc1)
+- RestKit/Testing (0.20.0rc1)
 - SOCKit (1.1)
 
 DEPENDENCIES:
@@ -35,14 +35,14 @@ SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   MagicalRecord: daa15d6c83bd7d30e074c8923e53c64248ae6930
   RHAddressBook: b77ffaeace93ce2b416f706a6d527a8d9d1ef83b
-  RestKit: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Core: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/CoreData: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Network: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/ObjectMapping: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Support: ccca19640fcc3031f82ad4250c44061e2e2ddce7
+  RestKit: 0382132969d823a872b377c1ab2e383f3c74a339
+  RestKit/Core: 0382132969d823a872b377c1ab2e383f3c74a339
+  RestKit/CoreData: 0382132969d823a872b377c1ab2e383f3c74a339
+  RestKit/Network: 0382132969d823a872b377c1ab2e383f3c74a339
+  RestKit/ObjectMapping: 0382132969d823a872b377c1ab2e383f3c74a339
+  RestKit/Support: 0382132969d823a872b377c1ab2e383f3c74a339
   SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
-  Kiwi: ab0fa8d13b97dca05915e31df9b2d888d74ab717
-  RestKit/Testing: ccca19640fcc3031f82ad4250c44061e2e2ddce7
+  Kiwi: 44abe10fc11eb6a9e05d580211abd1f8fdb01260
+  RestKit/Testing: 0382132969d823a872b377c1ab2e383f3c74a339
 
 COCOAPODS: 0.16.0

@@ -33,6 +33,7 @@ extern "C" {
 #import "KWBlockNode.h"
 #import "KWBlockRaiseMatcher.h"
 #import "KWCallSite.h"
+#import "KWChangeMatcher.h"
 #import "KWConformToProtocolMatcher.h"
 #import "KWContainMatcher.h"
 #import "KWContextNode.h"
@@ -47,7 +48,7 @@ extern "C" {
 #import "KWFailure.h"
 #import "KWFormatter.h"
 #import "KWFutureObject.h"
-#import "KWHamcrestMatcher.h"
+#import "KWGenericMatcher.h"
 #import "KWHaveMatcher.h"
 #import "KWHaveValueMatcher.h"
 #import "KWInequalityMatcher.h"
@@ -82,6 +83,7 @@ extern "C" {
   
 // Public Foundation Categories
 #import "NSObject+KiwiMockAdditions.h"
+#import "NSObject+KiwiSpyAdditions.h"
 #import "NSObject+KiwiStubAdditions.h"
 #import "NSObject+KiwiVerifierAdditions.h"
 

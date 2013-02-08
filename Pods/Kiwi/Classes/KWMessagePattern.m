@@ -11,7 +11,7 @@
 #import "KWValue.h"
 #import "NSInvocation+KiwiAdditions.h"
 #import "NSMethodSignature+KiwiAdditions.h"
-#import "KWHCMatcher.h"
+#import "KWGenericMatchEvaluator.h"
 #import "Kiwi.h"
 
 @implementation KWMessagePattern
@@ -137,19 +137,19 @@
             continue;
         }
 
-        if ([argumentFilter conformsToProtocol:@protocol(HCMatcher)]) {
-            id<HCMatcher> matcher = (id<HCMatcher>)argumentFilter;
+        if ([KWGenericMatchEvaluator isGenericMatcher:argumentFilter]) {
+            id matcher = argumentFilter;
             if ([object isKindOfClass:[KWValue class]] && [object isNumeric]) {
                 NSNumber *number = [object numberValue];
-                if (![matcher matches:number]) {
+                if (![KWGenericMatchEvaluator genericMatcher:matcher matches:number]) {
                     return NO;
                 }
-            } else if (![matcher matches:object]) {
+            } else if (![KWGenericMatchEvaluator genericMatcher:matcher matches:object]) {
                 return NO;
             }
         } else if ([argumentFilter isEqual:[KWNull null]]) {
             if (!KWObjCTypeIsPointerLike(objCType)) {
-                [NSException raise:@"KWMessagePatternException" format:@"nil was specified as an argument filter, but argument(%d) is not a pointer for @selector(%@)", i + 1, NSStringFromSelector([anInvocation selector])];
+                [NSException raise:@"KWMessagePatternException" format:@"nil was specified as an argument filter, but argument(%d) is not a pointer for @selector(%@)", (int)(i + 1), NSStringFromSelector([anInvocation selector])];
             }
             void *p = nil;
             [anInvocation getMessageArgument:&p atIndex:i];

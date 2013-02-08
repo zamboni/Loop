@@ -7,8 +7,8 @@
 //
 
 #import "KWHaveValueMatcher.h"
-#import "KWHamrestMatchingAdditions.h"
-#import "KWHCMatcher.h"
+#import "KWGenericMatchingAdditions.h"
+#import "KWGenericMatcher.h"
 #import "KWFormatter.h"
 
 @interface KWHaveValueMatcher()
@@ -70,12 +70,23 @@
 
 - (NSString *)failureMessageForShould {
     if (self.expectedValue == nil) {
-        return [NSString stringWithFormat:@"expected subject to have a value for key %@", self.expectedKey];
+        return [NSString stringWithFormat:@"expected subject to have a value for key %@",
+                                          [KWFormatter formatObject:self.expectedKey]];
     }
-    return [NSString stringWithFormat:@"expected subject to have value %@ for key %@", self.expectedValue, self.expectedKey];
+    id subjectValue = [self subjectValue];
+    if (subjectValue) {
+        return [NSString stringWithFormat:@"expected subject to have value %@ for key %@, but it had value %@ instead",
+                                          [KWFormatter formatObject:self.expectedValue],
+                                          [KWFormatter formatObject:self.expectedKey],
+                                          [KWFormatter formatObject:subjectValue]];
+    } else {
+        return [NSString stringWithFormat:@"expected subject to have value %@ for key %@, but the key was not present",
+                                          [KWFormatter formatObject:self.expectedValue],
+                                          [KWFormatter formatObject:self.expectedKey]];
+    }
 }
 
-- (id)subjectValue;
+- (id)subjectValue
 {
   id value = nil;
 
