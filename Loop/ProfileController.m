@@ -70,8 +70,8 @@
     NSNumber *contact_id = [NSNumber numberWithInt:ABRecordGetRecordID(person)];
     User *currentUser = [User MR_findFirstInContext:context];
 
-    [currentUser setValue:contact_id forKey:@"contactId"];
-    [context MR_save];
+    currentUser.contactId = contact_id;
+    [context MR_saveNestedContexts];
 }
 
 #pragma mark Show all contacts
