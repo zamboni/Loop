@@ -12,6 +12,18 @@
   #import <CoreServices/CoreServices.h>
 #endif
 #endif /* __OBJC__*/
+
+//
+// Prefix header for all source files of the 'RHAddressBook' target in the 'RHAddressBook' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+
+//ARC Macro Support
+    #import "RHARCSupport.h"
+#endif
+
 #ifdef __OBJC__
 #define MR_SHORTHAND
 #import "CoreData+MagicalRecord.h"
