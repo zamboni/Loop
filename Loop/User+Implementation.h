@@ -14,6 +14,7 @@
 
 + (RKEntityMapping *)entityMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)setAccessTokenWithDictionary:(NSDictionary *)userDictionary;
++ (NSString *)getAccessToken;
 + (void)logout;
 
 @end

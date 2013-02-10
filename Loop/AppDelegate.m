@@ -18,6 +18,8 @@
 #import "User+Implementation.h"
 #import "Event+Implementation.h"
 #import "Checkin+Implementation.h"
+#import "ABContact+Implementation.h"
+#import "ABEmail+Implementation.h"
 
 @implementation AppDelegate
 
@@ -69,6 +71,24 @@
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    
+    // ABEmail
+//    RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
+//    [abEmailMapping addAttributeMappingsFromArray:@[@"email"]];
+    
+    RKObjectMapping *abEmailRequestMapping = [RKObjectMapping requestMapping];
+    [abEmailRequestMapping addAttributeMappingsFromArray:@[@"email"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails"]];
+    
+    // ABContact
+    RKEntityMapping *abContactMapping = [RKEntityMapping mappingForEntityForName:@"ABContact" inManagedObjectStore:managedObjectStore];
+    [abContactMapping addAttributeMappingsFromArray:@[@"firstName", @"lastName"]];
+    
+    RKObjectMapping *abContactRequestMapping = [RKObjectMapping requestMapping];
+    [abContactRequestMapping addAttributeMappingsFromDictionary:@{@"firstName" : @"first_name", @"lastName" : @"last_name"}];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailRequestMapping]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abContactRequestMapping objectClass:[ABContact class] rootKeyPath:@"contact"]];
+    
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     UIViewController *viewController;

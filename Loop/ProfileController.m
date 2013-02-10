@@ -9,6 +9,8 @@
 #import "ProfileController.h"
 #import "User.h"
 #import "User+Implementation.h"
+#import "ABContact+Implementation.m"
+#import <RHAddressBook/AddressBook.h>
 
 @interface ProfileController ()
 
@@ -89,6 +91,21 @@
     User *currentUser = [User MR_findFirst];
     ABRecordID *currentUserId = (ABRecordID *)[currentUser.contactId integerValue];
     NSLog(@"CONTACT_ID: %d", currentUserId);
+    
+    RHAddressBook *ab = [[RHAddressBook alloc] init];
+    RHPerson *rh_person = [ab personForABRecordID:currentUserId];
+    ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    NSString *accessToken = [User getAccessToken];
+    [[RKObjectManager sharedManager] postObject:show_person path:@"contacts" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
+//
+//    RHMultiDictionaryValue *addresses = rh_person.addresses;
+//    NSDictionary *address = [addresses valueAtIndex:0];
+
+    
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     ABRecordRef *person = (ABRecordRef *)ABAddressBookGetPersonWithRecordID(addressBook, [currentUser.contactId integerValue]);
