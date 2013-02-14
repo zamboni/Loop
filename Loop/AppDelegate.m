@@ -73,17 +73,21 @@
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABEmail
-//    RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
-//    [abEmailMapping addAttributeMappingsFromArray:@[@"email"]];
-    
+    RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
+    [abEmailMapping addAttributeMappingsFromArray:@[@"email", @"title"]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    // ABEmail Request
     RKObjectMapping *abEmailRequestMapping = [RKObjectMapping requestMapping];
-    [abEmailRequestMapping addAttributeMappingsFromArray:@[@"email"]];
+    [abEmailRequestMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
     [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails"]];
     
     // ABContact
     RKEntityMapping *abContactMapping = [RKEntityMapping mappingForEntityForName:@"ABContact" inManagedObjectStore:managedObjectStore];
     [abContactMapping addAttributeMappingsFromArray:@[@"firstName", @"lastName"]];
-    
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailMapping]];
+
+    // ABContact Request
     RKObjectMapping *abContactRequestMapping = [RKObjectMapping requestMapping];
     [abContactRequestMapping addAttributeMappingsFromDictionary:@{@"firstName" : @"first_name", @"lastName" : @"last_name"}];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailRequestMapping]];

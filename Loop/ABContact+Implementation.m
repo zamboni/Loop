@@ -39,4 +39,14 @@
     return person;
 };
 
++(RHPerson *)createRHPersonFromABContact:(ABContact *)abContact
+{
+    RHAddressBook *rh = [[RHAddressBook alloc] init];
+    RHPerson *person = [rh newPersonInDefaultSource];
+    
+    RHMultiStringValue *emails = [person emails];
+    
+    
+}
+
 @end
