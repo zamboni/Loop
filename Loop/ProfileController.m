@@ -68,10 +68,20 @@
 
 - (void)savePerson:(ABRecordRef)person
 {
+//    REFACTOR ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
     NSNumber *contact_id = [NSNumber numberWithInt:ABRecordGetRecordID(person)];
     User *currentUser = [User MR_findFirstInContext:context];
-
+    RHAddressBook *ab = [[RHAddressBook alloc] init];
+    RHPerson *rh_person = [ab personForABRecordID:ABRecordGetRecordID(person)];
+    ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    NSString *accessToken = [User getAccessToken];
+    [[RKObjectManager sharedManager] postObject:show_person path:@"contact" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
+    
     currentUser.contactId = contact_id;
     [context MR_saveNestedContexts];
 }
@@ -91,20 +101,6 @@
     User *currentUser = [User MR_findFirst];
     ABRecordID *currentUserId = (ABRecordID *)[currentUser.contactId integerValue];
     NSLog(@"CONTACT_ID: %d", currentUserId);
-    
-    RHAddressBook *ab = [[RHAddressBook alloc] init];
-    RHPerson *rh_person = [ab personForABRecordID:currentUserId];
-    ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-    NSString *accessToken = [User getAccessToken];
-    [[RKObjectManager sharedManager] postObject:show_person path:@"contacts" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
-//
-//    RHMultiDictionaryValue *addresses = rh_person.addresses;
-//    NSDictionary *address = [addresses valueAtIndex:0];
-
     
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -141,6 +137,7 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
     [self savePerson:person];
+
     [self dismissViewControllerAnimated:YES completion:NULL];
     return NO;
 }

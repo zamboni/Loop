@@ -2,20 +2,23 @@
 //  User.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 1/17/13.
+//  Created by Fletcher Fowler on 2/14/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Checkin;
+@class ABContact, Checkin;
 
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * contactId;
 @property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * rid;
+@property (nonatomic, retain) ABContact *ab_person;
 @property (nonatomic, retain) NSSet *checkins;
 @end
 

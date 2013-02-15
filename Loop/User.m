@@ -2,11 +2,12 @@
 //  User.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 1/17/13.
+//  Created by Fletcher Fowler on 2/14/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
 #import "User.h"
+#import "ABContact.h"
 #import "Checkin.h"
 
 
@@ -14,7 +15,10 @@
 
 @dynamic contactId;
 @dynamic email;
+@dynamic firstName;
+@dynamic lastName;
 @dynamic rid;
+@dynamic ab_person;
 @dynamic checkins;
 
 @end

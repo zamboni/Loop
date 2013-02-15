@@ -7,6 +7,7 @@
 //
 
 #import "EventController.h"
+#import "User+Implementation.h"
 
 @interface EventController ()
 
@@ -155,13 +156,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    User *selectedUser = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
+    User *currentUser = [User MR_findFirstInContext:context];
+    NSString *accessToken = [User getAccessToken];
+    NSString *path = [NSString stringWithFormat:@"contact/%@", selectedUser.rid];
+
+    [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"success");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"failure");
+    }];
 }
 
 @end
