@@ -8,6 +8,7 @@
 
 #import "EventController.h"
 #import "User+Implementation.h"
+#import "ABContact+Implementation.m"
 
 @interface EventController ()
 
@@ -164,6 +165,9 @@
     NSString *path = [NSString stringWithFormat:@"contact/%@", selectedUser.rid];
 
     [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//        NSLog(@"%@", [(ABContact *)[mappingResult firstObject] emails]);
+        [(ABContact *)[mappingResult firstObject] createRHPerson];
+        
         NSLog(@"success");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");

@@ -39,14 +39,25 @@
     return person;
 };
 
-+(RHPerson *)createRHPersonFromABContact:(ABContact *)abContact
+- (RHPerson *)createRHPerson
 {
     RHAddressBook *rh = [[RHAddressBook alloc] init];
     RHPerson *person = [rh newPersonInDefaultSource];
+    person.firstName = self.firstName;
+    person.lastName = self.lastName;
     
-    RHMultiStringValue *emails = [person emails];
+    RHMultiStringValue *emailMultiValue = [person emails];
+    RHMutableMultiStringValue *mutableEmailMultiValue = [emailMultiValue mutableCopy];
+    if (! mutableEmailMultiValue) mutableEmailMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
     
+    //RHPersonPhoneIPhoneLabel casts kABPersonPhoneIPhoneLabel to the correct toll free bridged type, see RHPersonLabels.h
+    for(ABEmail *email in self.emails){
+        [mutableEmailMultiValue addValue:email.email withLabel:email.label];
+    }
+    person.emails = mutableEmailMultiValue;
     
+    [person save];
+    return person;
 }
 
 @end

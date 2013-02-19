@@ -20,26 +20,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Loop/EventController.m"
-         timestampString = "382586046.770126"
+         filePath = "Loop/ABContact+Implementation.m"
+         timestampString = "382644916.688421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-createRHPerson"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Loop/ProfileController.m"
-         timestampString = "382592932.640739"
+         filePath = "Loop/ABContact+Implementation.m"
+         timestampString = "382644916.688421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "-savePerson:"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
+         landmarkName = "-createRHPerson"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

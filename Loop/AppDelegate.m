@@ -74,12 +74,13 @@
     
     // ABEmail
     RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
-    [abEmailMapping addAttributeMappingsFromArray:@[@"email", @"title"]];
+    [abEmailMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     // ABContact
     RKEntityMapping *abContactMapping = [RKEntityMapping mappingForEntityForName:@"ABContact" inManagedObjectStore:managedObjectStore];
-    [abContactMapping addAttributeMappingsFromArray:@[@"firstName", @"lastName"]];
+    [abContactMapping addAttributeMappingsFromDictionary:@{@"first_name" : @"firstName", @"last_name" : @"lastName"}];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailMapping]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
