@@ -1,19 +1,20 @@
 //
-//  ABEmail.m
+//  ABInstantMessage.m
 //  Loop
 //
 //  Created by Fletcher Fowler on 2/20/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
-#import "ABEmail.h"
+#import "ABInstantMessage.h"
 #import "ABContact.h"
 
 
-@implementation ABEmail
+@implementation ABInstantMessage
 
-@dynamic email;
 @dynamic label;
+@dynamic type;
+@dynamic userName;
 @dynamic contact;
 
 @end

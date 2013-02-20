@@ -1,5 +1,5 @@
 //
-//  ABEmail.h
+//  ABUrl.h
 //  Loop
 //
 //  Created by Fletcher Fowler on 2/20/13.
@@ -11,10 +11,10 @@
 
 @class ABContact;
 
-@interface ABEmail : NSManagedObject
+@interface ABUrl : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * label;
+@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) ABContact *contact;
 
 @end

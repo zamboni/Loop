@@ -7,7 +7,8 @@
 //
 
 #import "ABContact+Implementation.h"
-#import "ABEmail+Implementation.h"
+#import "ABEmail.h"
+#import "ABAddress.h"
 
 @implementation ABContact (Implementation)
 
@@ -31,20 +32,23 @@
     
     for (int index = 0; index < [rhPerson.emails count] ; index++) {
         ABEmail *email = [ABEmail MR_createInContext:context];
-        email.email = [rhPerson.emails valueAtIndex:index];
         email.label = [rhPerson.emails labelAtIndex:index];
+        email.email = [rhPerson.emails valueAtIndex:index];
         [person addEmailsObject:email];
     }
     
     for (int index = 0; index < [rhPerson.addresses count] ; index++) {
-        
-//        ABEmail *email = [ABEmail MR_createInContext:context];
-//        email.email = [rhPerson.emails valueAtIndex:index];
-//        email.label = [rhPerson.emails labelAtIndex:index];
-//        [person addEmailsObject:email];
+        ABAddress *address = [ABAddress MR_createInContext:context];
+        address.label           = [rhPerson.addresses labelAtIndex:index];
+        address.city            = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"City"];
+        address.country         = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"Country"];
+        address.countryCode     = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"CountryCode"];
+        address.state           = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"State"];
+        address.street          = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"Street"];
+        address.zip             = [[rhPerson.addresses valueAtIndex:index] objectForKey:@"ZIP"];
+        [person addAddressesObject:address];
     }
-    
-    
+
     return person;
 };
 

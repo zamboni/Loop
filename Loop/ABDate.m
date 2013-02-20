@@ -1,19 +1,19 @@
 //
-//  ABEmail.m
+//  ABDate.m
 //  Loop
 //
 //  Created by Fletcher Fowler on 2/20/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
-#import "ABEmail.h"
+#import "ABDate.h"
 #import "ABContact.h"
 
 
-@implementation ABEmail
+@implementation ABDate
 
-@dynamic email;
 @dynamic label;
+@dynamic date;
 @dynamic contact;
 
 @end

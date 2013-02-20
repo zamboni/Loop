@@ -112,7 +112,7 @@ typedef enum {
 
 // (For more info on the keys and values for MultiValue objects check out <AddressBook/ABPerson.h> )
 // (Also check out RHPersonLabels.h, it casts a bunch of CF labels into their toll free bridged counterparts for ease of use with this class )
-
+    
 //Addresses
 @property (nonatomic, copy) RHMultiDictionaryValue *addresses;        // kABPersonAddressProperty - (Multi Dictionary) dictionary keys are ( kABPersonAddressStreetKey, kABPersonAddressCityKey, kABPersonAddressStateKey, kABPersonAddressZIPKey, kABPersonAddressCountryKey, kABPersonAddressCountryCodeKey )
 

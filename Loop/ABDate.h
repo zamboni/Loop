@@ -1,5 +1,5 @@
 //
-//  ABEmail.h
+//  ABDate.h
 //  Loop
 //
 //  Created by Fletcher Fowler on 2/20/13.
@@ -11,10 +11,10 @@
 
 @class ABContact;
 
-@interface ABEmail : NSManagedObject
+@interface ABDate : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * label;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) ABContact *contact;
 
 @end
