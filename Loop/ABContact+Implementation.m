@@ -36,6 +36,15 @@
         [person addEmailsObject:email];
     }
     
+    for (int index = 0; index < [rhPerson.addresses count] ; index++) {
+        
+//        ABEmail *email = [ABEmail MR_createInContext:context];
+//        email.email = [rhPerson.emails valueAtIndex:index];
+//        email.label = [rhPerson.emails labelAtIndex:index];
+//        [person addEmailsObject:email];
+    }
+    
+    
     return person;
 };
 

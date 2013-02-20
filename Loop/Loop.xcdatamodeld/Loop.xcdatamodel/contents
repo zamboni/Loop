@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C2037" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ABAddress" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="addresses" inverseEntity="ABContact" syncable="YES"/>
+    </entity>
     <entity name="ABContact" representedClassName="ABContact" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
@@ -18,13 +28,14 @@
         <attribute name="organization" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prefix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="suffix" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="emails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABEmail" inverseName="person" inverseEntity="ABEmail" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABAddress" inverseName="contact" inverseEntity="ABAddress" syncable="YES"/>
+        <relationship name="emails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABEmail" inverseName="contact" inverseEntity="ABEmail" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ab_person" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ABEmail" representedClassName="ABEmail" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="emails" inverseEntity="ABContact" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="emails" inverseEntity="ABContact" syncable="YES"/>
     </entity>
     <entity name="Checkin" representedClassName="Checkin" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,11 +79,12 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="venue" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ABContact" positionX="-162" positionY="-24" width="128" height="330"/>
-        <element name="ABEmail" positionX="52" positionY="54" width="128" height="90"/>
+        <element name="ABContact" positionX="-162" positionY="-24" width="128" height="343"/>
+        <element name="ABEmail" positionX="133" positionY="216" width="128" height="90"/>
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
         <element name="Event" positionX="142" positionY="-221" width="128" height="149"/>
         <element name="User" positionX="-434" positionY="-105" width="128" height="150"/>
         <element name="Venue" positionX="387" positionY="-9" width="128" height="240"/>
+        <element name="ABAddress" positionX="126" positionY="27" width="128" height="163"/>
     </elements>
 </model>

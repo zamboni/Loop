@@ -326,7 +326,6 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				3290CFCA16CDE76A00648328 /* ABContact.h */,
 				3290CFD916CDE76A00648328 /* Venue.h */,
 				3290CFDA16CDE76A00648328 /* Venue.m */,
 				3290CFD616CDE76A00648328 /* User.h */,
@@ -337,6 +336,7 @@
 				3290CFD116CDE76A00648328 /* Checkin.m */,
 				3290CFCD16CDE76A00648328 /* ABEmail.h */,
 				3290CFCE16CDE76A00648328 /* ABEmail.m */,
+				3290CFCA16CDE76A00648328 /* ABContact.h */,
 				3290CFCB16CDE76A00648328 /* ABContact.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
 			);
