@@ -10,7 +10,11 @@
 #import "ABAddress.h"
 #import "ABDate.h"
 #import "ABEmail.h"
-#import "ABNames.h"
+#import "ABInstantMessage.h"
+#import "ABName.h"
+#import "ABPhone.h"
+#import "ABSocial.h"
+#import "ABUrl.h"
 #import "User.h"
 
 
@@ -34,13 +38,13 @@
 @dynamic prefix;
 @dynamic suffix;
 @dynamic addresses;
-@dynamic emails;
-@dynamic user;
 @dynamic dates;
+@dynamic emails;
 @dynamic instantMessages;
 @dynamic names;
 @dynamic phones;
-@dynamic social;
+@dynamic socials;
 @dynamic urls;
+@dynamic user;
 
 @end

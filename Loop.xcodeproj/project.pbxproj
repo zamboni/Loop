@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */; };
 		324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */; };
-		324ECABF16D4C91E005886E1 /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECABE16D4C91E005886E1 /* Checkin.m */; };
-		324ECAC216D4C91E005886E1 /* ABNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAC116D4C91E005886E1 /* ABNames.m */; };
-		324ECAC516D4C91E005886E1 /* ABAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAC416D4C91E005886E1 /* ABAddress.m */; };
-		324ECAC816D4C91E005886E1 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAC716D4C91E005886E1 /* Event.m */; };
-		324ECACB16D4C91E005886E1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECACA16D4C91E005886E1 /* User.m */; };
-		324ECACE16D4C91E005886E1 /* ABDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECACD16D4C91E005886E1 /* ABDate.m */; };
-		324ECAD116D4C91E005886E1 /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAD016D4C91E005886E1 /* ABContact.m */; };
-		324ECAD416D4C91E005886E1 /* ABPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAD316D4C91E005886E1 /* ABPhone.m */; };
-		324ECAD716D4C91E005886E1 /* ABUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAD616D4C91E005886E1 /* ABUrl.m */; };
-		324ECADA16D4C91E005886E1 /* ABSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAD916D4C91E005886E1 /* ABSocial.m */; };
-		324ECADD16D4C91E005886E1 /* ABEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECADC16D4C91E005886E1 /* ABEmail.m */; };
-		324ECAE016D4C91E005886E1 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECADF16D4C91E005886E1 /* Venue.m */; };
-		324ECAE316D4C91E005886E1 /* ABInstantMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 324ECAE216D4C91E005886E1 /* ABInstantMessage.m */; };
 		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
+		3289F8FF16D5A28E00F32266 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F8FE16D5A28E00F32266 /* Event.m */; };
+		3289F90216D5A28E00F32266 /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90116D5A28E00F32266 /* Checkin.m */; };
+		3289F90516D5A28E00F32266 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90416D5A28E00F32266 /* User.m */; };
+		3289F90816D5A28E00F32266 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90716D5A28E00F32266 /* Venue.m */; };
+		3289F90B16D5A28E00F32266 /* ABEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90A16D5A28E00F32266 /* ABEmail.m */; };
+		3289F90E16D5A28E00F32266 /* ABPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90D16D5A28E00F32266 /* ABPhone.m */; };
+		3289F91116D5A28E00F32266 /* ABDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F91016D5A28E00F32266 /* ABDate.m */; };
+		3289F91716D5A28F00F32266 /* ABAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F91616D5A28F00F32266 /* ABAddress.m */; };
+		3289F91A16D5A28F00F32266 /* ABUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F91916D5A28F00F32266 /* ABUrl.m */; };
+		3289F92016D5A40E00F32266 /* ABName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F91F16D5A40E00F32266 /* ABName.m */; };
+		3289F92616D5AA4C00F32266 /* ABInstantMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92516D5AA4B00F32266 /* ABInstantMessage.m */; };
+		3289F92916D5ABF300F32266 /* ABSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92816D5ABF300F32266 /* ABSocial.m */; };
+		3289F92C16D5BDFD00F32266 /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92B16D5BDFD00F32266 /* ABContact.m */; };
 		32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
 		32A92DF5169238B600D5EB7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF4169238B600D5EB7F /* CoreGraphics.framework */; };
@@ -78,34 +78,34 @@
 		321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABContact+Implementation.m"; sourceTree = "<group>"; };
 		324C4202169BBEE900F94927 /* RKTestFactory+Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKTestFactory+Loop.h"; sourceTree = "<group>"; };
 		324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKTestFactory+Loop.m"; sourceTree = "<group>"; };
-		324ECABD16D4C91E005886E1 /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
-		324ECABE16D4C91E005886E1 /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
-		324ECAC016D4C91E005886E1 /* ABNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNames.h; sourceTree = "<group>"; };
-		324ECAC116D4C91E005886E1 /* ABNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNames.m; sourceTree = "<group>"; };
-		324ECAC316D4C91E005886E1 /* ABAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddress.h; sourceTree = "<group>"; };
-		324ECAC416D4C91E005886E1 /* ABAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAddress.m; sourceTree = "<group>"; };
-		324ECAC616D4C91E005886E1 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		324ECAC716D4C91E005886E1 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		324ECAC916D4C91E005886E1 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		324ECACA16D4C91E005886E1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		324ECACC16D4C91E005886E1 /* ABDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDate.h; sourceTree = "<group>"; };
-		324ECACD16D4C91E005886E1 /* ABDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDate.m; sourceTree = "<group>"; };
-		324ECACF16D4C91E005886E1 /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
-		324ECAD016D4C91E005886E1 /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
-		324ECAD216D4C91E005886E1 /* ABPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPhone.h; sourceTree = "<group>"; };
-		324ECAD316D4C91E005886E1 /* ABPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhone.m; sourceTree = "<group>"; };
-		324ECAD516D4C91E005886E1 /* ABUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUrl.h; sourceTree = "<group>"; };
-		324ECAD616D4C91E005886E1 /* ABUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABUrl.m; sourceTree = "<group>"; };
-		324ECAD816D4C91E005886E1 /* ABSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSocial.h; sourceTree = "<group>"; };
-		324ECAD916D4C91E005886E1 /* ABSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSocial.m; sourceTree = "<group>"; };
-		324ECADB16D4C91E005886E1 /* ABEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEmail.h; sourceTree = "<group>"; };
-		324ECADC16D4C91E005886E1 /* ABEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEmail.m; sourceTree = "<group>"; };
-		324ECADE16D4C91E005886E1 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
-		324ECADF16D4C91E005886E1 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
-		324ECAE116D4C91E005886E1 /* ABInstantMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInstantMessage.h; sourceTree = "<group>"; };
-		324ECAE216D4C91E005886E1 /* ABInstantMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInstantMessage.m; sourceTree = "<group>"; };
 		3266A46D16A7FB76009D4105 /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
 		3266A46E16A7FB76009D4105 /* EventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventController.m; sourceTree = "<group>"; };
+		3289F8FD16D5A28E00F32266 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		3289F8FE16D5A28E00F32266 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		3289F90016D5A28E00F32266 /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
+		3289F90116D5A28E00F32266 /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
+		3289F90316D5A28E00F32266 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		3289F90416D5A28E00F32266 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		3289F90616D5A28E00F32266 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		3289F90716D5A28E00F32266 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		3289F90916D5A28E00F32266 /* ABEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEmail.h; sourceTree = "<group>"; };
+		3289F90A16D5A28E00F32266 /* ABEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEmail.m; sourceTree = "<group>"; };
+		3289F90C16D5A28E00F32266 /* ABPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPhone.h; sourceTree = "<group>"; };
+		3289F90D16D5A28E00F32266 /* ABPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhone.m; sourceTree = "<group>"; };
+		3289F90F16D5A28E00F32266 /* ABDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDate.h; sourceTree = "<group>"; };
+		3289F91016D5A28E00F32266 /* ABDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDate.m; sourceTree = "<group>"; };
+		3289F91516D5A28F00F32266 /* ABAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddress.h; sourceTree = "<group>"; };
+		3289F91616D5A28F00F32266 /* ABAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAddress.m; sourceTree = "<group>"; };
+		3289F91816D5A28F00F32266 /* ABUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUrl.h; sourceTree = "<group>"; };
+		3289F91916D5A28F00F32266 /* ABUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABUrl.m; sourceTree = "<group>"; };
+		3289F91E16D5A40E00F32266 /* ABName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABName.h; sourceTree = "<group>"; };
+		3289F91F16D5A40E00F32266 /* ABName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABName.m; sourceTree = "<group>"; };
+		3289F92416D5AA4B00F32266 /* ABInstantMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInstantMessage.h; sourceTree = "<group>"; };
+		3289F92516D5AA4B00F32266 /* ABInstantMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInstantMessage.m; sourceTree = "<group>"; };
+		3289F92716D5ABF300F32266 /* ABSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSocial.h; sourceTree = "<group>"; };
+		3289F92816D5ABF300F32266 /* ABSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSocial.m; sourceTree = "<group>"; };
+		3289F92A16D5BDFD00F32266 /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
+		3289F92B16D5BDFD00F32266 /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
 		32A92DEC169238B600D5EB7F /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A92DF0169238B600D5EB7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32A92DF2169238B600D5EB7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -342,33 +342,33 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				3289F92716D5ABF300F32266 /* ABSocial.h */,
+				3289F92816D5ABF300F32266 /* ABSocial.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
-				324ECAE116D4C91E005886E1 /* ABInstantMessage.h */,
-				324ECAE216D4C91E005886E1 /* ABInstantMessage.m */,
-				324ECADE16D4C91E005886E1 /* Venue.h */,
-				324ECADF16D4C91E005886E1 /* Venue.m */,
-				324ECADB16D4C91E005886E1 /* ABEmail.h */,
-				324ECADC16D4C91E005886E1 /* ABEmail.m */,
-				324ECAD816D4C91E005886E1 /* ABSocial.h */,
-				324ECAD916D4C91E005886E1 /* ABSocial.m */,
-				324ECAD516D4C91E005886E1 /* ABUrl.h */,
-				324ECAD616D4C91E005886E1 /* ABUrl.m */,
-				324ECAD216D4C91E005886E1 /* ABPhone.h */,
-				324ECAD316D4C91E005886E1 /* ABPhone.m */,
-				324ECACF16D4C91E005886E1 /* ABContact.h */,
-				324ECAD016D4C91E005886E1 /* ABContact.m */,
-				324ECACC16D4C91E005886E1 /* ABDate.h */,
-				324ECACD16D4C91E005886E1 /* ABDate.m */,
-				324ECAC916D4C91E005886E1 /* User.h */,
-				324ECACA16D4C91E005886E1 /* User.m */,
-				324ECAC616D4C91E005886E1 /* Event.h */,
-				324ECAC716D4C91E005886E1 /* Event.m */,
-				324ECAC316D4C91E005886E1 /* ABAddress.h */,
-				324ECAC416D4C91E005886E1 /* ABAddress.m */,
-				324ECAC016D4C91E005886E1 /* ABNames.h */,
-				324ECAC116D4C91E005886E1 /* ABNames.m */,
-				324ECABD16D4C91E005886E1 /* Checkin.h */,
-				324ECABE16D4C91E005886E1 /* Checkin.m */,
+				3289F92A16D5BDFD00F32266 /* ABContact.h */,
+				3289F92B16D5BDFD00F32266 /* ABContact.m */,
+				3289F92416D5AA4B00F32266 /* ABInstantMessage.h */,
+				3289F92516D5AA4B00F32266 /* ABInstantMessage.m */,
+				3289F91E16D5A40E00F32266 /* ABName.h */,
+				3289F91F16D5A40E00F32266 /* ABName.m */,
+				3289F91816D5A28F00F32266 /* ABUrl.h */,
+				3289F91916D5A28F00F32266 /* ABUrl.m */,
+				3289F91516D5A28F00F32266 /* ABAddress.h */,
+				3289F91616D5A28F00F32266 /* ABAddress.m */,
+				3289F90F16D5A28E00F32266 /* ABDate.h */,
+				3289F91016D5A28E00F32266 /* ABDate.m */,
+				3289F90C16D5A28E00F32266 /* ABPhone.h */,
+				3289F90D16D5A28E00F32266 /* ABPhone.m */,
+				3289F90916D5A28E00F32266 /* ABEmail.h */,
+				3289F90A16D5A28E00F32266 /* ABEmail.m */,
+				3289F90616D5A28E00F32266 /* Venue.h */,
+				3289F90716D5A28E00F32266 /* Venue.m */,
+				3289F90316D5A28E00F32266 /* User.h */,
+				3289F90416D5A28E00F32266 /* User.m */,
+				3289F90016D5A28E00F32266 /* Checkin.h */,
+				3289F90116D5A28E00F32266 /* Checkin.m */,
+				3289F8FD16D5A28E00F32266 /* Event.h */,
+				3289F8FE16D5A28E00F32266 /* Event.m */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -530,19 +530,19 @@
 				3266A46F16A7FB76009D4105 /* EventController.m in Sources */,
 				32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */,
 				321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */,
-				324ECABF16D4C91E005886E1 /* Checkin.m in Sources */,
-				324ECAC216D4C91E005886E1 /* ABNames.m in Sources */,
-				324ECAC516D4C91E005886E1 /* ABAddress.m in Sources */,
-				324ECAC816D4C91E005886E1 /* Event.m in Sources */,
-				324ECACB16D4C91E005886E1 /* User.m in Sources */,
-				324ECACE16D4C91E005886E1 /* ABDate.m in Sources */,
-				324ECAD116D4C91E005886E1 /* ABContact.m in Sources */,
-				324ECAD416D4C91E005886E1 /* ABPhone.m in Sources */,
-				324ECAD716D4C91E005886E1 /* ABUrl.m in Sources */,
-				324ECADA16D4C91E005886E1 /* ABSocial.m in Sources */,
-				324ECADD16D4C91E005886E1 /* ABEmail.m in Sources */,
-				324ECAE016D4C91E005886E1 /* Venue.m in Sources */,
-				324ECAE316D4C91E005886E1 /* ABInstantMessage.m in Sources */,
+				3289F8FF16D5A28E00F32266 /* Event.m in Sources */,
+				3289F90216D5A28E00F32266 /* Checkin.m in Sources */,
+				3289F90516D5A28E00F32266 /* User.m in Sources */,
+				3289F90816D5A28E00F32266 /* Venue.m in Sources */,
+				3289F90B16D5A28E00F32266 /* ABEmail.m in Sources */,
+				3289F90E16D5A28E00F32266 /* ABPhone.m in Sources */,
+				3289F91116D5A28E00F32266 /* ABDate.m in Sources */,
+				3289F91716D5A28F00F32266 /* ABAddress.m in Sources */,
+				3289F91A16D5A28F00F32266 /* ABUrl.m in Sources */,
+				3289F92016D5A40E00F32266 /* ABName.m in Sources */,
+				3289F92616D5AA4C00F32266 /* ABInstantMessage.m in Sources */,
+				3289F92916D5ABF300F32266 /* ABSocial.m in Sources */,
+				3289F92C16D5BDFD00F32266 /* ABContact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

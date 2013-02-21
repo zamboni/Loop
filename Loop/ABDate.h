@@ -13,8 +13,8 @@
 
 @interface ABDate : NSManagedObject
 
-@property (nonatomic, retain) NSString * label;
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * label;
 @property (nonatomic, retain) ABContact *contact;
 
 @end

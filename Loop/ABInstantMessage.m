@@ -13,7 +13,7 @@
 @implementation ABInstantMessage
 
 @dynamic label;
-@dynamic type;
+@dynamic service;
 @dynamic userName;
 @dynamic contact;
 

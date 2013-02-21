@@ -14,8 +14,9 @@
 @interface ABSocial : NSManagedObject
 
 @property (nonatomic, retain) NSString * label;
-@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * service;
 @property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) ABContact *contact;
 
 @end

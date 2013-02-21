@@ -1,5 +1,5 @@
 //
-//  ABNames.h
+//  ABName.h
 //  Loop
 //
 //  Created by Fletcher Fowler on 2/20/13.
@@ -11,7 +11,7 @@
 
 @class ABContact;
 
-@interface ABNames : NSManagedObject
+@interface ABName : NSManagedObject
 
 @property (nonatomic, retain) NSString * label;
 @property (nonatomic, retain) NSString * name;

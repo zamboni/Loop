@@ -19,7 +19,16 @@
 #import "Event+Implementation.h"
 #import "Checkin+Implementation.h"
 #import "ABContact+Implementation.h"
-#import "ABEmail+Implementation.h"
+
+#import "ABAddress.h"
+#import "ABDate.h"
+#import "ABEmail.h"
+#import "ABInstantMessage.h"
+#import "ABName.h"
+#import "ABPhone.h"
+#import "ABSocial.h"
+#import "ABUrl.h"
+
 
 @implementation AppDelegate
 
@@ -85,16 +94,70 @@
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // Request
+//#import "ABAddress.h"
+//#import "ABDate.h"
+//#import "ABEmail.h"
+//#import "ABInstantMessage.h"
+//#import "ABName.h"
+//#import "ABPhone.h"
+//#import "ABSocial.h"
+//#import "ABUrl.h"
+    // ABAddress Request
+    RKObjectMapping *abAddressRequestMapping = [RKObjectMapping requestMapping];
+    [abAddressRequestMapping addAttributeMappingsFromArray:@[@"city", @"country", @"label", @"state", @"street", @"zip"]];
+    [abAddressRequestMapping addAttributeMappingsFromDictionary:@{@"countryCode": @"country_code"}];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abAddressRequestMapping objectClass:[ABAddress class] rootKeyPath:@"addresses"]];
+
+    // ABDate Request
+    RKObjectMapping *abDateRequestMapping = [RKObjectMapping requestMapping];
+    [abDateRequestMapping addAttributeMappingsFromArray:@[@"date", @"label"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abDateRequestMapping objectClass:[ABDate class] rootKeyPath:@"dates"]];
+
     // ABEmail Request
     RKObjectMapping *abEmailRequestMapping = [RKObjectMapping requestMapping];
     [abEmailRequestMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
     [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails"]];
-    
+
+    // ABInstantMessage Request
+    RKObjectMapping *abInstantMessageRequestMapping = [RKObjectMapping requestMapping];
+    [abInstantMessageRequestMapping addAttributeMappingsFromArray:@[@"label", @"service"]];
+    [abInstantMessageRequestMapping addAttributeMappingsFromDictionary:@{@"userName": @"user_name"}];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abInstantMessageRequestMapping objectClass:[ABInstantMessage class] rootKeyPath:@"instantMessages"]];
+
+    // ABName Request
+    RKObjectMapping *abNameRequestMapping = [RKObjectMapping requestMapping];
+    [abNameRequestMapping addAttributeMappingsFromArray:@[@"label", @"name"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abNameRequestMapping objectClass:[ABName class] rootKeyPath:@"names"]];
+
+    // ABPhone Request
+    RKObjectMapping *abPhoneRequestMapping = [RKObjectMapping requestMapping];
+    [abPhoneRequestMapping addAttributeMappingsFromArray:@[@"label", @"phone"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abPhoneRequestMapping objectClass:[ABPhone class] rootKeyPath:@"phones"]];
+
+    // ABSocial Request
+    RKObjectMapping *abSocialRequestMapping = [RKObjectMapping requestMapping];
+    [abSocialRequestMapping addAttributeMappingsFromArray:@[@"label", @"service", @"url"]];
+    [abSocialRequestMapping addAttributeMappingsFromDictionary:@{@"userName": @"user_name"}];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abSocialRequestMapping objectClass:[ABSocial class] rootKeyPath:@"socials"]];
+
+    // ABUrl Request
+    RKObjectMapping *abUrlRequestMapping = [RKObjectMapping requestMapping];
+    [abUrlRequestMapping addAttributeMappingsFromArray:@[@"label", @"url"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abUrlRequestMapping objectClass:[ABUrl class] rootKeyPath:@"urls"]];
+
     
     // ABContact Request
     RKObjectMapping *abContactRequestMapping = [RKObjectMapping requestMapping];
     [abContactRequestMapping addAttributeMappingsFromDictionary:@{@"firstName" : @"first_name", @"lastName" : @"last_name"}];
-    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"addresses"          toKeyPath:@"addresses" withMapping:abAddressRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"dates"              toKeyPath:@"dates" withMapping:abDateRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails"             toKeyPath:@"emails" withMapping:abEmailRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"instantMessages"    toKeyPath:@"instantMessages" withMapping:abInstantMessageRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"names"              toKeyPath:@"names" withMapping:abNameRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"phones"             toKeyPath:@"phones" withMapping:abPhoneRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"socials"            toKeyPath:@"socials" withMapping:abSocialRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"urls"               toKeyPath:@"urls" withMapping:abUrlRequestMapping]];
+
     [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abContactRequestMapping objectClass:[ABContact class] rootKeyPath:@"contact"]];
     
     

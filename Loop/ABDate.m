@@ -12,8 +12,8 @@
 
 @implementation ABDate
 
-@dynamic label;
 @dynamic date;
+@dynamic label;
 @dynamic contact;
 
 @end

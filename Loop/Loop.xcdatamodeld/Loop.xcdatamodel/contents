@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C3006" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C2037" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ABAddress" representedClassName="ABAddress" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,9 +32,9 @@
         <relationship name="dates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABDate" inverseName="contact" inverseEntity="ABDate" syncable="YES"/>
         <relationship name="emails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABEmail" inverseName="contact" inverseEntity="ABEmail" syncable="YES"/>
         <relationship name="instantMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABInstantMessage" inverseName="contact" inverseEntity="ABInstantMessage" syncable="YES"/>
-        <relationship name="names" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABNames" inverseName="contact" inverseEntity="ABNames" syncable="YES"/>
+        <relationship name="names" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABName" inverseName="contact" inverseEntity="ABName" syncable="YES"/>
         <relationship name="phones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABPhone" inverseName="contact" inverseEntity="ABPhone" syncable="YES"/>
-        <relationship name="social" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABSocial" inverseName="contact" inverseEntity="ABSocial" syncable="YES"/>
+        <relationship name="socials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABSocial" inverseName="contact" inverseEntity="ABSocial" syncable="YES"/>
         <relationship name="urls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABUrl" inverseName="contact" inverseEntity="ABUrl" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ab_person" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -50,11 +50,11 @@
     </entity>
     <entity name="ABInstantMessage" representedClassName="ABInstantMessage" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="service" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="instantMessages" inverseEntity="ABContact" syncable="YES"/>
     </entity>
-    <entity name="ABNames" representedClassName="ABNames" syncable="YES">
+    <entity name="ABName" representedClassName="ABName" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="names" inverseEntity="ABContact" syncable="YES"/>
@@ -66,9 +66,10 @@
     </entity>
     <entity name="ABSocial" representedClassName="ABSocial" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="service" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="social" inverseEntity="ABContact" syncable="YES"/>
+        <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="socials" inverseEntity="ABContact" syncable="YES"/>
     </entity>
     <entity name="ABUrl" representedClassName="ABUrl" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
@@ -117,18 +118,18 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="venue" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ABAddress" positionX="126" positionY="27" width="128" height="163"/>
+        <element name="ABAddress" positionX="126" positionY="44" width="128" height="163"/>
         <element name="ABContact" positionX="-162" positionY="-24" width="128" height="433"/>
-        <element name="ABEmail" positionX="133" positionY="216" width="128" height="90"/>
+        <element name="ABDate" positionX="126" positionY="216" width="128" height="88"/>
+        <element name="ABEmail" positionX="124" positionY="315" width="128" height="90"/>
+        <element name="ABInstantMessage" positionX="126" positionY="414" width="128" height="103"/>
+        <element name="ABName" positionX="126" positionY="524" width="128" height="88"/>
+        <element name="ABPhone" positionX="124" positionY="623" width="128" height="88"/>
+        <element name="ABSocial" positionX="126" positionY="720" width="128" height="118"/>
+        <element name="ABUrl" positionX="126" positionY="837" width="128" height="88"/>
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
         <element name="Event" positionX="142" positionY="-221" width="128" height="149"/>
         <element name="User" positionX="-434" positionY="-105" width="128" height="150"/>
         <element name="Venue" positionX="387" positionY="-9" width="128" height="240"/>
-        <element name="ABDate" positionX="-531" positionY="-63" width="128" height="88"/>
-        <element name="ABPhone" positionX="-522" positionY="-54" width="128" height="88"/>
-        <element name="ABInstantMessage" positionX="-513" positionY="-45" width="128" height="103"/>
-        <element name="ABUrl" positionX="-504" positionY="-36" width="128" height="88"/>
-        <element name="ABNames" positionX="-495" positionY="-27" width="128" height="88"/>
-        <element name="ABSocial" positionX="-486" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

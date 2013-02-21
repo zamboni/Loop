@@ -14,7 +14,7 @@
 @interface ABInstantMessage : NSManagedObject
 
 @property (nonatomic, retain) NSString * label;
-@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * service;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) ABContact *contact;
 

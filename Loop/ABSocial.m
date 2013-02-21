@@ -13,8 +13,9 @@
 @implementation ABSocial
 
 @dynamic label;
-@dynamic type;
+@dynamic service;
 @dynamic userName;
+@dynamic url;
 @dynamic contact;
 
 @end

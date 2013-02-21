@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ABAddress, ABDate, ABEmail, ABNames, User;
+@class ABAddress, ABDate, ABEmail, ABInstantMessage, ABName, ABPhone, ABSocial, ABUrl, User;
 
 @interface ABContact : NSManagedObject
 
@@ -31,14 +31,14 @@
 @property (nonatomic, retain) NSString * prefix;
 @property (nonatomic, retain) NSString * suffix;
 @property (nonatomic, retain) NSSet *addresses;
-@property (nonatomic, retain) NSSet *emails;
-@property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSSet *dates;
+@property (nonatomic, retain) NSSet *emails;
 @property (nonatomic, retain) NSSet *instantMessages;
 @property (nonatomic, retain) NSSet *names;
 @property (nonatomic, retain) NSSet *phones;
-@property (nonatomic, retain) NSSet *social;
+@property (nonatomic, retain) NSSet *socials;
 @property (nonatomic, retain) NSSet *urls;
+@property (nonatomic, retain) User *user;
 @end
 
 @interface ABContact (CoreDataGeneratedAccessors)
@@ -48,38 +48,38 @@
 - (void)addAddresses:(NSSet *)values;
 - (void)removeAddresses:(NSSet *)values;
 
-- (void)addEmailsObject:(ABEmail *)value;
-- (void)removeEmailsObject:(ABEmail *)value;
-- (void)addEmails:(NSSet *)values;
-- (void)removeEmails:(NSSet *)values;
-
 - (void)addDatesObject:(ABDate *)value;
 - (void)removeDatesObject:(ABDate *)value;
 - (void)addDates:(NSSet *)values;
 - (void)removeDates:(NSSet *)values;
 
-- (void)addInstantMessagesObject:(NSManagedObject *)value;
-- (void)removeInstantMessagesObject:(NSManagedObject *)value;
+- (void)addEmailsObject:(ABEmail *)value;
+- (void)removeEmailsObject:(ABEmail *)value;
+- (void)addEmails:(NSSet *)values;
+- (void)removeEmails:(NSSet *)values;
+
+- (void)addInstantMessagesObject:(ABInstantMessage *)value;
+- (void)removeInstantMessagesObject:(ABInstantMessage *)value;
 - (void)addInstantMessages:(NSSet *)values;
 - (void)removeInstantMessages:(NSSet *)values;
 
-- (void)addNamesObject:(ABNames *)value;
-- (void)removeNamesObject:(ABNames *)value;
+- (void)addNamesObject:(ABName *)value;
+- (void)removeNamesObject:(ABName *)value;
 - (void)addNames:(NSSet *)values;
 - (void)removeNames:(NSSet *)values;
 
-- (void)addPhonesObject:(NSManagedObject *)value;
-- (void)removePhonesObject:(NSManagedObject *)value;
+- (void)addPhonesObject:(ABPhone *)value;
+- (void)removePhonesObject:(ABPhone *)value;
 - (void)addPhones:(NSSet *)values;
 - (void)removePhones:(NSSet *)values;
 
-- (void)addSocialObject:(NSManagedObject *)value;
-- (void)removeSocialObject:(NSManagedObject *)value;
-- (void)addSocial:(NSSet *)values;
-- (void)removeSocial:(NSSet *)values;
+- (void)addSocialsObject:(ABSocial *)value;
+- (void)removeSocialsObject:(ABSocial *)value;
+- (void)addSocials:(NSSet *)values;
+- (void)removeSocials:(NSSet *)values;
 
-- (void)addUrlsObject:(NSManagedObject *)value;
-- (void)removeUrlsObject:(NSManagedObject *)value;
+- (void)addUrlsObject:(ABUrl *)value;
+- (void)removeUrlsObject:(ABUrl *)value;
 - (void)addUrls:(NSSet *)values;
 - (void)removeUrls:(NSSet *)values;
 
