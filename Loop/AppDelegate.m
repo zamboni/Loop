@@ -80,12 +80,51 @@
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    // ABAddress
+    RKEntityMapping *abAddressMapping = [RKEntityMapping mappingForEntityForName:@"ABAddress" inManagedObjectStore:managedObjectStore];
+    [abAddressMapping addAttributeMappingsFromArray:@[@"city", @"country", @"label", @"state", @"street", @"zip"]];
+    [abAddressMapping addAttributeMappingsFromDictionary:@{@"countryCode": @"country_code"}];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abAddressMapping pathPattern:nil keyPath:@"address" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    
+    // ABDate
+    RKEntityMapping *abDateMapping = [RKEntityMapping mappingForEntityForName:@"ABDate" inManagedObjectStore:managedObjectStore];
+    [abDateMapping addAttributeMappingsFromArray:@[@"date", @"label"]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abDateMapping pathPattern:nil keyPath:@"date" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABEmail
     RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
     [abEmailMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    
+    // ABInstantMessage
+    RKEntityMapping *abInstantMessageMapping = [RKEntityMapping mappingForEntityForName:@"ABInstantMessage" inManagedObjectStore:managedObjectStore];
+    [abInstantMessageMapping addAttributeMappingsFromArray:@[@"label", @"service"]];
+    [abInstantMessageMapping addAttributeMappingsFromDictionary:@{@"userName" : @"user_name"}];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abInstantMessageMapping pathPattern:nil keyPath:@"instant_message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    
+    // ABName
+    RKEntityMapping *abNameMapping = [RKEntityMapping mappingForEntityForName:@"ABName" inManagedObjectStore:managedObjectStore];
+    [abNameMapping addAttributeMappingsFromArray:@[@"label", @"name"]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abNameMapping pathPattern:nil keyPath:@"name" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
+    // ABPhone
+    RKEntityMapping *abPhoneMapping = [RKEntityMapping mappingForEntityForName:@"ABPhone" inManagedObjectStore:managedObjectStore];
+    [abPhoneMapping addAttributeMappingsFromArray:@[@"label", @"phone"]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abPhoneMapping pathPattern:nil keyPath:@"phone" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    // ABSocial
+    RKEntityMapping *abSocialMapping = [RKEntityMapping mappingForEntityForName:@"ABSocial" inManagedObjectStore:managedObjectStore];
+    [abSocialMapping addAttributeMappingsFromArray:@[@"label", @"service", @"url"]];
+    [abSocialMapping addAttributeMappingsFromDictionary:@{@"user_name": @"userName"}];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abSocialMapping pathPattern:nil keyPath:@"social" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    // ABUrl
+    RKEntityMapping *abUrlMapping = [RKEntityMapping mappingForEntityForName:@"ABUrl" inManagedObjectStore:managedObjectStore];
+    [abUrlMapping addAttributeMappingsFromArray:@[@"label", @"url"]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abUrlMapping pathPattern:nil keyPath:@"url" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    
     // ABContact
     RKEntityMapping *abContactMapping = [RKEntityMapping mappingForEntityForName:@"ABContact" inManagedObjectStore:managedObjectStore];
     [abContactMapping addAttributeMappingsFromDictionary:@{@"first_name" : @"firstName", @"last_name" : @"lastName"}];
@@ -94,14 +133,6 @@
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // Request
-//#import "ABAddress.h"
-//#import "ABDate.h"
-//#import "ABEmail.h"
-//#import "ABInstantMessage.h"
-//#import "ABName.h"
-//#import "ABPhone.h"
-//#import "ABSocial.h"
-//#import "ABUrl.h"
     // ABAddress Request
     RKObjectMapping *abAddressRequestMapping = [RKObjectMapping requestMapping];
     [abAddressRequestMapping addAttributeMappingsFromArray:@[@"city", @"country", @"label", @"state", @"street", @"zip"]];
@@ -144,7 +175,6 @@
     RKObjectMapping *abUrlRequestMapping = [RKObjectMapping requestMapping];
     [abUrlRequestMapping addAttributeMappingsFromArray:@[@"label", @"url"]];
     [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abUrlRequestMapping objectClass:[ABUrl class] rootKeyPath:@"urls"]];
-
     
     // ABContact Request
     RKObjectMapping *abContactRequestMapping = [RKObjectMapping requestMapping];
@@ -152,7 +182,7 @@
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"addresses"          toKeyPath:@"addresses" withMapping:abAddressRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"dates"              toKeyPath:@"dates" withMapping:abDateRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails"             toKeyPath:@"emails" withMapping:abEmailRequestMapping]];
-    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"instantMessages"    toKeyPath:@"instantMessages" withMapping:abInstantMessageRequestMapping]];
+    [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"instantMessages"    toKeyPath:@"instant_messages" withMapping:abInstantMessageRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"names"              toKeyPath:@"names" withMapping:abNameRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"phones"             toKeyPath:@"phones" withMapping:abPhoneRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"socials"            toKeyPath:@"socials" withMapping:abSocialRequestMapping]];
