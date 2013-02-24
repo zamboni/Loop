@@ -100,7 +100,7 @@
     // ABInstantMessage
     RKEntityMapping *abInstantMessageMapping = [RKEntityMapping mappingForEntityForName:@"ABInstantMessage" inManagedObjectStore:managedObjectStore];
     [abInstantMessageMapping addAttributeMappingsFromArray:@[@"label", @"service"]];
-    [abInstantMessageMapping addAttributeMappingsFromDictionary:@{@"userName" : @"user_name"}];
+    [abInstantMessageMapping addAttributeMappingsFromDictionary:@{@"user_name" : @"userName"}];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abInstantMessageMapping pathPattern:nil keyPath:@"instant_message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABName
@@ -129,7 +129,14 @@
     RKEntityMapping *abContactMapping = [RKEntityMapping mappingForEntityForName:@"ABContact" inManagedObjectStore:managedObjectStore];
     [abContactMapping addAttributeMappingsFromDictionary:@{@"first_name" : @"firstName", @"last_name" : @"lastName"}];
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"addresses" toKeyPath:@"addresses" withMapping:abAddressMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"dates" toKeyPath:@"dates" withMapping:abDateMapping]];
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"emails" toKeyPath:@"emails" withMapping:abEmailMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"instant_messages" toKeyPath:@"instantMessages" withMapping:abInstantMessageMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"names" toKeyPath:@"names" withMapping:abNameMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"phones" toKeyPath:@"phones" withMapping:abPhoneMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"socials" toKeyPath:@"socials" withMapping:abSocialMapping]];
+    [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"urls" toKeyPath:@"urls" withMapping:abUrlMapping]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // Request

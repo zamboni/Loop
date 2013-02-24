@@ -108,18 +108,86 @@
 {
     RHAddressBook *rh = [[RHAddressBook alloc] init];
     RHPerson *person = [rh newPersonInDefaultSource];
-    person.firstName = self.firstName;
-    person.lastName = self.lastName;
+    person.firstName            = self.firstName;
+    person.lastName             = self.lastName;
+    person.middleName           = self.middleName;
+    person.nickname             = self.nickname;
+    person.firstNamePhonetic    = self.firstNamePhonetic;
+    person.lastNamePhonetic     = self.lastNamePhonetic;
+    person.middleNamePhonetic   = self.middleNamePhonetic;
+    person.organization         = self.organization;
+    person.jobTitle             = self.jobTitle;
+    person.department           = self.department;
+    person.birthday             = self.birthday;
+    person.note                 = self.note;
     
-    RHMultiStringValue *emailMultiValue = [person emails];
-    RHMutableMultiStringValue *mutableEmailMultiValue = [emailMultiValue mutableCopy];
-    if (! mutableEmailMultiValue) mutableEmailMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
+    RHMutableMultiDictionaryValue *mutableAddressMultiValue = [[RHMutableMultiDictionaryValue alloc] initWithType:kABMultiDictionaryPropertyType];
     
-    //RHPersonPhoneIPhoneLabel casts kABPersonPhoneIPhoneLabel to the correct toll free bridged type, see RHPersonLabels.h
+    for (ABAddress *address in self.addresses){
+        NSDictionary *addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+            address.street, RHPersonAddressStreetKey,
+            address.city, RHPersonAddressCityKey,
+            address.state, RHPersonAddressStateKey,
+            address.zip, RHPersonAddressZIPKey,
+            address.country, RHPersonAddressCountryKey,
+            address.countryCode, RHPersonAddressCountryCodeKey,
+            nil];
+        
+        [mutableAddressMultiValue addValue:addressDictionary withLabel:address.label];
+    }
+    person.addresses = mutableAddressMultiValue;
+    
+    RHMutableMultiDateTimeValue *mutableDateMultiValue = [[RHMutableMultiDateTimeValue alloc] initWithType:kABMultiDateTimePropertyType];
+    for (ABDate *date in self.dates){
+        [mutableDateMultiValue addValue:date.date withLabel:date.label];
+    }
+    person.dates = mutableDateMultiValue;
+    
+    RHMutableMultiStringValue *mutableEmailMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
+    
     for(ABEmail *email in self.emails){
         [mutableEmailMultiValue addValue:email.email withLabel:email.label];
     }
     person.emails = mutableEmailMultiValue;
+
+    RHMutableMultiDictionaryValue *mutableInstantMessageMultiValue = [[RHMutableMultiDictionaryValue alloc] initWithType:kABMultiDictionaryPropertyType];
+    for (ABInstantMessage *instantMessage in self.instantMessages){
+        NSDictionary *instantMessageDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+            instantMessage.service, RHPersonInstantMessageServiceKey,
+            instantMessage.userName, RHPersonInstantMessageUsernameKey,
+            nil];
+        [mutableInstantMessageMultiValue addValue:instantMessageDictionary withLabel:instantMessage.label];
+    }
+    person.instantMessageServices = mutableInstantMessageMultiValue;
+
+    RHMutableMultiStringValue *mutableNameMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
+    for (ABName *name in self.names){
+        [mutableNameMultiValue addValue:name.name withLabel:name.label];
+    }
+    person.relatedNames = mutableNameMultiValue;
+    
+    RHMutableMultiStringValue *mutablePhoneMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
+    for (ABPhone *phone in self.phones){
+        [mutablePhoneMultiValue addValue:phone.phone withLabel:phone.label];
+    }
+    person.phoneNumbers = mutablePhoneMultiValue;
+    
+    RHMutableMultiDictionaryValue *mutableSocialMultiValue = [[RHMutableMultiDictionaryValue alloc] initWithType:kABMultiDictionaryPropertyType];
+    for (ABSocial *social in self.socials){
+        NSDictionary *socialDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          social.service, RHPersonSocialProfileServiceKey,
+                                          social.userName, RHPersonSocialProfileUsernameKey,
+                                          social.url, RHPersonSocialProfileURLKey,
+                                          nil];
+        [mutableSocialMultiValue addValue:socialDictionary withLabel:social.label];
+    }
+    person.socialProfiles = mutableSocialMultiValue;
+    
+    RHMutableMultiStringValue *mutableUrlMultiValue = [[RHMutableMultiStringValue alloc] initWithType:kABMultiStringPropertyType];
+    for (ABUrl *url in self.urls){
+        [mutableUrlMultiValue addValue:url.url withLabel:url.label];
+    }
+    person.urls = mutableUrlMultiValue;
     
     [person save];
     return person;

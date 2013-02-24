@@ -7,13 +7,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Loop/ABPerson+Implementation.m"
-         timestampString = "382225958.987121"
+         filePath = "Loop/ABContact+Implementation.m"
+         timestampString = "383476971.005671"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "+createPersonFromRHPerson:inContext:"
+         startingLineNumber = "171"
+         endingLineNumber = "171"
+         landmarkName = "-createRHPerson"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Loop/ABContact+Implementation.m"
+         timestampString = "383476991.347992"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
+         landmarkName = "-createRHPerson"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
