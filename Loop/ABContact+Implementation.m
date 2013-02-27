@@ -80,8 +80,8 @@
 
     for (int index = 0; index < [rhPerson.phoneNumbers count] ; index++) {
         ABPhone *phone  = [ABPhone MR_createInContext:context];
-        phone.label     = [rhPerson.relatedNames labelAtIndex:index];
-        phone.phone     = [rhPerson.relatedNames valueAtIndex:index];
+        phone.label     = [rhPerson.phoneNumbers labelAtIndex:index];
+        phone.phone     = [rhPerson.phoneNumbers valueAtIndex:index];
         [person addPhonesObject:phone];
     }
     
@@ -90,7 +90,7 @@
         social.label        = [rhPerson.socialProfiles labelAtIndex:index];
         social.service      = [[rhPerson.socialProfiles valueAtIndex:index] objectForKey:@"service"];
         social.url          = [[rhPerson.socialProfiles valueAtIndex:index] objectForKey:@"url"];
-        social.userName     = [[rhPerson.socialProfiles valueAtIndex:index] objectForKey:@"userName"];
+        social.userName     = [[rhPerson.socialProfiles valueAtIndex:index] objectForKey:@"username"];
         [person addSocialsObject:social];
     }
     
