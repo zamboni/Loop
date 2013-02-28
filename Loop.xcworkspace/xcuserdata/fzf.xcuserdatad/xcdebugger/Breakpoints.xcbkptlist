@@ -29,5 +29,18 @@
          landmarkName = "-createRHPerson"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Pods/AFAmazonS3Client/AFAmazonS3Client/AFAmazonS3Client.m"
+         timestampString = "383738479.172456"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
+         landmarkName = "-enqueueS3RequestOperationWithMethod:path:parameters:success:failure:"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

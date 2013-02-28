@@ -9,6 +9,7 @@
 #import "EventController.h"
 #import "User+Implementation.h"
 #import "ABContact+Implementation.m"
+#import <AFAmazonS3Client/AFAmazonS3Client.h>
 
 @interface EventController ()
 
@@ -164,14 +165,21 @@
     NSString *accessToken = [User getAccessToken];
     NSString *path = [NSString stringWithFormat:@"contact/%@", selectedUser.rid];
 
-    [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        NSLog(@"%@", [(ABContact *)[mappingResult firstObject] emails]);
-        [(ABContact *)[mappingResult firstObject] createRHPerson];
-        
+    AFAmazonS3Client *s3Client = [[AFAmazonS3Client alloc] initWithAccessKeyID:@"AKIAJZQTI3YJ5F2JPG6Q" secret:@"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"];
+    s3Client.bucket = @"loopapp";
+    [s3Client putBucket:@"2" parameters:nil success:^(id responseObject) {
         NSLog(@"success");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
+    } failure:^(NSError *error) {
+        NSLog(error);
     }];
+//    [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+////        NSLog(@"%@", [(ABContact *)[mappingResult firstObject] emails]);
+//        [(ABContact *)[mappingResult firstObject] createRHPerson];
+//        
+//        NSLog(@"success");
+//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//        NSLog(@"failure");
+//    }];
 }
 
 @end
