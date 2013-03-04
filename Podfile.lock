@@ -28,7 +28,7 @@ PODS:
 
 DEPENDENCIES:
 - ACSimpleKeychain
-- AFAmazonS3Client (from `git@github.com:zamboni/AFAmazonS3Client.git')
+- AFAmazonS3Client (from `git@github.com:AFNetworking/AFAmazonS3Client.git')
 - Kiwi
 - MagicalRecord (= 2.0.8)
 - RHAddressBook
@@ -37,7 +37,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   AFAmazonS3Client:
-    :git: git@github.com:zamboni/AFAmazonS3Client.git
+    :git: git@github.com:AFNetworking/AFAmazonS3Client.git
 
 SPEC CHECKSUMS:
   ACSimpleKeychain: 2b61422885d2c482e841be1573f9dfcc0d65b839

@@ -11,6 +11,7 @@
 #import "User+Implementation.h"
 #import "ABContact+Implementation.m"
 #import <RHAddressBook/AddressBook.h>
+#import <AFAmazonS3Client/AFAmazonS3Client.h>
 
 @interface ProfileController ()
 
@@ -75,12 +76,38 @@
     RHAddressBook *ab = [[RHAddressBook alloc] init];
     RHPerson *rh_person = [ab personForABRecordID:ABRecordGetRecordID(person)];
     ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    UIImage *img = [rh_person thumbnail];
+    NSData *imgData = [[NSData alloc] initWithData:UIImagePNGRepresentation(img)];
+    NSString *imgPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.png", currentUser.rid]];
+//    imgPath = [imgPath stringByAppendingFormat:@"/%@.png", currentUser.rid ];
     NSString *accessToken = [User getAccessToken];
-    [[RKObjectManager sharedManager] postObject:show_person path:@"contact" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
+    
+    
+    UIImage *resizedImage = img;
+    NSData *jpegData = UIImageJPEGRepresentation(resizedImage, 0.5);
+    NSString *key = [NSString stringWithFormat:@"%@.png", currentUser.rid];
+    NSString *tmpFile = [NSString pathWithComponents:@[NSTemporaryDirectory(), key]];
+    [jpegData writeToFile:tmpFile  atomically:NO];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Upload to S3
+        NSLog(@"Uploading to S3.....");
+        AFAmazonS3Client *s3Client = [[AFAmazonS3Client alloc] initWithAccessKeyID:@"AKIAJZQTI3YJ5F2JPG6Q" secret:@"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"];
+        
+        NSString *destPath = [NSString stringWithFormat:@"http://loopapp.s3.amazonaws.com"];
+        s3Client.bucket = @"loopapp";
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:key, @"key", nil];
+        [s3Client postObjectWithFile:tmpFile destinationPath:destPath parameters:params progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            
+        } success:^(id responseObject) {
+            NSLog(@"success");
+        } failure:^(NSError *error) {
+            NSLog(@"fail");
+        }];
+        
+        
+    });
     
     currentUser.contactId = contact_id;
     [context MR_saveNestedContexts];
