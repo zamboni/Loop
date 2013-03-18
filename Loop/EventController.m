@@ -155,24 +155,32 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    User *selectedUser = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    User *selectedUser = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//
+//    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
+//    User *currentUser = [User MR_findFirstInContext:context];
+//    NSString *accessToken = [User getAccessToken];
+//    NSString *path = [NSString stringWithFormat:@"contact/%@", selectedUser.rid];
+//
+//
+//    [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+////        NSLog(@"%@", [(ABContact *)[mappingResult firstObject] emails]);
+//        [(ABContact *)[mappingResult firstObject] createRHPerson];
+//        
+//        NSLog(@"success");
+//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//        NSLog(@"failure");
+//    }];
+//}
 
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    User *currentUser = [User MR_findFirstInContext:context];
-    NSString *accessToken = [User getAccessToken];
-    NSString *path = [NSString stringWithFormat:@"contact/%@", selectedUser.rid];
 
-
-    [[RKObjectManager sharedManager] getObject:selectedUser path:path parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        NSLog(@"%@", [(ABContact *)[mappingResult firstObject] emails]);
-        [(ABContact *)[mappingResult firstObject] createRHPerson];
-        
-        NSLog(@"success");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-    }];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {    
+    NSIndexPath *selectedRowIndex = [self.contactsTable indexPathForSelectedRow];
+    ContactController *contactController = [segue destinationViewController];
+    User *user =  [[self fetchedResultsController] objectAtIndexPath:selectedRowIndex];
+    contactController.user = user;
 }
 
 @end

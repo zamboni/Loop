@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dYR-PI-iBC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Registration Controller-->
@@ -299,14 +299,17 @@
                                     <constraint firstAttribute="height" constant="400" id="78b-Mi-x5J"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="EventCell" id="3uj-Df-hBa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" id="3uj-Df-hBa">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="UMN-6u-Uv8" kind="push" id="V6r-b6-c0I"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -336,10 +339,75 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contactsTable" destination="TFW-NT-j9M" id="dw6-1v-Rxn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6b-Tk-FW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2616" y="473"/>
+        </scene>
+        <!--Contact Controller-->
+        <scene sceneID="6ji-2E-bjy">
+            <objects>
+                <viewController id="UMN-6u-Uv8" customClass="ContactController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oHM-jH-bff">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76O-md-wDR">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="L79-6e-qa1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Organization" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1B-40-mdE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="EM4-cP-g3C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Job Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-Or-V1c">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Z8z-gV-rKV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="76O-md-wDR" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7h2-7h-ZVC"/>
+                            <constraint firstItem="76O-md-wDR" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Fbg-0S-0io"/>
+                            <constraint firstItem="GjY-Or-V1c" firstAttribute="leading" secondItem="d1B-40-mdE" secondAttribute="leading" type="default" id="NXB-Ag-BUI"/>
+                            <constraint firstItem="GjY-Or-V1c" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="59" id="c1c-tq-Ob8"/>
+                            <constraint firstAttribute="trailing" secondItem="d1B-40-mdE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dbL-fg-Hps"/>
+                            <constraint firstItem="d1B-40-mdE" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="39" id="g5y-YV-jXy"/>
+                            <constraint firstAttribute="trailing" secondItem="GjY-Or-V1c" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="s1u-f2-uyp"/>
+                            <constraint firstItem="d1B-40-mdE" firstAttribute="leading" secondItem="76O-md-wDR" secondAttribute="leading" type="default" id="zah-Fr-M1R"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lgS-o5-z0S">
+                        <barButtonItem key="rightBarButtonItem" title="View Contact" id="cvZ-CC-kpF">
+                            <connections>
+                                <action selector="showPersonViewController:" destination="UMN-6u-Uv8" id="PYo-cI-3sc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="jobTitleLabel" destination="GjY-Or-V1c" id="ybS-rB-jso"/>
+                        <outlet property="nameLabel" destination="76O-md-wDR" id="aOV-To-sAw"/>
+                        <outlet property="organizationLabel" destination="d1B-40-mdE" id="J3c-Jt-iak"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcx-sD-pMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3059" y="473"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="QyV-v9-RsM">
@@ -405,6 +473,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ugb-tX-izB"/>
+        <segue reference="96t-hH-PHY"/>
     </inferredMetricsTieBreakers>
 </document>

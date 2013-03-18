@@ -2,7 +2,7 @@
 //  User.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 2/20/13.
+//  Created by Fletcher Fowler on 3/13/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic rid;
-@dynamic ab_person;
+@dynamic ab_contact;
 @dynamic checkins;
 
 @end

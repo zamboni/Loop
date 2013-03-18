@@ -9,6 +9,8 @@
 #import "User.h"
 #import <RestKit/RestKit.h>
 #import "ACSimpleKeychain.h"
+#import <AddressBook/AddressBook.h>
+#import "RHPerson.h"
 
 @interface User (Implementation)
 
@@ -16,5 +18,7 @@
 + (void)setAccessTokenWithDictionary:(NSDictionary *)userDictionary;
 + (NSString *)getAccessToken;
 + (void)logout;
+- (ABContact *)createOrUpdateContact:(ABRecordRef)person;
+- (void)uploadPhoto:(RHPerson *)person;
 
 @end

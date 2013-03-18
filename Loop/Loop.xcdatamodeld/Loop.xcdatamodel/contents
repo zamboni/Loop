@@ -36,7 +36,7 @@
         <relationship name="phones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABPhone" inverseName="contact" inverseEntity="ABPhone" syncable="YES"/>
         <relationship name="socials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABSocial" inverseName="contact" inverseEntity="ABSocial" syncable="YES"/>
         <relationship name="urls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABUrl" inverseName="contact" inverseEntity="ABUrl" syncable="YES"/>
-        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ab_person" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ab_contact" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ABDate" representedClassName="ABDate" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -98,7 +98,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ab_person" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="user" inverseEntity="ABContact" syncable="YES"/>
+        <relationship name="ab_contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="user" inverseEntity="ABContact" syncable="YES"/>
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="user" inverseEntity="Checkin" syncable="YES"/>
         <userInfo/>
     </entity>

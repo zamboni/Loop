@@ -18,6 +18,15 @@
 
 @implementation ABContact (Implementation)
 
+- (NSString *)fullName{
+    NSString *fullName = self.firstName;
+    if (self.middleName)
+        fullName = [fullName stringByAppendingString:[NSString stringWithFormat:@" %@", self.middleName]];
+    if (self.lastName)
+        fullName = [fullName stringByAppendingString:[NSString stringWithFormat:@" %@", self.lastName]];
+    return fullName;
+}
+
 + (ABContact *)createPersonFromRHPerson:(RHPerson *)rhPerson inContext:(NSManagedObjectContext *)context
 {
     ABContact *person = [ABContact MR_createInContext:context];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import "ContactController.h"
 
 #import "Event.h"
 #import "User.h"

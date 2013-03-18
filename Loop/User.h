@@ -2,7 +2,7 @@
 //  User.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 2/20/13.
+//  Created by Fletcher Fowler on 3/13/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * rid;
-@property (nonatomic, retain) ABContact *ab_person;
+@property (nonatomic, retain) ABContact *ab_contact;
 @property (nonatomic, retain) NSSet *checkins;
 @end
 

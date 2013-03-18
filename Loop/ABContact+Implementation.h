@@ -12,6 +12,7 @@
 
 @interface ABContact (Implementation)
 
+- (NSString *)fullName;
 + (ABContact *)createPersonFromRHPerson:(RHPerson *)rhPerson inContext:(NSManagedObjectContext *)context;
 - (RHPerson *)createRHPerson;
 
