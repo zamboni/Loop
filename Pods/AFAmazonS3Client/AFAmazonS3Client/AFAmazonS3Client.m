@@ -305,10 +305,15 @@ static NSData * AFHMACSHA1FromStringWithKey(NSString *string, NSString *key){
         NSMutableURLRequest *request = [self multipartFormRequestWithMethod:method path:destinationPath parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             
             NSString *policyDocument = [self policyDocumentForFilename:[filePath lastPathComponent] MIMEtype:[response MIMEType] parameters:parameters];
-//            [formData appendPartWithFormData:[[filePath lastPathComponent] dataUsingEncoding:NSUTF8StringEncoding] name:@"key"];
+            
             [formData appendPartWithFormData:[self.accessKey dataUsingEncoding:NSUTF8StringEncoding] name:@"AWSAccessKeyId"];
             [formData appendPartWithFormData:[policyDocument dataUsingEncoding:NSUTF8StringEncoding] name:@"Policy"];
             [formData appendPartWithFormData:[AFBase64EncodedStringFromData(AFHMACSHA1FromStringWithKey(policyDocument, self.secret)) dataUsingEncoding:NSUTF8StringEncoding] name:@"Signature"];
+            
+            if (![[parameters allKeys] containsObject:@"key"]) {
+                [formData appendPartWithFormData:[[filePath lastPathComponent] dataUsingEncoding:NSUTF8StringEncoding] name:@"key"];
+            }
+            
             [formData appendPartWithFileData:data name:@"file" fileName:[filePath lastPathComponent] mimeType:[response MIMEType]];
             
         }];
