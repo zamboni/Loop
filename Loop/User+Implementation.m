@@ -62,16 +62,11 @@
 - (void)uploadPhoto:(RHPerson *)person
 {
     UIImage *img = [person thumbnail];
-    NSData *imgData = [[NSData alloc] initWithData:UIImagePNGRepresentation(img)];
-    NSString *imgPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.png", self.rid]];
-    //    imgPath = [imgPath stringByAppendingFormat:@"/%@.png", currentUser.rid ];
-    NSString *accessToken = [User getAccessToken];
-
 
     UIImage *resizedImage = img;
     NSData *jpegData = UIImageJPEGRepresentation(resizedImage, 0.5);
-    NSString *key = [NSString stringWithFormat:@"%@.png", self.rid];
-    NSString *tmpFile = [NSString pathWithComponents:@[NSTemporaryDirectory(), key]];
+    NSString *key = [NSString stringWithFormat:@"/thumbs/%@.png", self.rid];
+    NSString *tmpFile = [NSString pathWithComponents:@[NSTemporaryDirectory(), [NSString stringWithFormat:@"%@.png", self.rid]]];
     [jpegData writeToFile:tmpFile  atomically:NO];
 
     dispatch_async(dispatch_get_main_queue(), ^{
