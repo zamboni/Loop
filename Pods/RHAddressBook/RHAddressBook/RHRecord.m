@@ -40,6 +40,12 @@
 -(id)initWithAddressBook:(RHAddressBook*)addressBook recordRef:(ABRecordRef)recordRef{
     self = [super init];
     if (self) {
+        
+        if (!recordRef){
+            arc_release_nil(self);
+            return nil;
+        }
+
         _addressBook = arc_retain(addressBook);
         _recordRef = CFRetain(recordRef);
 
@@ -54,10 +60,10 @@
 -(void)performRecordAction:(void (^)(ABRecordRef recordRef))actionBlock waitUntilDone:(BOOL)wait{
     //if we have an address book perform it on that thread
     if (_addressBook){
-        CFRetain(_recordRef);
+        if (_recordRef) CFRetain(_recordRef);
         [_addressBook performAddressBookAction:^(ABAddressBookRef addressBookRef) {
             actionBlock(_recordRef);
-            CFRelease(_recordRef);
+            if (_recordRef) CFRelease(_recordRef);
         } waitUntilDone:wait];
     } else {
         //otherwise, a user created object... just use current thread.
@@ -86,7 +92,7 @@
 
 -(ABRecordType)recordType{
 
-    __block ABRecordType recordType;
+    __block ABRecordType recordType = -1;
     
     [self performRecordAction:^(ABRecordRef recordRef) {
         recordType = ABRecordGetRecordType(recordRef);
@@ -139,7 +145,7 @@
     } waitUntilDone:YES];
 
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -156,7 +162,7 @@
     } waitUntilDone:YES];
 
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -216,6 +222,20 @@
 
 
 #pragma mark - cleanup
+
+//unfortunately ensuring dealloc occurs on our _addressBook thread is not available under ARC.
+#if ARC_IS_NOT_ENABLED
+-(oneway void)release{
+    //ensure dealloc occurs on our _addressBook thread
+    //we do this to guarantee that we are removed from the weak cache before someone else ends up with us.
+    
+    if (_addressBook.addressBookThread && ![[NSThread currentThread] isEqual:_addressBook.addressBookThread]) {
+        [self performSelector:_cmd onThread:_addressBook.addressBookThread withObject:nil waitUntilDone:NO];
+    } else {
+        [super release];
+    }
+}
+#endif
 
 -(void)dealloc {
     

@@ -30,9 +30,11 @@
 
 #import "RHAddressBookSharedServices.h"
 
+#if RH_AB_INCLUDE_GEOCODING
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
 #import "RHAddressBookGeoResult.h"
 #endif //end iOS5+
+#endif //end Geocoding
 
 #import "NSThread+RHBlockAdditions.h"
 #import "RHAddressBook.h"
@@ -46,7 +48,7 @@
 //private
 @interface RHAddressBookSharedServices ()
 
-
+#if RH_AB_INCLUDE_GEOCODING
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
 
 //cache
@@ -62,6 +64,7 @@
 -(void)processTimerFire;
 
 #endif //end iOS5+
+#endif //end Geocoding
 
 
 //addressbook notifications
@@ -77,8 +80,10 @@ void RHAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
     ABAddressBookRef _addressBook;
     NSThread *_addressBookThread; //perform all address book operations on this thread. (AB is not thread safe. :()
     
+#if RH_AB_INCLUDE_GEOCODING
     NSMutableArray *_cache; //array of RHAddressBookGeoResult objects
     NSTimer *_timer;
+#endif //end Geocoding
 
 }
 
@@ -142,12 +147,14 @@ static __strong RHAddressBookSharedServices *_sharedInstance = nil;
 #endif //end iOS6+
         
         
+#if RH_AB_INCLUDE_GEOCODING
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
         if ([RHAddressBookSharedServices isGeocodingSupported]){
             [self loadCache];
             [self rebuildCache];
         }
 #endif //end iOS5+
+#endif //end Geocoding
 
         [self registerForAddressBookChanges];
 
@@ -169,12 +176,15 @@ static __strong RHAddressBookSharedServices *_sharedInstance = nil;
     [_addressBookThread cancel];
     arc_release_nil(_addressBookThread);
 
+#if RH_AB_INCLUDE_GEOCODING
     arc_release_nil(_cache);
-
     arc_release_nil(_timer);
+#endif //end Geocoding
+    
     arc_super_dealloc();
 }
 
+#if RH_AB_INCLUDE_GEOCODING
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
 
 #pragma mark - cache management
@@ -214,40 +224,49 @@ static __strong RHAddressBookSharedServices *_sharedInstance = nil;
     ABAddressBookRevert(_addressBook);
     
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(_addressBook);
-    for (CFIndex i = 0; i < CFArrayGetCount(people); i++) {
-        
-        ABRecordRef person = CFArrayGetValueAtIndex(people, i);
-        ABRecordID personID = ABRecordGetRecordID(person);
-        
-        ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
-        for (CFIndex i = 0; i < ABMultiValueGetCount(addresses); i++) {
+
+    if (people){
+        for (CFIndex i = 0; i < CFArrayGetCount(people); i++) {
             
-            ABPropertyID addressID = ABMultiValueGetIdentifierAtIndex(addresses, i);
-            CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, i);
-            //======================================================================
+            ABRecordRef person = CFArrayGetValueAtIndex(people, i);
 
-            //see if we have a valid, old entry
-            RHAddressBookGeoResult* old = [self cacheEntryForPersonID:personID addressID:addressID];
-
-            if (old && [old isValid]){
-                //yes
-                [newCache addObject:old]; // just add it and be done.
-            } else {
-                // not valid, create a new entry
-                RHAddressBookGeoResult* new = [[RHAddressBookGeoResult alloc] initWithPersonID:personID addressID:addressID];
-                [newCache addObject:new];
-                arc_release(new);
-            }
+            if (person){
+                
+                ABRecordID personID = ABRecordGetRecordID(person);
+                ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+                
+                if (addresses){
+                    for (CFIndex i = 0; i < ABMultiValueGetCount(addresses); i++) {
                         
-            //======================================================================
-            if (addressDict) CFRelease(addressDict);
+                        ABPropertyID addressID = ABMultiValueGetIdentifierAtIndex(addresses, i);
+                        CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, i);
+                        //======================================================================
+                        
+                        //see if we have a valid, old entry
+                        RHAddressBookGeoResult* old = [self cacheEntryForPersonID:personID addressID:addressID];
+                        
+                        if (old && [old isValid]){
+                            //yes
+                            [newCache addObject:old]; // just add it and be done.
+                        } else {
+                            // not valid, create a new entry
+                            RHAddressBookGeoResult* new = [[RHAddressBookGeoResult alloc] initWithPersonID:personID addressID:addressID];
+                            [newCache addObject:new];
+                            arc_release(new);
+                        }
+                        
+                        //======================================================================
+                        if (addressDict) CFRelease(addressDict);
+                    }
+                    
+                    CFRelease(addresses);
+                } //addresses
+            } //person
         }
         
-        if (addresses) CFRelease(addresses);
-    }
-    
-    CFRelease(people);
-    
+        CFRelease(people);
+    } //people
+
     //swap old cache with the new
     arc_release(_cache);
     _cache = arc_retain(newCache);
@@ -425,7 +444,7 @@ NSString static * RHAddressBookSharedServicesPreemptiveGeocodingEnabled = @"RHAd
 
         if ([_cache count] == 0) return 1.0f;
         
-        return 1.0f - (incomplete / [_cache count]);
+        return 1.0f - ((float)incomplete / (float)[_cache count]);
     }
 #endif //end iOS5+
 
@@ -440,6 +459,9 @@ NSString static * RHAddressBookSharedServicesPreemptiveGeocodingEnabled = @"RHAd
 #endif //end iOS5+
     return NO; //if not compiled with Geocoding, return false, always
 }
+
+#endif //end Geocoding
+
 
 #pragma mark - addressbook changes
 
@@ -468,6 +490,8 @@ NSString static * RHAddressBookSharedServicesPreemptiveGeocodingEnabled = @"RHAd
 }
 
 void RHAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictionaryRef info, void *context ){
+
+#if RH_AB_INCLUDE_GEOCODING
     RHLog(@"AddressBook changed externally. Rebuilding RHABGeoCache");
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
@@ -475,7 +499,8 @@ void RHAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
         [(__bridge RHAddressBookSharedServices*)context rebuildCache]; //use the context as a pointer to self
     }
 #endif //end iOS5+
-    
+#endif //end Geocoding
+
     //post external change notification for public clients, on the main thread
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:RHAddressBookExternalChangeNotification object:nil];

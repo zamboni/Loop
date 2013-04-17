@@ -37,7 +37,11 @@
 #import "RHGroup.h"
 #import "RHPerson.h"
 #import "RHAddressBookSharedServices.h"
+
+#if RH_AB_INCLUDE_GEOCODING
 #import "RHAddressBookGeoResult.h"
+#endif //end Geocoding
+
 #import "NSThread+RHBlockAdditions.h"
 #import "RHAddressBookThreadMain.h"
 #import "RHAddressBook_private.h"
@@ -46,11 +50,13 @@
 #define USE_PERSON_ID_MAP 1
 
 NSString * const RHAddressBookExternalChangeNotification = @"RHAddressBookExternalChangeNotification";
+
+#if RH_AB_INCLUDE_GEOCODING
 NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPersonAddressGeocodeCompleted";
+#endif //end Geocoding
 
 //private
 @interface RHAddressBook ()
-@property (readonly, retain) NSThread *addressBookThread; // we could possibly make this public... any use?
 -(NSArray*)sourcesForABRecordRefs:(CFArrayRef)sourceRefs; //bulk performer
 -(NSArray*)groupsForABRecordRefs:(CFArrayRef)groupRefs; //bulk performer
 -(NSArray*)peopleForABRecordRefs:(CFArrayRef)peopleRefs; //bulk performer
@@ -237,7 +243,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 
             ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
                 completion(granted, (__bridge NSError*)error);
-                if (error)CFRelease(error);
+                if (error) CFRelease(error);
                 Block_release((__bridge void *)completion);
             });
          
@@ -259,10 +265,10 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 #pragma mark - threads
 
 -(void)performAddressBookAction:(void (^)(ABAddressBookRef addressBookRef))actionBlock waitUntilDone:(BOOL)wait{
-    CFRetain(_addressBookRef);
+   if (_addressBookRef) CFRetain(_addressBookRef);
     [_addressBookThread rh_performBlock:^{
         actionBlock(_addressBookRef);
-        CFRelease(_addressBookRef);
+        if (_addressBookRef) CFRelease(_addressBookRef);
     } waitUntilDone:wait];
 }
 
@@ -370,6 +376,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 }
 
 -(NSArray*)sourcesForABRecordRefs:(CFArrayRef)sourceRefs{
+    if (!sourceRefs) return nil;
     CFRetain(sourceRefs);
     NSMutableArray *sources = [NSMutableArray array];
     
@@ -512,6 +519,8 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 }
 
 -(NSArray*)groupsForABRecordRefs:(CFArrayRef)groupRefs{
+    if (!groupRefs) return nil;
+
     NSMutableArray *groups = [NSMutableArray array];
     
     [_addressBookThread rh_performBlock:^{
@@ -565,8 +574,8 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     [_addressBookThread rh_performBlock:^{
         
         CFArrayRef peopleRefs = ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
+        
         if (peopleRefs){
-
             CFMutableArrayRef mutablePeopleRefs = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(peopleRefs), peopleRefs);
             if (mutablePeopleRefs){
 
@@ -697,6 +706,8 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 }
 
 -(NSArray*)peopleForABRecordRefs:(CFArrayRef)peopleRefs{
+    if (!peopleRefs) return nil;
+
     NSMutableArray *people = [NSMutableArray array];
 
     [_addressBookThread rh_performBlock:^{
@@ -765,7 +776,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     }];
     
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -815,7 +826,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     }];
     
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -837,33 +848,41 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     [_addressBookThread rh_performBlock:^{
 
         CFArrayRef peopleRefs = ABPersonCreatePeopleInSourceWithVCardRepresentation(source.recordRef, (__bridge CFDataRef)representation);
-        for (CFIndex i = 0; i < CFArrayGetCount(peopleRefs); i++) {
-            ABRecordRef personRef = CFArrayGetValueAtIndex(peopleRefs, i);
-            if (personRef){
-                BOOL success = ABAddressBookAddRecord(_addressBookRef, personRef, NULL);
 
-                if (success){
-                    RHPerson *person = arc_autorelease([[RHPerson alloc] initWithAddressBook:self recordRef:personRef]);
-                    if (person)[newPeople addObject:person];
+        if (peopleRefs){
+            for (CFIndex i = 0; i < CFArrayGetCount(peopleRefs); i++) {
+                ABRecordRef personRef = CFArrayGetValueAtIndex(peopleRefs, i);
+                if (personRef){
+                    BOOL success = ABAddressBookAddRecord(_addressBookRef, personRef, NULL);
+
+                    if (success){
+                        RHPerson *person = arc_autorelease([[RHPerson alloc] initWithAddressBook:self recordRef:personRef]);
+                        if (person)[newPeople addObject:person];
+                    }
                 }
             }
+            CFRelease(peopleRefs);
         }
-        if (peopleRefs) CFRelease(peopleRefs);
     }];
-    return newPeople;
+    return [NSArray arrayWithArray:newPeople];
 }
 
 -(NSData*)vCardRepresentationForPeople:(NSArray*)people{
     if (!ABPersonCreateVCardRepresentationWithPeople) return nil; //availability check
 
+    NSData *result = nil;
+    
     CFMutableArrayRef refs = CFArrayCreateMutable(NULL, 0, NULL);
-    
-    for (RHPerson*person in people) {
-        CFArrayAppendValue(refs, person.recordRef);
+    if (refs){
+
+        for (RHPerson *person in people) {
+            CFArrayAppendValue(refs, person.recordRef);
+        }
+        
+        result = (__bridge_transfer NSData*)ABPersonCreateVCardRepresentationWithPeople(refs);
+        
+        CFRelease(refs);
     }
-    
-    NSData *result = (__bridge_transfer NSData*)ABPersonCreateVCardRepresentationWithPeople(refs);
-    CFRelease(refs);
     return arc_autorelease(result);
 }
 
@@ -897,7 +916,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     }];
     
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -929,7 +948,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     }];
 
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
     return result;
@@ -962,7 +981,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
         }
     }];
     if (!result){
-        if (error) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
+        if (error && cfError) *error = (NSError*)ARCBridgingRelease(CFRetain(cfError));
         if (cfError) CFRelease(cfError);
     }
 
@@ -1041,7 +1060,7 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
     return [RHAddressBook compositeNameFormat] == kABPersonCompositeNameFormatLastNameFirst;
 }
 
-
+#if RH_AB_INCLUDE_GEOCODING
 +(BOOL)isGeocodingSupported{
     return [RHAddressBookSharedServices isGeocodingSupported];
 }
@@ -1109,6 +1128,8 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 }
 
 #endif //end iOS5+
+
+#endif //end Geocoding
 
 
 #pragma mark - private
@@ -1178,19 +1199,19 @@ NSString * const RHAddressBookPersonAddressGeocodeCompleted = @"RHAddressBookPer
 
         //if person, remove from _people
         if ([_safeRecord isKindOfClass:[RHPerson class]]){
-            [_people removeObject:_safeRecord];
+            CFSetRemoveValue((CFMutableSetRef)_people, (__bridge const void *)(_safeRecord));
             return;
         }
 
         //if group, remove from _groups
         if ([_safeRecord isKindOfClass:[RHGroup class]]){
-            [_groups removeObject:_safeRecord];
+            CFSetRemoveValue((CFMutableSetRef)_groups, (__bridge const void *)(_safeRecord));
             return;
         }
 
         //if source, remove from _sources
         if ([_safeRecord isKindOfClass:[RHSource class]]){
-            [_sources removeObject:_safeRecord];
+            CFSetRemoveValue((CFMutableSetRef)_sources, (__bridge const void *)(_safeRecord));
             return;
         }
 

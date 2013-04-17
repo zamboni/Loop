@@ -135,7 +135,7 @@
             }
         }
         
-         CFRelease(memberRefs);
+        CFRelease(memberRefs);
     }
     
     return [NSArray arrayWithArray:members];
@@ -161,6 +161,7 @@
                 RHLog(@"Failed to find member");
             }
         }
+        
         CFRelease(memberRefs);
     }
     
@@ -185,6 +186,7 @@
     return [_addressBook vCardRepresentationForPeople:[self members]];
 }
 
+#if RH_AB_INCLUDE_GEOCODING
 -(NSArray*)membersWithinDistance:(double)distance ofLocation:(CLLocation*)location{
 
     NSArray *allWithinDistance = [_addressBook peopleWithinDistance:distance ofLocation:location];
@@ -196,6 +198,7 @@
     
     return [allWithinDistance objectsAtIndexes:inRangeMemberIndexes];
 }
+#endif // Geocoding
 
 #endif //end iOS5+
 

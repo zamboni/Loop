@@ -8,7 +8,7 @@ PODS:
 - ISO8601DateFormatter (0.6)
 - Kiwi (2.0.6)
 - MagicalRecord (2.0.8)
-- RHAddressBook (1.0.1)
+- RHAddressBook (1.0.2)
 - RestKit (0.20.0):
   - RestKit/Core (= 0.20.0)
 - RestKit/Core (0.20.0):
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
   MagicalRecord: daa15d6c83bd7d30e074c8923e53c64248ae6930
-  RHAddressBook: b77ffaeace93ce2b416f706a6d527a8d9d1ef83b
+  RHAddressBook: 64f78a4058e0a7849275c970bf19fe195edf94d0
   RestKit: 580771664a14eaaa40bf53cf83584f12fc141930
   RestKit/Core: 580771664a14eaaa40bf53cf83584f12fc141930
   RestKit/CoreData: 580771664a14eaaa40bf53cf83584f12fc141930

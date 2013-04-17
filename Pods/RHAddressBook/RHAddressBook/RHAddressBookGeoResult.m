@@ -28,9 +28,10 @@
 //  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
-
 #import "RHAddressBookGeoResult.h"
+
+#if RH_AB_INCLUDE_GEOCODING
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
 
 #import <CommonCrypto/CommonDigest.h>   //for hashing functions
 #import <CoreLocation/CoreLocation.h>   //for geo
@@ -115,9 +116,32 @@
 -(NSDictionary*)associatedAddressDictionary{
 
     NSDictionary *result = nil;
+    ABAddressBookRef addressBookRef = NULL;
     
-    ABAddressBookRef addressBook = ABAddressBookCreate();
-    ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, self.personID);  
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
+    if (ABAddressBookCreateWithOptions != NULL){
+        
+        CFErrorRef errorRef = NULL;
+        addressBookRef = ABAddressBookCreateWithOptions(nil, &errorRef);
+        
+        if (!addressBookRef){
+            //bail
+            RHErrorLog(@"Error: Failed to get -[RHAddressBookGeoResult associatedAddressDictionary]. Underlying ABAddressBookCreateWithOptions() failed with error: %@", errorRef);
+            if (errorRef) CFRelease(errorRef);
+            
+            return nil;
+        }
+
+    } else {
+#endif //end iOS6+
+        
+        addressBookRef = ABAddressBookCreate();
+        
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
+    }
+#endif //end iOS6+
+    
+    ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBookRef, self.personID);
     if (person){
         ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
         if (ABMultiValueGetCount(addresses) > 0){
@@ -138,7 +162,7 @@
         //cleanup
         if (addresses) CFRelease(addresses);
     }
-    if (addressBook) CFRelease(addressBook);
+    if (addressBookRef) CFRelease(addressBookRef);
 
     return arc_autorelease(result);
 }
@@ -239,3 +263,4 @@
 @end
 
 #endif //end iOS5+
+#endif //end Geocoding
