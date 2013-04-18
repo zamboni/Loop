@@ -2,7 +2,7 @@
 //  ABContact.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 2/20/13.
+//  Created by Fletcher Fowler on 4/17/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -37,6 +37,7 @@
 @dynamic organization;
 @dynamic prefix;
 @dynamic suffix;
+@dynamic thumbnail;
 @dynamic addresses;
 @dynamic dates;
 @dynamic emails;

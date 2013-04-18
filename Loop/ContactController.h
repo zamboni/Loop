@@ -17,6 +17,7 @@
 @property IBOutlet UILabel *nameLabel;
 @property IBOutlet UILabel *organizationLabel;
 @property IBOutlet UILabel *jobTitleLabel;
+@property IBOutlet UIImageView *thumbnailImageView;
 
 
 -(IBAction)showPersonViewController:(id)sender;

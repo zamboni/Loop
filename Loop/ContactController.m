@@ -34,6 +34,7 @@
     self.nameLabel.text = contact.fullName;
     self.organizationLabel.text = contact.organization;
     self.jobTitleLabel.text = contact.jobTitle;
+    self.thumbnailImageView.image = contact.thumbnail;
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.

@@ -356,9 +356,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76O-md-wDR">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="202" id="L79-6e-qa1"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -379,17 +376,26 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-OI-5kZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2RA-eC-b0I"/>
+                                    <constraint firstAttribute="width" constant="70" id="NiP-ji-unI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="76O-md-wDR" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7h2-7h-ZVC"/>
                             <constraint firstItem="76O-md-wDR" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Fbg-0S-0io"/>
-                            <constraint firstItem="GjY-Or-V1c" firstAttribute="leading" secondItem="d1B-40-mdE" secondAttribute="leading" type="default" id="NXB-Ag-BUI"/>
-                            <constraint firstItem="GjY-Or-V1c" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="59" id="c1c-tq-Ob8"/>
+                            <constraint firstItem="TOw-OI-5kZ" firstAttribute="leading" secondItem="oHM-jH-bff" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JIL-iE-xfs"/>
+                            <constraint firstItem="TOw-OI-5kZ" firstAttribute="bottom" secondItem="GjY-Or-V1c" secondAttribute="bottom" type="default" id="MXt-VN-rKD"/>
+                            <constraint firstItem="d1B-40-mdE" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ti9-wI-6nt"/>
                             <constraint firstAttribute="trailing" secondItem="d1B-40-mdE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dbL-fg-Hps"/>
                             <constraint firstItem="d1B-40-mdE" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="39" id="g5y-YV-jXy"/>
+                            <constraint firstItem="TOw-OI-5kZ" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="20" symbolic="YES" type="default" id="hkb-2J-48l"/>
+                            <constraint firstItem="76O-md-wDR" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jhx-t5-CS8"/>
+                            <constraint firstItem="GjY-Or-V1c" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="m36-EG-92T"/>
                             <constraint firstAttribute="trailing" secondItem="GjY-Or-V1c" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="s1u-f2-uyp"/>
-                            <constraint firstItem="d1B-40-mdE" firstAttribute="leading" secondItem="76O-md-wDR" secondAttribute="leading" type="default" id="zah-Fr-M1R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lgS-o5-z0S">
@@ -403,6 +409,7 @@
                         <outlet property="jobTitleLabel" destination="GjY-Or-V1c" id="ybS-rB-jso"/>
                         <outlet property="nameLabel" destination="76O-md-wDR" id="aOV-To-sAw"/>
                         <outlet property="organizationLabel" destination="d1B-40-mdE" id="J3c-Jt-iak"/>
+                        <outlet property="thumbnailImageView" destination="TOw-OI-5kZ" id="iZX-Du-n5l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcx-sD-pMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -467,6 +474,60 @@
             <point key="canvasLocation" x="1599" y="473"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ContactController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactController.h"/>
+            <relationships>
+                <relationship kind="action" name="showPersonViewController:"/>
+                <relationship kind="outlet" name="jobTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="organizationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="EventController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
+            <relationships>
+                <relationship kind="action" name="checkIn:"/>
+                <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="contactsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="eventTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EventsController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsController.h"/>
+            <relationships>
+                <relationship kind="action" name="refresh:"/>
+            </relationships>
+        </class>
+        <class className="LoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ProfileController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="newContactForProfile:"/>
+                <relationship kind="action" name="selectContactForProfile:"/>
+                <relationship kind="action" name="showContactForProfile:"/>
+            </relationships>
+        </class>
+        <class className="RegistrationController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3200506216E1EF4B00C17DC6 /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3200506116E1EF4B00C17DC6 /* ABContact.m */; };
+		32033CB9171F9E82005545DE /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 32033CB8171F9E82005545DE /* ABContact.m */; };
 		321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */; };
 		324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */; };
 		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
@@ -75,8 +75,8 @@
 
 /* Begin PBXFileReference section */
 		24476B84AFB542219CE9C622 /* libPods-LoopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3200506016E1EF4B00C17DC6 /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
-		3200506116E1EF4B00C17DC6 /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
+		32033CB7171F9E82005545DE /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
+		32033CB8171F9E82005545DE /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
 		321A09BD16C5AE21004EB6B8 /* ABContact+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABContact+Implementation.h"; sourceTree = "<group>"; };
 		321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABContact+Implementation.m"; sourceTree = "<group>"; };
 		324C4202169BBEE900F94927 /* RKTestFactory+Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKTestFactory+Loop.h"; sourceTree = "<group>"; };
@@ -347,12 +347,12 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				32033CB7171F9E82005545DE /* ABContact.h */,
+				32033CB8171F9E82005545DE /* ABContact.m */,
 				32C1F8F616F1559A003C9DD4 /* User.h */,
 				32C1F8F716F1559A003C9DD4 /* User.m */,
 				3289F92716D5ABF300F32266 /* ABSocial.h */,
 				3289F92816D5ABF300F32266 /* ABSocial.m */,
-				3200506016E1EF4B00C17DC6 /* ABContact.h */,
-				3200506116E1EF4B00C17DC6 /* ABContact.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
 				3289F92416D5AA4B00F32266 /* ABInstantMessage.h */,
 				3289F92516D5AA4B00F32266 /* ABInstantMessage.m */,
@@ -546,9 +546,9 @@
 				3289F92016D5A40E00F32266 /* ABName.m in Sources */,
 				3289F92616D5AA4C00F32266 /* ABInstantMessage.m in Sources */,
 				3289F92916D5ABF300F32266 /* ABSocial.m in Sources */,
-				3200506216E1EF4B00C17DC6 /* ABContact.m in Sources */,
 				327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */,
 				32C1F8F816F1559A003C9DD4 /* User.m in Sources */,
+				32033CB9171F9E82005545DE /* ABContact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

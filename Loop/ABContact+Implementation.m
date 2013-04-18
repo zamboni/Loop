@@ -44,6 +44,7 @@
     person.note                 = rhPerson.note;
     person.created              = rhPerson.created;
     person.modified             = rhPerson.modified;
+    person.thumbnail            = rhPerson.thumbnail;
 
     for (int index = 0; index < [rhPerson.addresses count] ; index++) {
         ABAddress *address      = [ABAddress MR_createInContext:context];
