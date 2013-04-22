@@ -15,6 +15,8 @@
 #import "ABPhone.h"
 #import "ABSocial.h"
 #import "ABUrl.h"
+#import "AFAmazonS3Client.h"
+
 
 @implementation ABContact (Implementation)
 
@@ -27,9 +29,13 @@
     return fullName;
 }
 
-+ (ABContact *)createPersonFromRHPerson:(RHPerson *)rhPerson inContext:(NSManagedObjectContext *)context
+
++ (ABContact *)createPersonFromRHPerson:(RHPerson *)rhPerson forUser:(User *)user inContext:(NSManagedObjectContext *)context
 {
+
     ABContact *person = [ABContact MR_createInContext:context];
+    [self uploadPhoto:rhPerson forUser:user inContact:person];
+
     person.firstName            = rhPerson.firstName;
     person.lastName             = rhPerson.lastName;
     person.middleName           = rhPerson.middleName;
@@ -201,6 +207,36 @@
     
     [person save];
     return person;
+}
+
++ (void)uploadPhoto:(RHPerson *)person forUser:(User *)user inContact:(ABContact *)contact
+{
+    UIImage *img = [person thumbnail];
+    
+    UIImage *resizedImage = img;
+    NSData *jpegData = UIImageJPEGRepresentation(resizedImage, 0.5);
+    NSString *key = [NSString stringWithFormat:@"/%@.png", user.rid];
+    NSString *tmpFile = [NSString pathWithComponents:@[NSTemporaryDirectory(), [NSString stringWithFormat:@"%@.png", user.rid]]];
+    [jpegData writeToFile:tmpFile  atomically:NO];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Upload to S3
+        NSLog(@"Uploading to S3.....");
+        AFAmazonS3Client *s3Client = [[AFAmazonS3Client alloc] initWithAccessKeyID:@"AKIAJZQTI3YJ5F2JPG6Q" secret:@"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"];
+        
+        NSString *destPath = [NSString stringWithFormat:@"http://loopapp.s3.amazonaws.com"];
+        s3Client.bucket = @"loopapp";
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:key, @"key", nil];
+        [s3Client postObjectWithFile:tmpFile destinationPath:destPath parameters:params progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            
+        } success:^(id responseObject) {
+            contact.thumbnailUrl = [NSString stringWithFormat:@"%@%@", destPath, key];
+            NSLog([NSString stringWithFormat:@"%@%@", destPath, key]);
+        } failure:^(NSError *error) {
+            NSLog(@"fail");
+        }];
+    });
 }
 
 @end

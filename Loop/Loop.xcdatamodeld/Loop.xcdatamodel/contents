@@ -29,6 +29,7 @@
         <attribute name="prefix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="suffix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="thumbnailUrl" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABAddress" inverseName="contact" inverseEntity="ABAddress" syncable="YES"/>
         <relationship name="dates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABDate" inverseName="contact" inverseEntity="ABDate" syncable="YES"/>
         <relationship name="emails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABEmail" inverseName="contact" inverseEntity="ABEmail" syncable="YES"/>
@@ -120,7 +121,7 @@
     </entity>
     <elements>
         <element name="ABAddress" positionX="126" positionY="44" width="128" height="163"/>
-        <element name="ABContact" positionX="-162" positionY="-24" width="128" height="450"/>
+        <element name="ABContact" positionX="-162" positionY="-24" width="128" height="465"/>
         <element name="ABDate" positionX="126" positionY="216" width="128" height="88"/>
         <element name="ABEmail" positionX="124" positionY="315" width="128" height="90"/>
         <element name="ABInstantMessage" positionX="126" positionY="414" width="128" height="103"/>

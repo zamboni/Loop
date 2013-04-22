@@ -19,6 +19,5 @@
 + (NSString *)getAccessToken;
 + (void)logout;
 - (ABContact *)createOrUpdateContact:(ABRecordRef)person;
-- (void)uploadPhoto:(RHPerson *)person;
 
 @end
