@@ -2,7 +2,7 @@
 //  ABContact.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 4/21/13.
+//  Created by Fletcher Fowler on 8/11/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -30,7 +30,7 @@
 @property (nonatomic, retain) NSString * organization;
 @property (nonatomic, retain) NSString * prefix;
 @property (nonatomic, retain) NSString * suffix;
-@property (nonatomic, retain) id thumbnail;
+@property (nonatomic, retain) NSData * thumbnail;
 @property (nonatomic, retain) NSString * thumbnailUrl;
 @property (nonatomic, retain) NSSet *addresses;
 @property (nonatomic, retain) NSSet *dates;

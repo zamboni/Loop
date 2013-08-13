@@ -56,7 +56,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"checkins" parameters:@{@"event_id" : self.event.rid } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSString *accessToken = [User getAccessToken];
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"checkins" parameters:@{@"event_id" : self.event.rid, @"token": accessToken } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
         NSLog(@"%@", operation.HTTPRequestOperation.responseString);
         [[self fetchedResultsController] performFetch:nil];
@@ -112,6 +113,7 @@
     
     
     cell.textLabel.text = [managedObject valueForKey:@"email"];
+    cell.detailTextLabel.text = @"detail stuff...";
     return cell;
 }
 /*

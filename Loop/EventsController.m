@@ -7,6 +7,7 @@
 //
 
 #import "EventsController.h"
+#import "User+Implementation.h"
 
 @interface EventsController ()
 
@@ -64,8 +65,9 @@
     CLLocation *location = [locations lastObject];
     NSNumber *lat = [NSNumber numberWithFloat:location.coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithFloat:location.coordinate.longitude];
+    NSString *accessToken = [User getAccessToken];
     
-    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]} };
+    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]}, @"token" : accessToken };
     
     [[RKObjectManager sharedManager] getObjectsAtPath:@"events" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");

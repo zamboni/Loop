@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */; };
-		321C11021724FA6A0054E93E /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 321C11011724FA6A0054E93E /* ABContact.m */; };
 		324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */; };
 		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
 		327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 327CF06616E7DEF500C0EDB7 /* ContactController.m */; };
@@ -51,6 +50,7 @@
 		32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F6216A8C845002F21FB /* Checkin+Implementation.m */; };
 		32BBF2A7169FD9FE00A7B102 /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */; };
 		32C1F8F816F1559A003C9DD4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1F8F716F1559A003C9DD4 /* User.m */; };
+		32C265E017B7701C00A5E070 /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C265DF17B7701C00A5E070 /* ABContact.m */; };
 		32C809C4169637B700FF1B97 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809C3169637B700FF1B97 /* UserTests.m */; };
 		32C809C816963E2300FF1B97 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C809C716963E2300FF1B97 /* user.json */; };
 		32C809D11696570800FF1B97 /* User+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C809D01696570800FF1B97 /* User+Implementation.m */; };
@@ -77,8 +77,6 @@
 		24476B84AFB542219CE9C622 /* libPods-LoopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		321A09BD16C5AE21004EB6B8 /* ABContact+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABContact+Implementation.h"; sourceTree = "<group>"; };
 		321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABContact+Implementation.m"; sourceTree = "<group>"; };
-		321C11001724FA6A0054E93E /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
-		321C11011724FA6A0054E93E /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
 		324C4202169BBEE900F94927 /* RKTestFactory+Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKTestFactory+Loop.h"; sourceTree = "<group>"; };
 		324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKTestFactory+Loop.m"; sourceTree = "<group>"; };
 		3266A46D16A7FB76009D4105 /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
@@ -143,6 +141,8 @@
 		32BBF2A6169FD9FE00A7B102 /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		32C1F8F616F1559A003C9DD4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		32C1F8F716F1559A003C9DD4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32C265DE17B7701C00A5E070 /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
+		32C265DF17B7701C00A5E070 /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
 		32C809C3169637B700FF1B97 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		32C809C716963E2300FF1B97 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		32C809CF1696570800FF1B97 /* User+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Implementation.h"; sourceTree = "<group>"; };
@@ -347,8 +347,8 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				321C11001724FA6A0054E93E /* ABContact.h */,
-				321C11011724FA6A0054E93E /* ABContact.m */,
+				32C265DE17B7701C00A5E070 /* ABContact.h */,
+				32C265DF17B7701C00A5E070 /* ABContact.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
 				32C1F8F616F1559A003C9DD4 /* User.h */,
 				32C1F8F716F1559A003C9DD4 /* User.m */,
@@ -548,7 +548,7 @@
 				3289F92916D5ABF300F32266 /* ABSocial.m in Sources */,
 				327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */,
 				32C1F8F816F1559A003C9DD4 /* User.m in Sources */,
-				321C11021724FA6A0054E93E /* ABContact.m in Sources */,
+				32C265E017B7701C00A5E070 /* ABContact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

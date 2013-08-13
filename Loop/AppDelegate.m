@@ -77,9 +77,11 @@
     [checkinMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event" toKeyPath:@"event" withMapping:eventMapping]];
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
+    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venues" toKeyPath:@"shared_venues" withMapping:venueMapping]];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
 
     // ABAddress
     RKEntityMapping *abAddressMapping = [RKEntityMapping mappingForEntityForName:@"ABAddress" inManagedObjectStore:managedObjectStore];
