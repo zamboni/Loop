@@ -9,18 +9,11 @@
 
 @implementation NSObject(KiwiVerifierAdditions)
 
-#pragma mark -
-#pragma mark Attaching to Verifiers
+#pragma mark - Attaching to Verifiers
 
 - (id)attachToVerifier:(id<KWVerifying>)aVerifier {
     [aVerifier setSubject:self];
     return aVerifier;
-}
-
-- (id)attachToVerifier:(id<KWVerifying>)firstVerifier verifier:(id<KWVerifying>)secondVerifier {
-    [firstVerifier setSubject:self];
-    [secondVerifier setSubject:self];
-    return firstVerifier;
 }
 
 @end

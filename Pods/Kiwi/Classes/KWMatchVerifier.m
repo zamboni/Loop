@@ -14,14 +14,15 @@
 #import "KWWorkarounds.h"
 #import "NSInvocation+KiwiAdditions.h"
 #import "NSMethodSignature+KiwiAdditions.h"
+#import "KWExample.h"
 
 @interface KWMatchVerifier()
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, readwrite, retain) id<KWMatching> endOfExampleMatcher;
 @property (nonatomic, readwrite, retain) id<KWMatching> matcher;
+@property (nonatomic, readwrite, assign) KWExample *example;
 
 @end
 
@@ -29,8 +30,7 @@
 
 @synthesize matcher;
 
-#pragma mark -
-#pragma mark Initializing
+#pragma mark - Initializing
 
 - (id)initForShouldWithCallSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id<KWReporting>)aReporter {
     return [self initWithExpectationType:KWExpectationTypeShould callSite:aCallSite matcherFactory:aMatcherFactory reporter:aReporter];
@@ -46,12 +46,13 @@
         callSite = [aCallSite retain];
         matcherFactory = aMatcherFactory;
         reporter = aReporter;
+        _example = (KWExample *)aReporter;
     }
 
     return self;
 }
 
-+ (id)matchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id<KWReporting>)aReporter {
++ (id<KWVerifying>)matchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id<KWReporting>)aReporter {
     return [[[self alloc] initWithExpectationType:anExpectationType callSite:aCallSite matcherFactory:aMatcherFactory reporter:aReporter] autorelease];
 }
 
@@ -78,8 +79,7 @@
   return [NSString stringWithFormat:@"%@ %@", typeString, actualMatcher];
 }
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @synthesize expectationType;
 @synthesize callSite;
@@ -88,8 +88,7 @@
 @synthesize subject;
 @synthesize endOfExampleMatcher;
 
-#pragma mark -
-#pragma mark Verifying
+#pragma mark - Verifying
 
 - (void)verifyWithMatcher:(id<KWMatching>)aMatcher {
     @try {
@@ -110,8 +109,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Ending Examples
+#pragma mark - Ending Examples
 
 - (void)exampleWillEnd {
     if (self.endOfExampleMatcher == nil)
@@ -120,8 +118,7 @@
     [self verifyWithMatcher:self.endOfExampleMatcher];
 }
 
-#pragma mark -
-#pragma mark Handling Invocations
+#pragma mark - Handling Invocations
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
     NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
@@ -152,6 +149,11 @@
                  NSStringFromSelector(anInvocation.selector)];
       [self.reporter reportFailure:failure];
     }
+
+    if (self.example.unassignedVerifier == self) {
+        self.example.unassignedVerifier = nil;
+    }
+
     [anInvocation invokeWithTarget:self.matcher];
 
 #if KW_TARGET_HAS_INVOCATION_EXCEPTION_BUG

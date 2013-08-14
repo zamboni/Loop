@@ -18,8 +18,7 @@
 
 @interface KWSpec()
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, retain) KWExample *example;
 
@@ -35,7 +34,9 @@
     [super dealloc];
 }
 
-/* This method is only implemented by sub-classes */
+/* Methods are only implemented by sub-classes */
+
++ (NSString *)file { return nil; }
 
 + (void)buildExampleGroups {}
 
@@ -71,8 +72,7 @@
     return [NSString stringWithFormat:@"-[%@ %@]", NSStringFromClass([self class]), name];
 }
 
-#pragma mark -
-#pragma mark Getting Invocations
+#pragma mark - Getting Invocations
 
 /* Called by the SenTestingKit test suite to get an array of invocations that
    should be run on instances of test cases. */
@@ -92,8 +92,7 @@
     return [exampleSuite invocationsForTestCase];
 }
 
-#pragma mark -
-#pragma mark Running Specs
+#pragma mark - Running Specs
 
 - (void)invokeTest 
 {
@@ -119,8 +118,7 @@
     [self failWithException:[failure exceptionValue]];
 }
 
-#pragma mark -
-#pragma mark Verification proxies
+#pragma mark - Verification proxies
 
 + (id)addVerifier:(id<KWVerifying>)aVerifier
 {
@@ -137,9 +135,9 @@
   return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addMatchVerifierWithExpectationType:anExpectationType callSite:aCallSite];
 }
 
-+ (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout
++ (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout shouldWait:(BOOL)shouldWait
 {
-  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addAsyncVerifierWithExpectationType:anExpectationType callSite:aCallSite timeout:timeout];
+  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addAsyncVerifierWithExpectationType:anExpectationType callSite:aCallSite timeout:timeout shouldWait: shouldWait];
 }
 
 @end

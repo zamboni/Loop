@@ -47,15 +47,6 @@
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/api/v1.0/"]];
     objectManager.managedObjectStore = managedObjectStore;
 
-    // User
-    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-    userMapping.identificationAttributes = @[@"rid"];
-    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email", @"first_name" : @"firstName", @"last_name" : @"lastName" }];
-    
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
-    
     // Venue
     RKEntityMapping *venueMapping = [RKEntityMapping mappingForEntityForName:@"Venue" inManagedObjectStore:managedObjectStore];
     venueMapping.identificationAttributes = @[@"rid"];
@@ -70,6 +61,16 @@
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+
+    // User
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    userMapping.identificationAttributes = @[@"rid"];
+    [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email", @"first_name" : @"firstName", @"last_name" : @"lastName" }];
+    [userMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"shared_events" toKeyPath:@"shared_events" withMapping:eventMapping]];
+    
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
     
     // Checkin
     RKEntityMapping *checkinMapping = [RKEntityMapping mappingForEntityForName:@"Checkin" inManagedObjectStore:managedObjectStore];
@@ -77,7 +78,6 @@
     [checkinMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" }];
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event" toKeyPath:@"event" withMapping:eventMapping]];
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
-    [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venues" toKeyPath:@"shared_venues" withMapping:venueMapping]];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];

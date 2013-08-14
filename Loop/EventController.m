@@ -75,16 +75,16 @@
 }
 
 - (IBAction)checkIn:(id)sender{
-    User *user = [User MR_findFirst];
-    NSLog(@"%@", user.checkins);
+    NSString *accessToken = [User getAccessToken];
+
     NSDictionary *checkinDictionary = @{ @"checkin" :
         @{
-            @"user_id" : user.rid,
             @"event_id" : [[self event] rid]
-        }
+        },
+        @"token": accessToken
     };
     
-    [[RKObjectManager sharedManager] postObject:nil path:@"checkins.json" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:@"checkins" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
@@ -113,7 +113,12 @@
     
     
     cell.textLabel.text = [managedObject valueForKey:@"email"];
-    cell.detailTextLabel.text = @"detail stuff...";
+    NSMutableArray *sharedEvents = [[NSMutableArray alloc] init];
+    for (id event in [managedObject valueForKey:@"shared_events"]) {
+        [sharedEvents addObject:[event title]];
+    }
+    NSString *sharedEventsString = [sharedEvents componentsJoinedByString:@", "];
+    cell.detailTextLabel.text = sharedEventsString;
     return cell;
 }
 /*

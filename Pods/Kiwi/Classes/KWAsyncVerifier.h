@@ -14,22 +14,24 @@
 
 @class KWAsyncMatcherProbe;
 
-@interface KWAsyncVerifier : KWMatchVerifier
-{
-  NSTimeInterval timeout;
-}
-@property (nonatomic, assign) NSTimeInterval timeout;
 
-+ (id)asyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id<KWReporting>)aReporter probeTimeout:(NSTimeInterval)probeTimeout;
+@interface KWAsyncVerifier : KWMatchVerifier
+
+@property (nonatomic, assign) NSTimeInterval timeout;
+@property (nonatomic, assign) BOOL shouldWait;
+
++ (id)asyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id<KWReporting>)aReporter probeTimeout:(NSTimeInterval)probeTimeout shouldWait:(BOOL)shouldWait;
 - (void)verifyWithProbe:(KWAsyncMatcherProbe *)aProbe;
+
 @end
 
-@interface KWAsyncMatcherProbe : NSObject <KWProbe>
-{
-  id<KWMatching> matcher;
-  BOOL matchResult;
+
+@interface KWAsyncMatcherProbe : NSObject <KWProbe> {
+    BOOL matchResult;
 }
+
 @property (nonatomic, readonly) id<KWMatching> matcher;
 
 - (id)initWithMatcher:(id<KWMatching>)aMatcher;
+
 @end

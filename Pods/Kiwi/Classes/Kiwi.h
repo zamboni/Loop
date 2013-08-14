@@ -36,6 +36,7 @@ extern "C" {
 #import "KWChangeMatcher.h"
 #import "KWConformToProtocolMatcher.h"
 #import "KWContainMatcher.h"
+#import "KWContainStringMatcher.h"
 #import "KWContextNode.h"
 #import "KWDeviceInfo.h"
 #import "KWEqualMatcher.h"
@@ -68,6 +69,7 @@ extern "C" {
 #import "KWRaiseMatcher.h"
 #import "KWReceiveMatcher.h"
 #import "KWRegisterMatchersNode.h"
+#import "KWRegularExpressionPatternMatcher.h"
 #import "KWRespondToSelectorMatcher.h"
 #import "KWSpec.h"
 #import "KWStringUtilities.h"
@@ -86,6 +88,7 @@ extern "C" {
 #import "NSObject+KiwiSpyAdditions.h"
 #import "NSObject+KiwiStubAdditions.h"
 #import "NSObject+KiwiVerifierAdditions.h"
+#import "NSProxy+KiwiVerifierAdditions.h"
 
 #import "KiwiMacros.h"
 

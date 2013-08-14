@@ -8,10 +8,10 @@
 
 #import "KWProbePoller.h"
 
-@interface KWTimeout : NSObject
-{
-  NSDate *timeoutDate;
+@interface KWTimeout : NSObject {
+    NSDate *timeoutDate;
 }
+
 - (id)initWithTimeout:(NSTimeInterval)timeout;
 - (BOOL)hasTimedOut;
 @end
@@ -39,15 +39,22 @@
 
 @end
 
-#pragma mark -
+
+@interface KWProbePoller() {
+    NSTimeInterval timeoutInterval;
+    NSTimeInterval delayInterval;
+    BOOL shouldWait;
+}
+@end
 
 @implementation KWProbePoller
 
-- (id)initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay;
+- (id)initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay shouldWait:(BOOL)wait;
 {
   if ((self = [super init])) {
     timeoutInterval = theTimeout;
     delayInterval = theDelay;
+		shouldWait = wait;
   }
   return self;
 }
@@ -56,10 +63,10 @@
 {
   KWTimeout *timeout = [[KWTimeout alloc] initWithTimeout:timeoutInterval];
 
-  while (![probe isSatisfied]) {
+  while (shouldWait || ![probe isSatisfied]) {
     if ([timeout hasTimedOut]) {
       [timeout release];
-      return NO;
+      return [probe isSatisfied];
     }
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:delayInterval]];
     [probe sample];

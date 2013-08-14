@@ -10,13 +10,11 @@
 
 - (NSString *)descriptionForAnonymousItNode;
 
-#pragma mark -
-#pragma mark Setting Subjects
+#pragma mark - Subjects
 
-- (void)setSubject:(id)anObject;
+@property (nonatomic, readwrite, retain) id subject;
 
-#pragma mark -
-#pragma mark Ending Examples
+#pragma mark - Ending Examples
 
 - (void)exampleWillEnd;
 

@@ -89,6 +89,7 @@
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="event" inverseEntity="Checkin" syncable="YES"/>
+        <relationship name="shared_users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="shared_events" inverseEntity="User" syncable="YES"/>
         <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="events" inverseEntity="Venue" syncable="YES"/>
         <fetchedProperty name="users" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Event" predicateString="ANY checkins.event = $FETCH_SOURCE"/>
@@ -102,7 +103,7 @@
         <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ab_contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ABContact" inverseName="user" inverseEntity="ABContact" syncable="YES"/>
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="user" inverseEntity="Checkin" syncable="YES"/>
-        <relationship name="shared_events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" syncable="YES"/>
+        <relationship name="shared_events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="shared_users" inverseEntity="Event" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="Venue" representedClassName="Venue" syncable="YES">
@@ -131,8 +132,8 @@
         <element name="ABSocial" positionX="126" positionY="720" width="128" height="118"/>
         <element name="ABUrl" positionX="126" positionY="837" width="128" height="88"/>
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
-        <element name="Event" positionX="9" positionY="-279" width="128" height="149"/>
-        <element name="User" positionX="-434" positionY="-105" width="128" height="163"/>
+        <element name="Event" positionX="9" positionY="-279" width="128" height="164"/>
+        <element name="User" positionX="-434" positionY="-105" width="128" height="165"/>
         <element name="Venue" positionX="387" positionY="-9" width="128" height="240"/>
     </elements>
 </model>
