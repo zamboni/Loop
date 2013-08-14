@@ -10,7 +10,9 @@
 
 #import "User.h"
 
-@interface ContactController : UIViewController
+@interface ContactController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, retain) User *user;
 
@@ -18,6 +20,8 @@
 @property IBOutlet UILabel *organizationLabel;
 @property IBOutlet UILabel *jobTitleLabel;
 @property IBOutlet UIImageView *thumbnailImageView;
+
+@property (strong, nonatomic) IBOutlet UITableView *sharedEventsTable;
 
 
 -(IBAction)showPersonViewController:(id)sender;

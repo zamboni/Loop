@@ -394,18 +394,42 @@
                                     <constraint firstAttribute="width" constant="70" id="NiP-ji-unI"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rhc-OM-ZAb">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="355" id="VNP-G8-FMg"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="EventCell" id="6Mf-xH-hfD">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UMN-6u-Uv8" id="KLb-ct-pS2"/>
+                                    <outlet property="delegate" destination="UMN-6u-Uv8" id="ebu-tE-0HU"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="76O-md-wDR" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7h2-7h-ZVC"/>
                             <constraint firstItem="76O-md-wDR" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Fbg-0S-0io"/>
+                            <constraint firstItem="Rhc-OM-ZAb" firstAttribute="bottom" secondItem="oHM-jH-bff" secondAttribute="bottom" type="default" id="Fgc-g9-KED"/>
                             <constraint firstItem="TOw-OI-5kZ" firstAttribute="leading" secondItem="oHM-jH-bff" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JIL-iE-xfs"/>
-                            <constraint firstItem="TOw-OI-5kZ" firstAttribute="bottom" secondItem="GjY-Or-V1c" secondAttribute="bottom" type="default" id="MXt-VN-rKD"/>
                             <constraint firstItem="d1B-40-mdE" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ti9-wI-6nt"/>
+                            <constraint firstItem="Rhc-OM-ZAb" firstAttribute="leading" secondItem="oHM-jH-bff" secondAttribute="leading" type="default" id="V7C-Io-kft"/>
                             <constraint firstAttribute="trailing" secondItem="d1B-40-mdE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dbL-fg-Hps"/>
+                            <constraint firstItem="GjY-Or-V1c" firstAttribute="bottom" secondItem="TOw-OI-5kZ" secondAttribute="bottom" type="default" id="fUh-Fr-uE6"/>
                             <constraint firstItem="d1B-40-mdE" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="39" id="g5y-YV-jXy"/>
                             <constraint firstItem="TOw-OI-5kZ" firstAttribute="top" secondItem="oHM-jH-bff" secondAttribute="top" constant="20" symbolic="YES" type="default" id="hkb-2J-48l"/>
                             <constraint firstItem="76O-md-wDR" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jhx-t5-CS8"/>
+                            <constraint firstItem="Rhc-OM-ZAb" firstAttribute="trailing" secondItem="oHM-jH-bff" secondAttribute="trailing" type="default" id="lgL-Oc-YwF"/>
                             <constraint firstItem="GjY-Or-V1c" firstAttribute="leading" secondItem="TOw-OI-5kZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="m36-EG-92T"/>
                             <constraint firstAttribute="trailing" secondItem="GjY-Or-V1c" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="s1u-f2-uyp"/>
                         </constraints>
@@ -494,6 +518,7 @@
                 <relationship kind="outlet" name="jobTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="organizationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sharedEventsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>

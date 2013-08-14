@@ -58,42 +58,9 @@
 - (IBAction)logout:(id)sender
 {
     [User logout];
-//    [self.navigationController.tabBarController dismissViewControllerAnimated:NO completion:^{
-//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-//        [self presentViewController:viewController animated:NO completion:nil];
-//
-//    }];
+
     [self performSegueWithIdentifier:@"logoutSegue" sender:self];
 }
-
-//- (void)savePerson:(ABRecordRef)person
-//{
-//    //    REFACTOR ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-//    NSNumber *contact_id = [NSNumber numberWithInt:ABRecordGetRecordID(person)];
-//    User *currentUser = [User MR_findFirstInContext:context];
-//    RHAddressBook *ab = [[RHAddressBook alloc] init];
-//    RHPerson *rh_person = [ab personForABRecordID:ABRecordGetRecordID(person)];
-//    ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-//    NSString *accessToken = [User getAccessToken];
-//    UIImage *thumbnail = show_person.thumbnail;
-//    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:show_person method:RKRequestMethodPOST path:@"contact" parameters:@{@"token": accessToken} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        [formData appendPartWithFileData:UIImagePNGRepresentation(thumbnail)
-//                                    name:@"thumbnail"
-//                                fileName:@"thumbnail.png"
-//                                mimeType:@"image/png"];
-//    }];
-//    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        NSLog(@"success");
-//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//        NSLog([NSString stringWithFormat:@"failure: %@", error]);
-//    }];
-//    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
-//    
-//    currentUser.contactId = contact_id;
-//    [context MR_saveNestedContexts];
-//}
 
 - (void)savePerson:(ABRecordRef)person
 {
@@ -105,18 +72,6 @@
     RHPerson *rh_person = [ab personForABRecordID:ABRecordGetRecordID(person)];
     ABContact *show_person = [ABContact createPersonFromRHPerson:rh_person forUser:currentUser inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     NSString *accessToken = [User getAccessToken];
-//    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:show_person method:RKRequestMethodPOST path:@"contact" parameters:@{@"token": accessToken} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        [formData appendPartWithFileData:UIImagePNGRepresentation(show_person.thumbnail)
-//                                    name:@"thumbnail"
-//                                fileName:@"thumbnail.png"
-//                                mimeType:@"image/png"];
-//    }];
-//    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        NSLog(@"success");
-//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//        NSLog([NSString stringWithFormat:@"failure: %@", error]);
-//    }];
-//    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
 
     [[RKObjectManager sharedManager] postObject:show_person path:@"contact" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
