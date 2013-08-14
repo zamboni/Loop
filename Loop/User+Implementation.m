@@ -22,26 +22,17 @@
 
 + (void)setAccessTokenWithDictionary:(NSDictionary *)userDictionary
 {
-    [[ACSimpleKeychain defaultKeychain] storeUsername:[userDictionary objectForKey:@"_id"] password:[userDictionary objectForKey:@"access_token"] identifier:@"accessToken" forService:@"loop"];
+    [SSKeychain setPassword:[userDictionary objectForKey:@"access_token"] forService:@"loop" account:@"access"];
 }
 
 + (NSString *)getAccessToken
 {
-    ACSimpleKeychain *keychain = [ACSimpleKeychain defaultKeychain];
-    NSDictionary *credentials = [keychain credentialsForIdentifier:@"accessToken" service:@"loop"];
-    return [credentials valueForKey:ACKeychainPassword];
-}
-
-+ (NSString *)getCurrentUserId
-{
-    ACSimpleKeychain *keychain = [ACSimpleKeychain defaultKeychain];
-    NSDictionary *credentials = [keychain credentialsForIdentifier:@"accessToken" service:@"loop"];
-    return [credentials valueForKey:ACKeychainUsername];
+    return [SSKeychain passwordForService:@"loop" account:@"access"];
 }
 
 + (void)logout
 {
-    [[ACSimpleKeychain defaultKeychain] deleteCredentialsForIdentifier:@"accessToken" service:@"loop"];
+    [SSKeychain deletePasswordForService:@"loop" account:@"access"];
 }
 
 - (ABContact *)createOrUpdateContact:(ABRecordRef)person{

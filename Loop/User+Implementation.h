@@ -8,7 +8,7 @@
 
 #import "User.h"
 #import <RestKit/RestKit.h>
-#import "ACSimpleKeychain.h"
+#import "SSKeychain.h"
 #import <AddressBook/AddressBook.h>
 #import "RHPerson.h"
 

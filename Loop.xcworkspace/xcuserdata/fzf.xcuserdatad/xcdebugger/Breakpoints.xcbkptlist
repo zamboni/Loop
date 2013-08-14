@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Loop/AppDelegate.m"
-         timestampString = "398068117.962833"
+         timestampString = "398207670.111687"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "304"
-         endingLineNumber = "304"
+         startingLineNumber = "302"
+         endingLineNumber = "302"
          landmarkName = "-persistentStoreCoordinator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -27,19 +27,6 @@
          startingLineNumber = "53"
          endingLineNumber = "53"
          landmarkName = "+createPersonFromRHPerson:forUser:inContext:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Loop/ContactController.m"
-         timestampString = "398162716.604173"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "37"
-         endingLineNumber = "37"
-         landmarkName = "-fetchedResultsController"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

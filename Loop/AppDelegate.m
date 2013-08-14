@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import <RestKit/RestKit.h>
-#import "ACSimpleKeychain.h"
+#import "SSKeychain.h"
 
 #import "MasterViewController.h"
 #import "LoginController.h"
@@ -202,9 +202,7 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     UIViewController *viewController;
-    NSString *accessToken = [[[ACSimpleKeychain defaultKeychain] credentialsForIdentifier:@"accessToken" service:@"loop"] valueForKey:ACKeychainPassword];
-    User *currentUser = [User MR_findFirst];
-    if ( accessToken && currentUser ) {
+    if ( [User getAccessToken] != nil ) {
         viewController = (ProfileController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
     }
     else{

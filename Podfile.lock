@@ -1,5 +1,4 @@
 PODS:
-  - ACSimpleKeychain (0.0.1)
   - AFAmazonS3Client (0.2.0):
     - AFNetworking (~> 1.0)
     - ISO8601DateFormatter (~> 0.6)
@@ -7,6 +6,7 @@ PODS:
   - ISO8601DateFormatter (0.6)
   - Kiwi (2.2)
   - MagicalRecord (2.1)
+  - RCLocationManager (0.1)
   - RestKit (0.20.3):
     - RestKit/Core
   - RestKit/Core (0.20.3):
@@ -25,31 +25,34 @@ PODS:
   - RestKit/Testing (0.20.3)
   - RHAddressBook (1.0.2)
   - SOCKit (1.1)
+  - SSKeychain (1.2.0)
   - TransitionKit (1.1.1)
 
 DEPENDENCIES:
-  - ACSimpleKeychain
   - AFAmazonS3Client (from `git@github.com:zamboni/AFAmazonS3Client.git`)
   - Kiwi
   - MagicalRecord
+  - RCLocationManager
   - RestKit
   - RestKit/Testing
   - RHAddressBook
+  - SSKeychain
 
 EXTERNAL SOURCES:
   AFAmazonS3Client:
     :git: git@github.com:zamboni/AFAmazonS3Client.git
 
 SPEC CHECKSUMS:
-  ACSimpleKeychain: 2b61422885d2c482e841be1573f9dfcc0d65b839
   AFAmazonS3Client: 0ff1b88024da0d28a4cea4e76311682b71592662
   AFNetworking: 7f9bcd7c287a75476cd5c61e82fd3380e93e4c54
   ISO8601DateFormatter: 077ce9d8cfba171bc1ced6cba0d2ae4aefab7619
   Kiwi: db174bba4ee8068b15d7122f1b22fb64b7c1d378
   MagicalRecord: 64e7184c240087a45e9588a722eaf05b0ad837f7
+  RCLocationManager: f02bd426e93e87693fe8a2adf76f917a74d774c9
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
   RHAddressBook: 64f78a4058e0a7849275c970bf19fe195edf94d0
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
+  SSKeychain: 2fe90c92034129d9615a508529b601a520f297d1
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
 
 COCOAPODS: 0.23.0

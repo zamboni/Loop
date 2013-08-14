@@ -2,7 +2,8 @@ platform :ios, '6.0'
 
 pod 'MagicalRecord'
 pod 'RestKit'
-pod 'ACSimpleKeychain'
+pod "RCLocationManager"
+pod "SSKeychain"
 pod 'RHAddressBook'
 pod 'AFAmazonS3Client', git: 'git@github.com:zamboni/AFAmazonS3Client.git'
 
