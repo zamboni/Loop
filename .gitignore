@@ -15,7 +15,5 @@ xcuserdata
 profile
 *.moved-aside
 DerivedData
-.idea/
-*.hmap
-
-Loop.xcworkspace/xcuserdata/fzf.xcuserdatad/UserInterfaceState.xcuserstate
+Pods/
+.DS_Store

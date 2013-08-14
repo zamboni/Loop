@@ -1,1 +1,0 @@
-../../AFAmazonS3Client/AFAmazonS3Client/AFAmazonS3Client.h
