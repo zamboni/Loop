@@ -2,7 +2,7 @@
 //  Event.m
 //  Loop
 //
-//  Created by Fletcher Fowler on 8/13/13.
+//  Created by Fletcher Fowler on 8/14/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -15,10 +15,11 @@
 @implementation Event
 
 @dynamic rid;
-@dynamic timeStamp;
 @dynamic title;
+@dynamic startDate;
+@dynamic endDate;
 @dynamic checkins;
-@dynamic venue;
 @dynamic shared_users;
+@dynamic venue;
 
 @end

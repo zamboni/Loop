@@ -10,6 +10,7 @@
 		321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A09BE16C5AE21004EB6B8 /* ABContact+Implementation.m */; };
 		324C4204169BBEE900F94927 /* RKTestFactory+Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */; };
 		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
+		327828B017BCA8180096A79E /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 327828AF17BCA8180096A79E /* Event.m */; };
 		327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 327CF06616E7DEF500C0EDB7 /* ContactController.m */; };
 		3289F90216D5A28E00F32266 /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90116D5A28E00F32266 /* Checkin.m */; };
 		3289F90B16D5A28E00F32266 /* ABEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90A16D5A28E00F32266 /* ABEmail.m */; };
@@ -21,7 +22,6 @@
 		3289F92616D5AA4C00F32266 /* ABInstantMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92516D5AA4B00F32266 /* ABInstantMessage.m */; };
 		3289F92916D5ABF300F32266 /* ABSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92816D5ABF300F32266 /* ABSocial.m */; };
 		328AE7A017BAF761006791A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE79F17BAF761006791A7 /* User.m */; };
-		328AE7A317BAF9B6006791A7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE7A217BAF9B6006791A7 /* Event.m */; };
 		328AE7A917BC46BD006791A7 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE7A817BC46BD006791A7 /* Venue.m */; };
 		32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
@@ -80,6 +80,8 @@
 		324C4203169BBEE900F94927 /* RKTestFactory+Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKTestFactory+Loop.m"; sourceTree = "<group>"; };
 		3266A46D16A7FB76009D4105 /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
 		3266A46E16A7FB76009D4105 /* EventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventController.m; sourceTree = "<group>"; };
+		327828AE17BCA8180096A79E /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		327828AF17BCA8180096A79E /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		327CF06516E7DEF500C0EDB7 /* ContactController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactController.h; sourceTree = "<group>"; };
 		327CF06616E7DEF500C0EDB7 /* ContactController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactController.m; sourceTree = "<group>"; };
 		3289F90016D5A28E00F32266 /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
@@ -102,8 +104,6 @@
 		3289F92816D5ABF300F32266 /* ABSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSocial.m; sourceTree = "<group>"; };
 		328AE79E17BAF761006791A7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		328AE79F17BAF761006791A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		328AE7A117BAF9B6006791A7 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		328AE7A217BAF9B6006791A7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		328AE7A717BC46BD006791A7 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		328AE7A817BC46BD006791A7 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		32A92DEC169238B600D5EB7F /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,15 +340,17 @@
 		32C809CB1696565700FF1B97 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
+				3289F90016D5A28E00F32266 /* Checkin.h */,
+				3289F90116D5A28E00F32266 /* Checkin.m */,
+				327828AE17BCA8180096A79E /* Event.h */,
+				327828AF17BCA8180096A79E /* Event.m */,
+				328AE7A717BC46BD006791A7 /* Venue.h */,
+				328AE7A817BC46BD006791A7 /* Venue.m */,
 				328AE79E17BAF761006791A7 /* User.h */,
 				328AE79F17BAF761006791A7 /* User.m */,
 				32C265DE17B7701C00A5E070 /* ABContact.h */,
 				32C265DF17B7701C00A5E070 /* ABContact.m */,
-				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
-				328AE7A717BC46BD006791A7 /* Venue.h */,
-				328AE7A817BC46BD006791A7 /* Venue.m */,
-				328AE7A117BAF9B6006791A7 /* Event.h */,
-				328AE7A217BAF9B6006791A7 /* Event.m */,
 				3289F92716D5ABF300F32266 /* ABSocial.h */,
 				3289F92816D5ABF300F32266 /* ABSocial.m */,
 				3289F92416D5AA4B00F32266 /* ABInstantMessage.h */,
@@ -365,8 +367,6 @@
 				3289F90D16D5A28E00F32266 /* ABPhone.m */,
 				3289F90916D5A28E00F32266 /* ABEmail.h */,
 				3289F90A16D5A28E00F32266 /* ABEmail.m */,
-				3289F90016D5A28E00F32266 /* Checkin.h */,
-				3289F90116D5A28E00F32266 /* Checkin.m */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -539,8 +539,8 @@
 				327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */,
 				32C265E017B7701C00A5E070 /* ABContact.m in Sources */,
 				328AE7A017BAF761006791A7 /* User.m in Sources */,
-				328AE7A317BAF9B6006791A7 /* Event.m in Sources */,
 				328AE7A917BC46BD006791A7 /* Venue.m in Sources */,
+				327828B017BCA8180096A79E /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

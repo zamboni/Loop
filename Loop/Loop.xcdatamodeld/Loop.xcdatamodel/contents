@@ -85,8 +85,9 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="checkins" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="checkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Checkin" inverseName="event" inverseEntity="Checkin" syncable="YES"/>
         <relationship name="shared_users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="shared_events" inverseEntity="User" syncable="YES"/>
@@ -133,7 +134,7 @@
         <element name="ABSocial" positionX="126" positionY="720" width="128" height="118"/>
         <element name="ABUrl" positionX="126" positionY="837" width="128" height="88"/>
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
-        <element name="Event" positionX="9" positionY="-279" width="128" height="164"/>
+        <element name="Event" positionX="9" positionY="-279" width="128" height="179"/>
         <element name="User" positionX="-434" positionY="-105" width="128" height="165"/>
         <element name="Venue" positionX="387" positionY="-9" width="128" height="255"/>
     </elements>

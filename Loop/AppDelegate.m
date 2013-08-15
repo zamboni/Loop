@@ -56,7 +56,7 @@
     // Event
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
     eventMapping.identificationAttributes = @[@"rid"];
-    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"title" : @"title"}];
+    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"title" : @"title", @"start_date" : @"startDate" , @"end_date" : @"endDate" }];
     [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venue" toKeyPath:@"venue" withMapping:venueMapping]];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
