@@ -12,7 +12,6 @@
 		3266A46F16A7FB76009D4105 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3266A46E16A7FB76009D4105 /* EventController.m */; };
 		327CF06716E7DEF500C0EDB7 /* ContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 327CF06616E7DEF500C0EDB7 /* ContactController.m */; };
 		3289F90216D5A28E00F32266 /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90116D5A28E00F32266 /* Checkin.m */; };
-		3289F90816D5A28E00F32266 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90716D5A28E00F32266 /* Venue.m */; };
 		3289F90B16D5A28E00F32266 /* ABEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90A16D5A28E00F32266 /* ABEmail.m */; };
 		3289F90E16D5A28E00F32266 /* ABPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F90D16D5A28E00F32266 /* ABPhone.m */; };
 		3289F91116D5A28E00F32266 /* ABDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F91016D5A28E00F32266 /* ABDate.m */; };
@@ -23,6 +22,7 @@
 		3289F92916D5ABF300F32266 /* ABSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289F92816D5ABF300F32266 /* ABSocial.m */; };
 		328AE7A017BAF761006791A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE79F17BAF761006791A7 /* User.m */; };
 		328AE7A317BAF9B6006791A7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE7A217BAF9B6006791A7 /* Event.m */; };
+		328AE7A917BC46BD006791A7 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 328AE7A817BC46BD006791A7 /* Venue.m */; };
 		32A92DF1169238B600D5EB7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF0169238B600D5EB7F /* UIKit.framework */; };
 		32A92DF3169238B600D5EB7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF2169238B600D5EB7F /* Foundation.framework */; };
 		32A92DF5169238B600D5EB7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A92DF4169238B600D5EB7F /* CoreGraphics.framework */; };
@@ -43,7 +43,6 @@
 		32A92E2B169238B600D5EB7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32A92E29169238B600D5EB7F /* InfoPlist.strings */; };
 		32AB0C3416A0C92A00EFE421 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB0C3316A0C92A00EFE421 /* LoginController.m */; };
 		32AD3F2416A63C89002F21FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AD3F2316A63C89002F21FB /* CoreLocation.framework */; };
-		32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F2616A63D51002F21FB /* LocationManager.m */; };
 		32AD3F2916A63DB2002F21FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AD3F2316A63C89002F21FB /* CoreLocation.framework */; };
 		32AD3F2B16A65CBA002F21FB /* EventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD3F2A16A65CBA002F21FB /* EventTests.m */; };
 		32AD3F2D16A65CE8002F21FB /* event.json in Resources */ = {isa = PBXBuildFile; fileRef = 32AD3F2C16A65CE8002F21FB /* event.json */; };
@@ -85,8 +84,6 @@
 		327CF06616E7DEF500C0EDB7 /* ContactController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactController.m; sourceTree = "<group>"; };
 		3289F90016D5A28E00F32266 /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
 		3289F90116D5A28E00F32266 /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
-		3289F90616D5A28E00F32266 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
-		3289F90716D5A28E00F32266 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		3289F90916D5A28E00F32266 /* ABEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEmail.h; sourceTree = "<group>"; };
 		3289F90A16D5A28E00F32266 /* ABEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEmail.m; sourceTree = "<group>"; };
 		3289F90C16D5A28E00F32266 /* ABPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPhone.h; sourceTree = "<group>"; };
@@ -107,6 +104,8 @@
 		328AE79F17BAF761006791A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		328AE7A117BAF9B6006791A7 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		328AE7A217BAF9B6006791A7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		328AE7A717BC46BD006791A7 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		328AE7A817BC46BD006791A7 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		32A92DEC169238B600D5EB7F /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A92DF0169238B600D5EB7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32A92DF2169238B600D5EB7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,9 +130,6 @@
 		32AB0C3216A0C92A00EFE421 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		32AB0C3316A0C92A00EFE421 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		32AD3F2316A63C89002F21FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		32AD3F2516A63D51002F21FB /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
-		32AD3F2616A63D51002F21FB /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
-		32AD3F2716A63D51002F21FB /* LocationManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManagerDelegate.h; sourceTree = "<group>"; };
 		32AD3F2A16A65CBA002F21FB /* EventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTests.m; sourceTree = "<group>"; };
 		32AD3F2C16A65CE8002F21FB /* event.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event.json; sourceTree = "<group>"; };
 		32AD3F2E16A65EF8002F21FB /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
@@ -331,9 +327,6 @@
 				32C809CB1696565700FF1B97 /* ManagedObjects */,
 				32C809CF1696570800FF1B97 /* User+Implementation.h */,
 				32C809D01696570800FF1B97 /* User+Implementation.m */,
-				32AD3F2516A63D51002F21FB /* LocationManager.h */,
-				32AD3F2616A63D51002F21FB /* LocationManager.m */,
-				32AD3F2716A63D51002F21FB /* LocationManagerDelegate.h */,
 				32F375FB16A6B0AD00107C4B /* Event+Implementation.h */,
 				32F375FC16A6B0AD00107C4B /* Event+Implementation.m */,
 				32AD3F6116A8C845002F21FB /* Checkin+Implementation.h */,
@@ -352,6 +345,8 @@
 				32C265DE17B7701C00A5E070 /* ABContact.h */,
 				32C265DF17B7701C00A5E070 /* ABContact.m */,
 				32A92E10169238B600D5EB7F /* Loop.xcdatamodeld */,
+				328AE7A717BC46BD006791A7 /* Venue.h */,
+				328AE7A817BC46BD006791A7 /* Venue.m */,
 				328AE7A117BAF9B6006791A7 /* Event.h */,
 				328AE7A217BAF9B6006791A7 /* Event.m */,
 				3289F92716D5ABF300F32266 /* ABSocial.h */,
@@ -370,8 +365,6 @@
 				3289F90D16D5A28E00F32266 /* ABPhone.m */,
 				3289F90916D5A28E00F32266 /* ABEmail.h */,
 				3289F90A16D5A28E00F32266 /* ABEmail.m */,
-				3289F90616D5A28E00F32266 /* Venue.h */,
-				3289F90716D5A28E00F32266 /* Venue.m */,
 				3289F90016D5A28E00F32266 /* Checkin.h */,
 				3289F90116D5A28E00F32266 /* Checkin.m */,
 			);
@@ -530,13 +523,11 @@
 				32AB0C3416A0C92A00EFE421 /* LoginController.m in Sources */,
 				32F375A216A3983700107C4B /* ProfileController.m in Sources */,
 				32F375F216A5534E00107C4B /* EventsController.m in Sources */,
-				32AD3F2816A63D51002F21FB /* LocationManager.m in Sources */,
 				32F375FD16A6B0AD00107C4B /* Event+Implementation.m in Sources */,
 				3266A46F16A7FB76009D4105 /* EventController.m in Sources */,
 				32AD3F6316A8C845002F21FB /* Checkin+Implementation.m in Sources */,
 				321A09BF16C5AE21004EB6B8 /* ABContact+Implementation.m in Sources */,
 				3289F90216D5A28E00F32266 /* Checkin.m in Sources */,
-				3289F90816D5A28E00F32266 /* Venue.m in Sources */,
 				3289F90B16D5A28E00F32266 /* ABEmail.m in Sources */,
 				3289F90E16D5A28E00F32266 /* ABPhone.m in Sources */,
 				3289F91116D5A28E00F32266 /* ABDate.m in Sources */,
@@ -549,6 +540,7 @@
 				32C265E017B7701C00A5E070 /* ABContact.m in Sources */,
 				328AE7A017BAF761006791A7 /* User.m in Sources */,
 				328AE7A317BAF9B6006791A7 /* Event.m in Sources */,
+				328AE7A917BC46BD006791A7 /* Venue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

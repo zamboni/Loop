@@ -50,7 +50,7 @@
     // Venue
     RKEntityMapping *venueMapping = [RKEntityMapping mappingForEntityForName:@"Venue" inManagedObjectStore:managedObjectStore];
     venueMapping.identificationAttributes = @[@"rid"];
-    [venueMapping addAttributeMappingsFromArray:@[@"address", @"city", @"country", @"latitude", @"longitude", @"name", @"state" ]];
+    [venueMapping addAttributeMappingsFromArray:@[@"address", @"city", @"country", @"distance", @"latitude", @"longitude", @"name", @"state" ]];
     [venueMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid" , @"country_code" : @"countryCode", @"state_code" : @"stateCode", @"zip_code" : @"zipCode" }];
 
     // Event

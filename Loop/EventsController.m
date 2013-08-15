@@ -23,7 +23,7 @@
         return _fetchedResultsController;
     }
     
-    return [Event MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"rid" ascending:TRUE];
+    return [Event MR_fetchAllGroupedBy:nil withPredicate:[NSPredicate predicateWithFormat:@"venue.distance >= 0"] sortedBy:@"venue.distance" ascending:TRUE];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,46 +39,51 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    RCLocationManager *locationManager = [RCLocationManager sharedManager];
+    
+    // Create location manager with filters set for battery efficiency.
+    [locationManager setPurpose:@"Show list of venues close to you."];
+    [locationManager setUserDistanceFilter:kCLLocationAccuracyHundredMeters];
+    [locationManager setUserDesiredAccuracy:kCLLocationAccuracyBest];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getLocation:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (IBAction)refresh:(id)sender
 {
-    [self updateEvents];
+    [self getLocation:nil];
 }
 
-- (void)updateEvents
-{
-    [[LocationManager sharedInstance] setDelegate:self];
-    [[LocationManager sharedInstance] getLocation];
+- (void)getLocation:(id)sender {
+    RCLocationManager *locationManager = [RCLocationManager sharedManager];
+    
+    // Start updating location changes.
+    [locationManager startUpdatingLocationWithBlock:^(CLLocationManager *manager, CLLocation *newLocation, CLLocation *oldLocation) {
+        [locationManager stopUpdatingLocation];
+        [self.refreshControl endRefreshing];
+        [self getEventsAtLocation:newLocation];
+    } errorBlock:^(CLLocationManager *manager, NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }];
 }
 
-- (void)locationDidUpdate:(NSArray *)locations
+- (void)getEventsAtLocation:(CLLocation *)location
 {
-    NSLog(@"%@", [[Event MR_findAll] description]);
-    [[LocationManager sharedInstance] stopUpdatingLocation];
-
-    CLLocation *location = [locations lastObject];
     NSNumber *lat = [NSNumber numberWithFloat:location.coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithFloat:location.coordinate.longitude];
     NSString *accessToken = [User getAccessToken];
     
-    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]}, @"token" : accessToken };
+    NSArray *venues = [Venue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"distance >= 0"] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    [venues setValue:[NSNumber numberWithDouble:-1.0] forKey:@"distance"];
+    [[NSManagedObjectContext MR_context] MR_saveOnlySelfAndWait];
     
+    NSDictionary *searchDictionary = @{ @"search" : @{@"lat":[NSString stringWithFormat:@"%@", lat], @"lng":[NSString stringWithFormat:@"%@", lng]}, @"token" : accessToken };
     [[RKObjectManager sharedManager] getObjectsAtPath:@"events" parameters:searchDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-        NSLog(@"%@", operation.HTTPRequestOperation.responseString);
-        [[self fetchedResultsController] performFetch:nil];
         [self.tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
     }];
-    
-//    [[self fetchedResultsController] performFetch:nil];
 }
 
 
@@ -110,11 +115,11 @@
     
     
     cell.textLabel.text = [managedObject valueForKey:@"title"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [[managedObject valueForKey:@"venue"] valueForKey:@"distance"]];
     return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [[LocationManager sharedInstance] stopUpdatingLocation];
     
     NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
     EventController *eventController = [segue destinationViewController];

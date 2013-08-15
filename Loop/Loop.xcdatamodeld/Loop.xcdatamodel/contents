@@ -111,6 +111,7 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -134,6 +135,6 @@
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
         <element name="Event" positionX="9" positionY="-279" width="128" height="164"/>
         <element name="User" positionX="-434" positionY="-105" width="128" height="165"/>
-        <element name="Venue" positionX="387" positionY="-9" width="128" height="240"/>
+        <element name="Venue" positionX="387" positionY="-9" width="128" height="255"/>
     </elements>
 </model>

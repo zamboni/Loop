@@ -2,7 +2,7 @@
 //  Venue.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 2/20/13.
+//  Created by Fletcher Fowler on 8/14/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSString * country;
 @property (nonatomic, retain) NSString * countryCode;
+@property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;

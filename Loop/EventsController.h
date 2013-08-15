@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "Event.h"
-#import "LocationManager.h"
-#import "LocationManagerDelegate.h"
+#import "RCLocationManager.h"
 #import "EventController.h"
 
-@interface EventsController : UITableViewController <LocationManagerDelegate>
+@interface EventsController : UITableViewController
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
