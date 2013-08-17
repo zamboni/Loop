@@ -93,6 +93,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *selectedRowIndex = [self.sharedEventsTable indexPathForSelectedRow];
+    [self.sharedEventsTable deselectRowAtIndexPath:selectedRowIndex animated:false];
     EventController *eventController = [segue destinationViewController];
     eventController.event = [[self fetchedResultsController] objectAtIndexPath:selectedRowIndex];
 }

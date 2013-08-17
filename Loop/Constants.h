@@ -13,7 +13,8 @@
 #if TARGET_IPHONE_SIMULATOR
 #define ROOT_URL @"http://localhost:3000/api/v1.0/"
 #else
-#define ROOT_URL @"http://10.5.1.150:3000/api/v1.0/"
+//#define ROOT_URL @"http://10.5.1.150:3000/api/v1.0/"
+#define ROOT_URL @"http://192.168.1.100:3000/api/v1.0/"
 #endif
 #endif
 

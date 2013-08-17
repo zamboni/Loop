@@ -54,8 +54,10 @@
     // Start updating location changes.
     [locationManager startUpdatingLocationWithBlock:^(CLLocationManager *manager, CLLocation *newLocation, CLLocation *oldLocation) {
         [locationManager stopUpdatingLocation];
-        [self.refreshControl endRefreshing];
-        [self getEventsAtLocation:newLocation];
+        if ([newLocation distanceFromLocation:oldLocation] > 1) {
+            [self.refreshControl endRefreshing];
+            [self getEventsAtLocation:newLocation];
+        }
     } errorBlock:^(CLLocationManager *manager, NSError *error) {
         NSLog(@"Error: %@", [error localizedDescription]);
     }];
@@ -77,7 +79,8 @@
             [self.tableView reloadData];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [_alert dismissWithClickedButtonIndex:0 animated:YES];
-            NSLog(@"failure");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }];
     }];
     

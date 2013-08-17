@@ -48,7 +48,8 @@
             [self performSegueWithIdentifier:@"registrationSegue" sender:self];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            NSLog(@"failure");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }];
     }
     else{

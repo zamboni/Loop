@@ -486,6 +486,7 @@
                         <outlet property="jobTitleLabel" destination="GjY-Or-V1c" id="ybS-rB-jso"/>
                         <outlet property="nameLabel" destination="76O-md-wDR" id="aOV-To-sAw"/>
                         <outlet property="organizationLabel" destination="d1B-40-mdE" id="J3c-Jt-iak"/>
+                        <outlet property="sharedEventsTable" destination="Rhc-OM-ZAb" id="54M-Jo-T7l"/>
                         <outlet property="thumbnailImageView" destination="TOw-OI-5kZ" id="iZX-Du-n5l"/>
                     </connections>
                 </viewController>
@@ -532,8 +533,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="ehA-jp-caH" id="fBy-6U-4XH"/>
-                                    <outlet property="delegate" destination="ehA-jp-caH" id="91F-ed-lnq"/>
+                                    <outlet property="dataSource" destination="FvN-Gj-3vc" id="w20-h6-KnV"/>
+                                    <outlet property="delegate" destination="FvN-Gj-3vc" id="5qm-Sz-kw9"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAv-LZ-i0t">
@@ -580,6 +581,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="I6S-ls-866"/>
+                    <connections>
+                        <outlet property="contactsTable" destination="fit-8L-Xaz" id="PHU-Xg-62w"/>
+                        <outlet property="eventTitle" destination="wAv-LZ-i0t" id="hUG-cf-CUu"/>
+                        <outlet property="thumbnailImageView" destination="58e-K8-SqQ" id="I72-ov-7I6"/>
+                        <outlet property="venueAddress" destination="Oyw-lI-Wxy" id="B1Z-Fi-BaK"/>
+                        <outlet property="venueTitle" destination="TjF-QK-Gm5" id="2o0-to-vxf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXf-sx-JhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -76,7 +76,8 @@
     [[RKObjectManager sharedManager] postObject:show_person path:@"contact" parameters:@{@"token": accessToken} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"success");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }];
     
     currentUser.contactId = contact_id;
