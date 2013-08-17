@@ -12,5 +12,6 @@
 @interface Event (Implementation)
 
 + (RKEntityMapping *)entityMappingInManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
+- (NSString *)formattedStartDate;
 
 @end

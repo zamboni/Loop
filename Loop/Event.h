@@ -2,7 +2,7 @@
 //  Event.h
 //  Loop
 //
-//  Created by Fletcher Fowler on 8/14/13.
+//  Created by Fletcher Fowler on 8/15/13.
 //  Copyright (c) 2013 ZamboniDev. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 
 @interface Event : NSManagedObject
 
-@property (nonatomic, retain) NSString * rid;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic, retain) NSString * rid;
+@property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * logoUrl;
 @property (nonatomic, retain) NSSet *checkins;
 @property (nonatomic, retain) NSSet *shared_users;
 @property (nonatomic, retain) Venue *venue;

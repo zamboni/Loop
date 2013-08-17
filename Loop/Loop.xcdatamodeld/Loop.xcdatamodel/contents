@@ -86,6 +86,7 @@
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="logoUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -134,7 +135,7 @@
         <element name="ABSocial" positionX="126" positionY="720" width="128" height="118"/>
         <element name="ABUrl" positionX="126" positionY="837" width="128" height="88"/>
         <element name="Checkin" positionX="-666" positionY="-288" width="128" height="105"/>
-        <element name="Event" positionX="9" positionY="-279" width="128" height="179"/>
+        <element name="Event" positionX="9" positionY="-279" width="128" height="194"/>
         <element name="User" positionX="-434" positionY="-105" width="128" height="165"/>
         <element name="Venue" positionX="387" positionY="-9" width="128" height="255"/>
     </elements>

@@ -38,13 +38,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(ROOT_URL);
 
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Loop.sqlite"];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [NSPersistentStoreCoordinator MR_defaultStoreCoordinator];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:persistentStoreCoordinator];
     [managedObjectStore createManagedObjectContexts];
     
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/api/v1.0/"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:ROOT_URL]];
     objectManager.managedObjectStore = managedObjectStore;
 
     // Venue
@@ -56,7 +57,7 @@
     // Event
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
     eventMapping.identificationAttributes = @[@"rid"];
-    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"title" : @"title", @"start_date" : @"startDate" , @"end_date" : @"endDate" }];
+    [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"logo_url" : @"logoUrl", @"title" : @"title", @"start_date" : @"startDate" , @"end_date" : @"endDate" }];
     [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venue" toKeyPath:@"venue" withMapping:venueMapping]];
     
     [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];

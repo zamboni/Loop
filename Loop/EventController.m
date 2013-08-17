@@ -41,10 +41,10 @@
 
 - (void)viewDidLoad
 {
-    [[self fetchedResultsController] performFetch:nil];
-    Venue *venue = self.event.venue;
-    NSLog(@"NAME: %@", [venue name]);
-    self.eventTitle.text = venue.name;
+    self.eventTitle.text = _event.title;
+    self.venueTitle.text = _event.venue.name;
+    self.venueAddress.text = _event.venue.address;
+    self.thumbnailImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_event.logoUrl]]];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -57,10 +57,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSString *accessToken = [User getAccessToken];
+
     [[RKObjectManager sharedManager] getObjectsAtPath:@"checkins" parameters:@{@"event_id" : self.event.rid, @"token": accessToken } success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
-        NSLog(@"%@", operation.HTTPRequestOperation.responseString);
-        [[self fetchedResultsController] performFetch:nil];
         [self.contactsTable reloadData];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -85,7 +83,7 @@
     };
     
     [[RKObjectManager sharedManager] postObject:nil path:@"checkins" parameters:checkinDictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
+        [self.contactsTable reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"failure");
     }];
@@ -114,11 +112,16 @@
     
     cell.textLabel.text = [managedObject valueForKey:@"email"];
     NSMutableArray *sharedEvents = [[NSMutableArray alloc] init];
-    for (id event in [managedObject valueForKey:@"shared_events"]) {
-        [sharedEvents addObject:[event title]];
+    if ([[managedObject valueForKey:@"shared_events"] count] == 0) {
+        cell.detailTextLabel.text = @"No shared events";
     }
-    NSString *sharedEventsString = [sharedEvents componentsJoinedByString:@", "];
-    cell.detailTextLabel.text = sharedEventsString;
+    else {
+        for (id event in [managedObject valueForKey:@"shared_events"]) {
+            [sharedEvents addObject:[event title]];
+        }
+        NSString *sharedEventsString = [sharedEvents componentsJoinedByString:@", "];
+        cell.detailTextLabel.text = sharedEventsString;
+    }
     return cell;
 }
 /*
@@ -183,7 +186,8 @@
 //}
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [[RKObjectManager sharedManager] cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"checkins"];
     NSIndexPath *selectedRowIndex = [self.contactsTable indexPathForSelectedRow];
     ContactController *contactController = [segue destinationViewController];
     User *user =  [[self fetchedResultsController] objectAtIndexPath:selectedRowIndex];

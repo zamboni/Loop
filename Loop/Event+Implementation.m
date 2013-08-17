@@ -18,4 +18,11 @@
     return entityMapping;
 }
 
+- (NSString *)formattedStartDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, yyyy h:mma"];
+    return [formatter stringFromDate:self.startDate];
+}
+
 @end

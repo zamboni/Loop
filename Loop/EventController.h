@@ -22,6 +22,10 @@
 
 @property IBOutlet UIButton *checkinButton;
 @property IBOutlet UILabel *eventTitle;
+@property IBOutlet UILabel *venueTitle;
+@property IBOutlet UILabel *venueAddress;
+@property IBOutlet UIImageView *thumbnailImageView;
+
 
 @property (strong, nonatomic) IBOutlet UITableView *contactsTable;
 

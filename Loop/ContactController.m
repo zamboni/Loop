@@ -10,6 +10,7 @@
 #import "ABContact.h"
 #import "ABContact+Implementation.h"
 #import "Event+Implementation.h"
+#import "EventController.h"
 #import <AddressBookUI/AddressBookUI.h>
 
 @interface ContactController ()
@@ -34,7 +35,7 @@
     NSString *sharedEventsString = [sharedEvents componentsJoinedByString:@", "];
     NSString *searchString = [NSString stringWithFormat:@"rid IN { %@ }", sharedEventsString];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:searchString];
-    return [Event MR_fetchAllGroupedBy:nil withPredicate:predicate sortedBy:nil ascending:TRUE];
+    return [Event MR_fetchAllGroupedBy:nil withPredicate:predicate sortedBy:@"startDate" ascending:TRUE];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,7 +60,6 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
-
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -89,6 +89,14 @@
         [self.navigationController pushViewController:personViewController animated:YES];
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *selectedRowIndex = [self.sharedEventsTable indexPathForSelectedRow];
+    EventController *eventController = [segue destinationViewController];
+    eventController.event = [[self fetchedResultsController] objectAtIndexPath:selectedRowIndex];
+}
+
 
 #pragma mark - Table view data source
 
