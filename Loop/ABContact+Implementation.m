@@ -50,7 +50,7 @@
     person.note                 = rhPerson.note;
     person.created              = rhPerson.created;
     person.modified             = rhPerson.modified;
-    person.thumbnail            = rhPerson.thumbnail;
+    person.thumbnail            = (NSData *)rhPerson.thumbnail;
 
     for (int index = 0; index < [rhPerson.addresses count] ; index++) {
         ABAddress *address      = [ABAddress MR_createInContext:context];
@@ -232,7 +232,6 @@
             
         } success:^(id responseObject) {
             contact.thumbnailUrl = [NSString stringWithFormat:@"%@%@", destPath, key];
-            NSLog([NSString stringWithFormat:@"%@%@", destPath, key]);
         } failure:^(NSError *error) {
             NSLog(@"fail");
         }];

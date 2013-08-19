@@ -81,7 +81,7 @@
     }];
     
     currentUser.contactId = contact_id;
-    [context MR_saveNestedContexts];
+    [context MR_saveOnlySelfAndWait];
 }
 
 #pragma mark Show all contacts
@@ -97,9 +97,6 @@
 -(void)showPersonViewController
 {
     User *currentUser = [User MR_findFirst];
-    ABRecordID *currentUserId = (ABRecordID *)[currentUser.contactId integerValue];
-    NSLog(@"CONTACT_ID: %d", currentUserId);
-    
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     ABRecordRef *person = (ABRecordRef *)ABAddressBookGetPersonWithRecordID(addressBook, [currentUser.contactId integerValue]);

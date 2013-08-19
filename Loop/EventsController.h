@@ -17,6 +17,4 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) UIAlertView *alert;
 
-- (IBAction)refresh:(id)sender;
-
 @end

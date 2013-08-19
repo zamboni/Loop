@@ -675,6 +675,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3C7A032275B44EF9FB449AC /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fletcher Fowler (A483478F88)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fletcher Fowler (A483478F88)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Loop/Loop-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -684,6 +686,8 @@
 				);
 				INFOPLIST_FILE = "Loop/Loop-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "95DBA312-0F4A-45B2-B44D-CDEE3ABE78CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95DBA312-0F4A-45B2-B44D-CDEE3ABE78CC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

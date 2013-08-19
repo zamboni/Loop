@@ -60,8 +60,8 @@
     [eventMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"logo_url" : @"logoUrl", @"title" : @"title", @"start_date" : @"startDate" , @"end_date" : @"endDate" }];
     [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"venue" toKeyPath:@"venue" withMapping:venueMapping]];
     
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:eventMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     // User
     RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
@@ -69,9 +69,9 @@
     [userMapping addAttributeMappingsFromDictionary:@{ @"_id" : @"rid", @"email" : @"email", @"first_name" : @"firstName", @"last_name" : @"lastName" }];
     [userMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"shared_events" toKeyPath:@"shared_events" withMapping:eventMapping]];
     
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"users" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodGET pathPattern:@"user" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"session" keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ];
     
     // Checkin
     RKEntityMapping *checkinMapping = [RKEntityMapping mappingForEntityForName:@"Checkin" inManagedObjectStore:managedObjectStore];
@@ -80,52 +80,60 @@
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"event" toKeyPath:@"event" withMapping:eventMapping]];
     [checkinMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"checkin" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:checkinMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"checkins" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
 
     // ABAddress
     RKEntityMapping *abAddressMapping = [RKEntityMapping mappingForEntityForName:@"ABAddress" inManagedObjectStore:managedObjectStore];
     [abAddressMapping addAttributeMappingsFromArray:@[@"city", @"country", @"label", @"state", @"street", @"zip"]];
     [abAddressMapping addAttributeMappingsFromDictionary:@{@"countryCode": @"country_code"}];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abAddressMapping pathPattern:nil keyPath:@"address" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abAddressMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"address" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abAddressMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"address" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABDate
     RKEntityMapping *abDateMapping = [RKEntityMapping mappingForEntityForName:@"ABDate" inManagedObjectStore:managedObjectStore];
     [abDateMapping addAttributeMappingsFromArray:@[@"date", @"label"]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abDateMapping pathPattern:nil keyPath:@"date" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abDateMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"date" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abDateMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"date" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABEmail
     RKEntityMapping *abEmailMapping = [RKEntityMapping mappingForEntityForName:@"ABEmail" inManagedObjectStore:managedObjectStore];
     [abEmailMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abEmailMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"email" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABInstantMessage
     RKEntityMapping *abInstantMessageMapping = [RKEntityMapping mappingForEntityForName:@"ABInstantMessage" inManagedObjectStore:managedObjectStore];
     [abInstantMessageMapping addAttributeMappingsFromArray:@[@"label", @"service"]];
     [abInstantMessageMapping addAttributeMappingsFromDictionary:@{@"user_name" : @"userName"}];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abInstantMessageMapping pathPattern:nil keyPath:@"instant_message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abInstantMessageMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"instant_message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abInstantMessageMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"instant_message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // ABName
     RKEntityMapping *abNameMapping = [RKEntityMapping mappingForEntityForName:@"ABName" inManagedObjectStore:managedObjectStore];
     [abNameMapping addAttributeMappingsFromArray:@[@"label", @"name"]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abNameMapping pathPattern:nil keyPath:@"name" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abNameMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"name" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abNameMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"name" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     // ABPhone
     RKEntityMapping *abPhoneMapping = [RKEntityMapping mappingForEntityForName:@"ABPhone" inManagedObjectStore:managedObjectStore];
     [abPhoneMapping addAttributeMappingsFromArray:@[@"label", @"phone"]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abPhoneMapping pathPattern:nil keyPath:@"phone" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abPhoneMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"phone" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abPhoneMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"phone" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     // ABSocial
     RKEntityMapping *abSocialMapping = [RKEntityMapping mappingForEntityForName:@"ABSocial" inManagedObjectStore:managedObjectStore];
     [abSocialMapping addAttributeMappingsFromArray:@[@"label", @"service", @"url"]];
     [abSocialMapping addAttributeMappingsFromDictionary:@{@"user_name": @"userName"}];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abSocialMapping pathPattern:nil keyPath:@"social" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abSocialMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"social" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abSocialMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"social" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     // ABUrl
     RKEntityMapping *abUrlMapping = [RKEntityMapping mappingForEntityForName:@"ABUrl" inManagedObjectStore:managedObjectStore];
     [abUrlMapping addAttributeMappingsFromArray:@[@"label", @"url"]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abUrlMapping pathPattern:nil keyPath:@"url" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abUrlMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"url" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abUrlMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"url" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 
     
     // ABContact
@@ -140,51 +148,60 @@
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"phones" toKeyPath:@"phones" withMapping:abPhoneMapping]];
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"socials" toKeyPath:@"socials" withMapping:abSocialMapping]];
     [abContactMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"urls" toKeyPath:@"urls" withMapping:abUrlMapping]];
-    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:abContactMapping method:RKRequestMethodPOST pathPattern:nil keyPath:@"contact" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
     
     // Request
     // ABAddress Request
     RKObjectMapping *abAddressRequestMapping = [RKObjectMapping requestMapping];
     [abAddressRequestMapping addAttributeMappingsFromArray:@[@"city", @"country", @"label", @"state", @"street", @"zip"]];
     [abAddressRequestMapping addAttributeMappingsFromDictionary:@{@"countryCode": @"country_code"}];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abAddressRequestMapping objectClass:[ABAddress class] rootKeyPath:@"addresses"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abAddressRequestMapping objectClass:[ABAddress class] rootKeyPath:@"addresses" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abAddressRequestMapping objectClass:[ABAddress class] rootKeyPath:@"addresses" method:RKRequestMethodPOST]];
 
     // ABDate Request
     RKObjectMapping *abDateRequestMapping = [RKObjectMapping requestMapping];
     [abDateRequestMapping addAttributeMappingsFromArray:@[@"date", @"label"]];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abDateRequestMapping objectClass:[ABDate class] rootKeyPath:@"dates"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abDateRequestMapping objectClass:[ABDate class] rootKeyPath:@"dates" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abDateRequestMapping objectClass:[ABDate class] rootKeyPath:@"dates" method:RKRequestMethodPOST]];
 
     // ABEmail Request
     RKObjectMapping *abEmailRequestMapping = [RKObjectMapping requestMapping];
     [abEmailRequestMapping addAttributeMappingsFromArray:@[@"email", @"label"]];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abEmailRequestMapping objectClass:[ABEmail class] rootKeyPath:@"emails" method:RKRequestMethodPOST]];
 
     // ABInstantMessage Request
     RKObjectMapping *abInstantMessageRequestMapping = [RKObjectMapping requestMapping];
     [abInstantMessageRequestMapping addAttributeMappingsFromArray:@[@"label", @"service"]];
     [abInstantMessageRequestMapping addAttributeMappingsFromDictionary:@{@"userName": @"user_name"}];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abInstantMessageRequestMapping objectClass:[ABInstantMessage class] rootKeyPath:@"instantMessages"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abInstantMessageRequestMapping objectClass:[ABInstantMessage class] rootKeyPath:@"instantMessages" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abInstantMessageRequestMapping objectClass:[ABInstantMessage class] rootKeyPath:@"instantMessages" method:RKRequestMethodPOST]];
 
     // ABName Request
     RKObjectMapping *abNameRequestMapping = [RKObjectMapping requestMapping];
     [abNameRequestMapping addAttributeMappingsFromArray:@[@"label", @"name"]];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abNameRequestMapping objectClass:[ABName class] rootKeyPath:@"names"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abNameRequestMapping objectClass:[ABName class] rootKeyPath:@"names" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abNameRequestMapping objectClass:[ABName class] rootKeyPath:@"names" method:RKRequestMethodPOST]];
 
     // ABPhone Request
     RKObjectMapping *abPhoneRequestMapping = [RKObjectMapping requestMapping];
     [abPhoneRequestMapping addAttributeMappingsFromArray:@[@"label", @"phone"]];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abPhoneRequestMapping objectClass:[ABPhone class] rootKeyPath:@"phones"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abPhoneRequestMapping objectClass:[ABPhone class] rootKeyPath:@"phones" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abPhoneRequestMapping objectClass:[ABPhone class] rootKeyPath:@"phones" method:RKRequestMethodPOST]];
 
     // ABSocial Request
     RKObjectMapping *abSocialRequestMapping = [RKObjectMapping requestMapping];
     [abSocialRequestMapping addAttributeMappingsFromArray:@[@"label", @"service", @"url"]];
     [abSocialRequestMapping addAttributeMappingsFromDictionary:@{@"userName": @"user_name"}];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abSocialRequestMapping objectClass:[ABSocial class] rootKeyPath:@"socials"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abSocialRequestMapping objectClass:[ABSocial class] rootKeyPath:@"socials" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abSocialRequestMapping objectClass:[ABSocial class] rootKeyPath:@"socials" method:RKRequestMethodPOST]];
 
     // ABUrl Request
     RKObjectMapping *abUrlRequestMapping = [RKObjectMapping requestMapping];
     [abUrlRequestMapping addAttributeMappingsFromArray:@[@"label", @"url"]];
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abUrlRequestMapping objectClass:[ABUrl class] rootKeyPath:@"urls"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abUrlRequestMapping objectClass:[ABUrl class] rootKeyPath:@"urls" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abUrlRequestMapping objectClass:[ABUrl class] rootKeyPath:@"urls" method:RKRequestMethodPOST]];
     
     // ABContact Request
     RKObjectMapping *abContactRequestMapping = [RKObjectMapping requestMapping];
@@ -198,7 +215,8 @@
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"socials"            toKeyPath:@"socials" withMapping:abSocialRequestMapping]];
     [abContactRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"urls"               toKeyPath:@"urls" withMapping:abUrlRequestMapping]];
 
-    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abContactRequestMapping objectClass:[ABContact class] rootKeyPath:@"contact"]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abContactRequestMapping objectClass:[ABContact class] rootKeyPath:@"contact" method:RKRequestMethodGET]];
+    [objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:abContactRequestMapping objectClass:[ABContact class] rootKeyPath:@"contact" method:RKRequestMethodPOST]];
     
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];

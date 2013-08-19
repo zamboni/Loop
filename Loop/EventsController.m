@@ -54,7 +54,7 @@
     // Start updating location changes.
     [locationManager startUpdatingLocationWithBlock:^(CLLocationManager *manager, CLLocation *newLocation, CLLocation *oldLocation) {
         [locationManager stopUpdatingLocation];
-        if ([newLocation distanceFromLocation:oldLocation] > 1) {
+        if ([newLocation distanceFromLocation:oldLocation] > 1 || [[[self fetchedResultsController] fetchedObjects] count] == 0) {
             [self.refreshControl endRefreshing];
             [self getEventsAtLocation:newLocation];
         }
